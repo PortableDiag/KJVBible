@@ -156,12 +156,21 @@ public class VerseAdapter extends RecyclerView.Adapter<VerseAdapter.VH> {
             h.text.setActivated(false);
             h.text.setSelected(false);
         } else {
+            // Selection is driven by a long-press / tap handler on the RecyclerView,
+            // so the row itself stays non-clickable (no accidental select while scrolling).
             h.text.setMovementMethod(null);
+            h.text.setOnClickListener(null);
+            h.text.setClickable(false);
             boolean isSelected = selected.contains(verseNum);
             h.text.setActivated(isSelected);
             h.text.setSelected(verseNum == highlightVerse && !isSelected);
-            h.text.setOnClickListener(view -> toggle(verseNum));
         }
+    }
+
+    /** Toggle selection for the verse at the given adapter position. */
+    public void toggleAt(int position) {
+        if (position < 0 || position >= verses.length) return;
+        toggle(position + 1);
     }
 
     private void toggle(int verseNum) {

@@ -6,6 +6,11 @@ All notable changes to this project are documented here. The format is based on
 
 ## [1.2.0] — 2026-06-21
 
+### Changed
+- Verse selection now requires a deliberate **press-and-hold (~1s)** instead of a tap, so
+  scrolling never selects by accident (with a haptic tick when it triggers). Once a
+  selection is active, a quick tap toggles additional verses.
+
 ### Added
 - **Study mode** (overflow menu, off by default). When enabled, certain words and phrases
   are subtly highlighted; tapping one opens a bottom sheet with a neutral, sourced

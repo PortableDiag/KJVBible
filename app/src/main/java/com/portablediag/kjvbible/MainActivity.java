@@ -4,12 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AlertDialog;
@@ -85,6 +88,8 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
         fabNext = findViewById(R.id.fabNext);
         fabPrev.setOnClickListener(v -> prevChapter());
         fabNext.setOnClickListener(v -> nextChapter());
+
+        list.addOnItemTouchListener(new LongPressSelector(list));
 
         applyWindowInsets();
         enableImmersiveReading();
@@ -456,4 +461,93 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
             adapter.clearSelection();
         }
     };
+
+    /**
+     * Selection by deliberate press-and-hold (~1s), not by tap, so scrolling never selects.
+     * A quick tap only toggles a verse when a selection is already in progress.
+     * Inactive in study mode (word taps handle that). Never consumes touches, so the list
+     * scrolls normally.
+     */
+    private final class LongPressSelector implements RecyclerView.OnItemTouchListener {
+        private static final long HOLD_MS = 1000L;
+
+        private final RecyclerView rv;
+        private final GestureDetector detector;
+        private final Handler handler = new Handler(Looper.getMainLooper());
+        private Runnable pending;
+        private boolean consumedByHold;
+
+        LongPressSelector(RecyclerView rv) {
+            this.rv = rv;
+            // Long-press disabled; we time the hold ourselves to require a full second.
+            detector = new GestureDetector(rv.getContext(),
+                    new GestureDetector.SimpleOnGestureListener() {
+                        @Override
+                        public boolean onSingleTapUp(MotionEvent e) {
+                            if (consumedByHold) return false;
+                            if (!adapter.hasSelection()) return false; // tap selects only mid-selection
+                            int pos = positionUnder(e);
+                            if (pos != RecyclerView.NO_POSITION) adapter.toggleAt(pos);
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onScroll(MotionEvent e1, MotionEvent e2, float dx, float dy) {
+                            cancelHold(); // a scroll is not a hold
+                            return false;
+                        }
+                    });
+            detector.setIsLongpressEnabled(false);
+        }
+
+        private int positionUnder(MotionEvent e) {
+            View child = rv.findChildViewUnder(e.getX(), e.getY());
+            return child == null ? RecyclerView.NO_POSITION : rv.getChildAdapterPosition(child);
+        }
+
+        private void cancelHold() {
+            if (pending != null) {
+                handler.removeCallbacks(pending);
+                pending = null;
+            }
+        }
+
+        @Override
+        public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+            if (adapter.isStudyMode()) return false;
+            detector.onTouchEvent(e);
+            switch (e.getActionMasked()) {
+                case MotionEvent.ACTION_DOWN:
+                    consumedByHold = false;
+                    cancelHold();
+                    final int pos = positionUnder(e);
+                    if (pos != RecyclerView.NO_POSITION) {
+                        pending = () -> {
+                            consumedByHold = true;
+                            rv.performHapticFeedback(
+                                    android.view.HapticFeedbackConstants.LONG_PRESS);
+                            adapter.toggleAt(pos);
+                        };
+                        handler.postDelayed(pending, HOLD_MS);
+                    }
+                    break;
+                case MotionEvent.ACTION_UP:
+                case MotionEvent.ACTION_CANCEL:
+                    cancelHold();
+                    break;
+                default:
+                    break;
+            }
+            return false; // never consume; RecyclerView keeps scrolling
+        }
+
+        @Override
+        public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+        }
+
+        @Override
+        public void onRequestDisallowInterceptTouchEvent(boolean disallow) {
+            if (disallow) cancelHold();
+        }
+    }
 }
