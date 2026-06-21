@@ -1,8 +1,10 @@
 package com.portablediag.kjvbible;
 
+import android.graphics.drawable.Drawable;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
+import android.text.style.ImageSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
 import android.text.style.SuperscriptSpan;
@@ -14,18 +16,28 @@ public final class VerseFormatter {
 
     /**
      * Render a single verse as "ⁿ verse text" with the verse number small/superscript
-     * and the words of Christ in {@code redColor}.
+     * and the words of Christ in {@code redColor}. If {@code bookmarkIcon} is non-null,
+     * a small filled bookmark glyph is shown before the verse number.
      */
     public static CharSequence verseLine(int verseNumber, String raw,
-                                         int redColor, int verseNumColor) {
+                                         int redColor, int verseNumColor,
+                                         Drawable bookmarkIcon) {
         SpannableStringBuilder sb = new SpannableStringBuilder();
 
+        if (bookmarkIcon != null) {
+            sb.append("  "); // glyph slot + trailing gap
+            sb.setSpan(new ImageSpan(bookmarkIcon, ImageSpan.ALIGN_BASELINE),
+                    0, 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+
+        int numStart = sb.length();
         String num = String.valueOf(verseNumber);
-        sb.append(num).append(' '); // thin space after the number
-        sb.setSpan(new SuperscriptSpan(), 0, num.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        sb.setSpan(new RelativeSizeSpan(0.70f), 0, num.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        sb.setSpan(new StyleSpan(android.graphics.Typeface.BOLD), 0, num.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        sb.setSpan(new ForegroundColorSpan(verseNumColor), 0, num.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        sb.append(num).append(' ');
+        int numEnd = numStart + num.length();
+        sb.setSpan(new SuperscriptSpan(), numStart, numEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        sb.setSpan(new RelativeSizeSpan(0.70f), numStart, numEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        sb.setSpan(new StyleSpan(android.graphics.Typeface.BOLD), numStart, numEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        sb.setSpan(new ForegroundColorSpan(verseNumColor), numStart, numEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         appendStyledBody(sb, raw, redColor);
         return sb;

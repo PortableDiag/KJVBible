@@ -1,11 +1,13 @@
 package com.portablediag.kjvbible;
 
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.LinkedHashSet;
@@ -102,7 +104,20 @@ public class VerseAdapter extends RecyclerView.Adapter<VerseAdapter.VH> {
         int numColor = bookmarked ? redColor : verseNumColor;
 
         h.text.setTextSize(android.util.TypedValue.COMPLEX_UNIT_SP, textSizeSp);
-        h.text.setText(VerseFormatter.verseLine(verseNum, verses[position], redColor, numColor));
+
+        Drawable bmIcon = null;
+        if (bookmarked) {
+            Drawable d = ContextCompat.getDrawable(h.text.getContext(), R.drawable.ic_bookmark);
+            if (d != null) {
+                d = d.mutate();
+                d.setTint(redColor);
+                int sz = Math.round(h.text.getTextSize() * 0.92f);
+                d.setBounds(0, 0, Math.round(sz * 0.78f), sz);
+                bmIcon = d;
+            }
+        }
+        h.text.setText(VerseFormatter.verseLine(verseNum, verses[position],
+                redColor, numColor, bmIcon));
 
         boolean isSelected = selected.contains(verseNum);
         h.text.setActivated(isSelected);
@@ -114,9 +129,23 @@ public class VerseAdapter extends RecyclerView.Adapter<VerseAdapter.VH> {
     private void toggle(int verseNum) {
         if (selected.contains(verseNum)) selected.remove(verseNum);
         else selected.add(verseNum);
+        boolean hadHighlight = highlightVerse != -1;
+        int prevHighlight = highlightVerse;
         highlightVerse = -1;
         notifyItemChanged(verseNum - 1);
+        if (hadHighlight && prevHighlight != verseNum) {
+            notifyItemChanged(prevHighlight - 1); // clear the stale navigation highlight
+        }
         listener.onSelectionChanged(selected.size());
+    }
+
+    /** True when there is a selection and every selected verse is already bookmarked. */
+    public boolean allSelectedBookmarked() {
+        if (selected.isEmpty()) return false;
+        for (int v : selected) {
+            if (!bookmarks.contains(new Ref(book, chapter, v))) return false;
+        }
+        return true;
     }
 
     @Override

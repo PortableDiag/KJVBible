@@ -2,12 +2,19 @@
 <resources>
     <string name="app_name">KJV Bible</string>
     <string name="title_select">Select Passage</string>
+    <string name="tab_all">All</string>
+    <string name="tab_ot">OT</string>
+    <string name="tab_nt">NT</string>
+    <string name="section_ot">Old Testament</string>
+    <string name="section_nt">New Testament</string>
     <string name="title_search">Search</string>
     <string name="title_bookmarks">Bookmarks</string>
 
     <string name="action_search">Search</string>
     <string name="action_bookmarks">Bookmarks</string>
     <string name="action_bookmark_add">Bookmark</string>
+    <string name="action_unbookmark">Remove bookmark</string>
+    <string name="title_select_verse">%1$s %2$d — verse</string>
     <string name="action_share">Share</string>
     <string name="action_share_chapter">Share chapter</string>
     <string name="action_copy">Copy</string>

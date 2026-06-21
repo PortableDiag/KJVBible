@@ -17,8 +17,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.view.ActionMode;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import android.view.ViewGroup;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.slider.Slider;
@@ -76,6 +82,9 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
         fabPrev.setOnClickListener(v -> prevChapter());
         fabNext.setOnClickListener(v -> nextChapter());
 
+        applyWindowInsets();
+        enableImmersiveReading();
+
         navLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 result -> {
@@ -98,6 +107,55 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
     protected void onResume() {
         super.onResume();
         adapter.refreshBookmarks();
+    }
+
+    /**
+     * Hide the bottom system navigation bar for distraction-free reading; it reappears
+     * transiently when the user swipes from the edge, then auto-hides again.
+     */
+    private void enableImmersiveReading() {
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
+        WindowInsetsControllerCompat c =
+                WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+        c.setSystemBarsBehavior(
+                WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
+        c.hide(WindowInsetsCompat.Type.navigationBars());
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            WindowInsetsControllerCompat c =
+                    WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+            c.hide(WindowInsetsCompat.Type.navigationBars());
+        }
+    }
+
+    /** Keep the floating chapter buttons and list clear of the system bars (edge-to-edge). */
+    private void applyWindowInsets() {
+        final int baseMargin = dp(16);
+        final int listBottomBase = dp(88); // clearance for the mini FABs
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.root), (v, insets) -> {
+            Insets bars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            setBottomMargin(fabPrev, baseMargin + bars.bottom);
+            setBottomMargin(fabNext, baseMargin + bars.bottom);
+            list.setPadding(list.getPaddingLeft(), list.getPaddingTop(),
+                    list.getPaddingRight(), listBottomBase + bars.bottom);
+            return insets;
+        });
+    }
+
+    private void setBottomMargin(View view, int margin) {
+        ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
+        if (lp.bottomMargin != margin) {
+            lp.bottomMargin = margin;
+            view.setLayoutParams(lp);
+        }
+    }
+
+    private int dp(int value) {
+        return Math.round(value * getResources().getDisplayMetrics().density);
     }
 
     private void showChapter(int book, int chapter) {
@@ -260,6 +318,7 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
         }
         if (actionMode != null) {
             actionMode.setTitle(getString(R.string.selected_count, count));
+            actionMode.invalidate(); // refresh the bookmark icon/label for the new selection
         }
     }
 
@@ -272,7 +331,11 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
 
         @Override
         public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-            return false;
+            MenuItem bm = menu.findItem(R.id.sel_bookmark);
+            boolean allBookmarked = adapter.allSelectedBookmarked();
+            bm.setIcon(allBookmarked ? R.drawable.ic_bookmark : R.drawable.ic_bookmark_border);
+            bm.setTitle(allBookmarked ? R.string.action_unbookmark : R.string.action_bookmark_add);
+            return true;
         }
 
         @Override
@@ -290,17 +353,22 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
                 mode.finish();
                 return true;
             } else if (id == R.id.sel_bookmark) {
+                boolean allBookmarked = adapter.allSelectedBookmarked();
                 long now = System.currentTimeMillis();
-                int added = 0;
-                for (Ref r : refs) {
-                    String snippet = Bible.plain(bible.verse(r.book, r.chapter, r.verse));
-                    if (bookmarks.add(r, now, snippet)) added++;
+                if (allBookmarked) {
+                    for (Ref r : refs) bookmarks.remove(r);
+                    Toast.makeText(MainActivity.this, R.string.bookmark_removed,
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    for (Ref r : refs) {
+                        String snippet = Bible.plain(bible.verse(r.book, r.chapter, r.verse));
+                        bookmarks.add(r, now, snippet);
+                    }
+                    Toast.makeText(MainActivity.this, R.string.bookmark_added,
+                            Toast.LENGTH_SHORT).show();
                 }
                 adapter.refreshBookmarks();
-                Toast.makeText(MainActivity.this,
-                        added > 0 ? R.string.bookmark_added : R.string.action_bookmark_add,
-                        Toast.LENGTH_SHORT).show();
-                mode.finish();
+                mode.invalidate();   // flip the icon to match the new state, keep selection
                 return true;
             }
             return false;
