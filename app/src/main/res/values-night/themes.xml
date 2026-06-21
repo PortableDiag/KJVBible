@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.KJVBible" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/text_dark</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorSecondary">@color/red_letter_dark</item>
+
+        <item name="android:colorBackground">@color/bg_dark</item>
+        <item name="colorSurface">@color/surface_dark</item>
+        <item name="android:windowBackground">@color/bg_dark</item>
+
+        <item name="android:textColorPrimary">@color/text_dark</item>
+        <item name="android:textColorSecondary">@color/text_secondary_dark</item>
+
+        <item name="redLetterColor">@color/red_letter_dark</item>
+        <item name="verseNumColor">@color/verse_num_dark</item>
+        <item name="verseTextColor">@color/text_dark</item>
+        <item name="verseSecondaryColor">@color/text_secondary_dark</item>
+        <item name="selectedVerseColor">@color/selected_dark</item>
+        <item name="readerDividerColor">@color/divider_dark</item>
+
+        <item name="android:statusBarColor">@color/toolbar_dark</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+    </style>
+
+</resources>

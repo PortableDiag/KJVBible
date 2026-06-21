@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">KJV Bible</string>
+    <string name="title_select">Select Passage</string>
+    <string name="title_search">Search</string>
+    <string name="title_bookmarks">Bookmarks</string>
+
+    <string name="action_search">Search</string>
+    <string name="action_bookmarks">Bookmarks</string>
+    <string name="action_bookmark_add">Bookmark</string>
+    <string name="action_share">Share</string>
+    <string name="action_share_chapter">Share chapter</string>
+    <string name="action_copy">Copy</string>
+    <string name="action_font_size">Font size</string>
+    <string name="action_theme">Theme</string>
+    <string name="action_select_passage">Go to&#8230;</string>
+
+    <string name="prev_chapter">Previous</string>
+    <string name="next_chapter">Next</string>
+
+    <string name="theme_system">Follow system</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    <string name="choose_theme">Choose theme</string>
+
+    <string name="font_size">Font size</string>
+    <string name="reset">Reset</string>
+    <string name="done">Done</string>
+    <string name="cancel">Cancel</string>
+    <string name="clear_all">Clear all</string>
+    <string name="delete">Delete</string>
+
+    <string name="search_hint">Search the King James Bible</string>
+    <string name="search_prompt">Type a word or phrase, then press Search.</string>
+    <string name="no_results">No verses found.</string>
+    <string name="searching">Searching&#8230;</string>
+    <plurals name="result_count">
+        <item quantity="one">%d verse</item>
+        <item quantity="other">%d verses</item>
+    </plurals>
+
+    <string name="no_bookmarks">No bookmarks yet.\nSelect a verse and tap the bookmark icon.</string>
+    <string name="bookmark_added">Bookmark added</string>
+    <string name="bookmark_removed">Bookmark removed</string>
+    <string name="copied">Copied to clipboard</string>
+    <string name="clear_bookmarks_q">Remove all bookmarks?</string>
+
+    <string name="selected_count">%d selected</string>
+    <string name="share_via">Share via</string>
+    <string name="kjv_suffix">(KJV)</string>
+</resources>

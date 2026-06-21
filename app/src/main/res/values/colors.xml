@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Brand -->
+    <color name="brand">#2E2E2E</color>
+    <color name="brand_dark">#000000</color>
+
+    <!-- Light theme -->
+    <color name="bg_light">#FFFBF7</color>
+    <color name="surface_light">#FFFFFF</color>
+    <color name="text_light">#15110D</color>
+    <color name="text_secondary_light">#6B6258</color>
+    <color name="red_letter_light">#C20A0A</color>
+    <color name="verse_num_light">#A99A86</color>
+    <color name="selected_light">#FFE9C7</color>
+    <color name="divider_light">#ECE4D8</color>
+    <color name="toolbar_light">#FFFFFF</color>
+
+    <!-- Dark theme -->
+    <color name="bg_dark">#101012</color>
+    <color name="surface_dark">#17171A</color>
+    <color name="text_dark">#ECEAE6</color>
+    <color name="text_secondary_dark">#9C958B</color>
+    <color name="red_letter_dark">#FF6B6B</color>
+    <color name="verse_num_dark">#6E6A63</color>
+    <color name="selected_dark">#33321B14</color>
+    <color name="divider_dark">#26262A</color>
+    <color name="toolbar_dark">#17171A</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+</resources>

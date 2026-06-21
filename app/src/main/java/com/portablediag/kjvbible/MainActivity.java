@@ -1,0 +1,315 @@
+package com.portablediag.kjvbible;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.view.ActionMode;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.slider.Slider;
+
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity implements VerseAdapter.Listener {
+
+    public static final String EXTRA_BOOK = "book";
+    public static final String EXTRA_CHAPTER = "chapter";
+    public static final String EXTRA_VERSE = "verse";
+
+    private Bible bible;
+    private Bookmarks bookmarks;
+    private Prefs prefs;
+
+    private Toolbar toolbar;
+    private RecyclerView list;
+    private LinearLayoutManager layout;
+    private VerseAdapter adapter;
+    private FloatingActionButton fabPrev, fabNext;
+
+    private int curBook = 1, curChapter = 1;
+    private ActionMode actionMode;
+
+    private ActivityResultLauncher<Intent> navLauncher;
+    private final Handler handler = new Handler(Looper.getMainLooper());
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        bible = Bible.get(this);
+        bookmarks = new Bookmarks(this);
+        prefs = new Prefs(this);
+
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) getSupportActionBar().setTitle("");
+        toolbar.setOnClickListener(v -> openPicker());
+
+        list = findViewById(R.id.verseList);
+        layout = new LinearLayoutManager(this);
+        list.setLayoutManager(layout);
+        adapter = new VerseAdapter(bible, bookmarks, this);
+        adapter.setColors(
+                ThemeUtil.color(this, R.attr.redLetterColor),
+                ThemeUtil.color(this, R.attr.verseNumColor));
+        adapter.setTextSizeSp(prefs.textSizeSp());
+        list.setAdapter(adapter);
+
+        fabPrev = findViewById(R.id.fabPrev);
+        fabNext = findViewById(R.id.fabNext);
+        fabPrev.setOnClickListener(v -> prevChapter());
+        fabNext.setOnClickListener(v -> nextChapter());
+
+        navLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                        Intent d = result.getData();
+                        int b = d.getIntExtra(EXTRA_BOOK, curBook);
+                        int c = d.getIntExtra(EXTRA_CHAPTER, curChapter);
+                        int v = d.getIntExtra(EXTRA_VERSE, 0);
+                        showChapter(b, c);
+                        if (v > 0) scrollToVerse(v);
+                    }
+                });
+
+        curBook = prefs.lastBook();
+        curChapter = prefs.lastChapter();
+        showChapter(curBook, curChapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        adapter.refreshBookmarks();
+    }
+
+    private void showChapter(int book, int chapter) {
+        if (book < 1) book = 1;
+        if (book > bible.bookCount()) book = bible.bookCount();
+        int cc = bible.chapterCount(book);
+        if (chapter < 1) chapter = 1;
+        if (chapter > cc) chapter = cc;
+
+        curBook = book;
+        curChapter = chapter;
+
+        String[] verses = bible.chapter(book, chapter);
+        adapter.setChapter(book, chapter, verses);
+
+        Bible.BookMeta meta = bible.book(book);
+        toolbar.setTitle(meta.name + " " + chapter + "  ▾");
+
+        layout.scrollToPositionWithOffset(0, 0);
+        prefs.setLastPosition(book, chapter);
+
+        boolean isFirst = (book == 1 && chapter == 1);
+        boolean isLast = (book == bible.bookCount() && chapter == cc);
+        fabPrev.setEnabled(!isFirst);
+        fabPrev.setAlpha(isFirst ? 0.3f : 1f);
+        fabNext.setEnabled(!isLast);
+        fabNext.setAlpha(isLast ? 0.3f : 1f);
+
+        if (actionMode != null) actionMode.finish();
+    }
+
+    private void scrollToVerse(int verse) {
+        layout.scrollToPositionWithOffset(verse - 1, 0);
+        adapter.setHighlight(verse);
+        handler.postDelayed(() -> adapter.setHighlight(-1), 2200);
+    }
+
+    private void nextChapter() {
+        int cc = bible.chapterCount(curBook);
+        if (curChapter < cc) showChapter(curBook, curChapter + 1);
+        else if (curBook < bible.bookCount()) showChapter(curBook + 1, 1);
+    }
+
+    private void prevChapter() {
+        if (curChapter > 1) showChapter(curBook, curChapter - 1);
+        else if (curBook > 1) showChapter(curBook - 1, bible.chapterCount(curBook - 1));
+    }
+
+    private void openPicker() {
+        Intent i = new Intent(this, PickerActivity.class);
+        i.putExtra(EXTRA_BOOK, curBook);
+        navLauncher.launch(i);
+    }
+
+    // ---- Menu ----
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_search) {
+            navLauncher.launch(new Intent(this, SearchActivity.class));
+            return true;
+        } else if (id == R.id.action_bookmarks) {
+            navLauncher.launch(new Intent(this, BookmarksActivity.class));
+            return true;
+        } else if (id == R.id.action_font_size) {
+            showFontDialog();
+            return true;
+        } else if (id == R.id.action_theme) {
+            showThemeDialog();
+            return true;
+        } else if (id == R.id.action_share_chapter) {
+            ShareUtil.share(this, ShareUtil.buildChapter(bible, curBook, curChapter));
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void showFontDialog() {
+        int pad = (int) (24 * getResources().getDisplayMetrics().density);
+        android.widget.LinearLayout container = new android.widget.LinearLayout(this);
+        container.setOrientation(android.widget.LinearLayout.VERTICAL);
+        container.setPadding(pad, pad, pad, 0);
+
+        TextView preview = new TextView(this);
+        preview.setText("For God so loved the world…");
+        preview.setTextColor(ThemeUtil.color(this, R.attr.verseTextColor));
+        preview.setTextSize(android.util.TypedValue.COMPLEX_UNIT_SP, prefs.textSizeSp());
+        container.addView(preview);
+
+        // Slider works in integer percent steps to avoid float step-size issues.
+        final Slider slider = new Slider(this);
+        slider.setValueFrom(Math.round(Prefs.MIN_FONT_SCALE * 100)); // 80
+        slider.setValueTo(Math.round(Prefs.MAX_FONT_SCALE * 100));   // 200
+        slider.setStepSize(10f);
+        slider.setValue(Math.round(prefs.fontScale() * 100));
+        int sp = (int) (16 * getResources().getDisplayMetrics().density);
+        slider.setPadding(0, sp, 0, 0);
+        container.addView(slider);
+
+        slider.addOnChangeListener((s, value, fromUser) -> {
+            prefs.setFontScale(value / 100f);
+            preview.setTextSize(android.util.TypedValue.COMPLEX_UNIT_SP, prefs.textSizeSp());
+            adapter.setTextSizeSp(prefs.textSizeSp());
+        });
+
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.font_size)
+                .setView(container)
+                .setPositiveButton(R.string.done, null)
+                .setNeutralButton(R.string.reset, (d, w) -> {
+                    prefs.setFontScale(Prefs.DEFAULT_FONT_SCALE);
+                    adapter.setTextSizeSp(prefs.textSizeSp());
+                })
+                .show();
+    }
+
+    private void showThemeDialog() {
+        final int[] modes = {
+                AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM,
+                AppCompatDelegate.MODE_NIGHT_NO,
+                AppCompatDelegate.MODE_NIGHT_YES
+        };
+        String[] labels = {
+                getString(R.string.theme_system),
+                getString(R.string.theme_light),
+                getString(R.string.theme_dark)
+        };
+        int current = prefs.themeMode();
+        int checked = 0;
+        for (int i = 0; i < modes.length; i++) if (modes[i] == current) checked = i;
+
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.choose_theme)
+                .setSingleChoiceItems(labels, checked, (d, which) -> {
+                    prefs.setThemeMode(modes[which]);
+                    AppCompatDelegate.setDefaultNightMode(modes[which]);
+                    d.dismiss();
+                })
+                .setNegativeButton(R.string.cancel, null)
+                .show();
+    }
+
+    // ---- Selection / contextual action mode ----
+
+    @Override
+    public void onSelectionChanged(int count) {
+        if (count == 0) {
+            if (actionMode != null) actionMode.finish();
+            return;
+        }
+        if (actionMode == null) {
+            actionMode = startSupportActionMode(actionCallback);
+        }
+        if (actionMode != null) {
+            actionMode.setTitle(getString(R.string.selected_count, count));
+        }
+    }
+
+    private final ActionMode.Callback actionCallback = new ActionMode.Callback() {
+        @Override
+        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+            mode.getMenuInflater().inflate(R.menu.menu_selection, menu);
+            return true;
+        }
+
+        @Override
+        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+            return false;
+        }
+
+        @Override
+        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+            List<Ref> refs = adapter.selectedRefs();
+            if (refs.isEmpty()) return false;
+            int id = item.getItemId();
+            if (id == R.id.sel_share) {
+                ShareUtil.share(MainActivity.this, ShareUtil.buildPassage(bible, refs));
+                mode.finish();
+                return true;
+            } else if (id == R.id.sel_copy) {
+                ShareUtil.copy(MainActivity.this, ShareUtil.buildPassage(bible, refs));
+                Toast.makeText(MainActivity.this, R.string.copied, Toast.LENGTH_SHORT).show();
+                mode.finish();
+                return true;
+            } else if (id == R.id.sel_bookmark) {
+                long now = System.currentTimeMillis();
+                int added = 0;
+                for (Ref r : refs) {
+                    String snippet = Bible.plain(bible.verse(r.book, r.chapter, r.verse));
+                    if (bookmarks.add(r, now, snippet)) added++;
+                }
+                adapter.refreshBookmarks();
+                Toast.makeText(MainActivity.this,
+                        added > 0 ? R.string.bookmark_added : R.string.action_bookmark_add,
+                        Toast.LENGTH_SHORT).show();
+                mode.finish();
+                return true;
+            }
+            return false;
+        }
+
+        @Override
+        public void onDestroyActionMode(ActionMode mode) {
+            actionMode = null;
+            adapter.clearSelection();
+        }
+    };
+}

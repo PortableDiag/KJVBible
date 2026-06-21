@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="redLetterColor" format="color" />
+    <attr name="verseNumColor" format="color" />
+    <attr name="verseTextColor" format="color" />
+    <attr name="verseSecondaryColor" format="color" />
+    <attr name="selectedVerseColor" format="color" />
+    <attr name="readerDividerColor" format="color" />
+</resources>

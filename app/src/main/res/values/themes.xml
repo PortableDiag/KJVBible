@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.KJVBible" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/brand</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/red_letter_light</item>
+
+        <item name="android:colorBackground">@color/bg_light</item>
+        <item name="colorSurface">@color/surface_light</item>
+        <item name="android:windowBackground">@color/bg_light</item>
+
+        <item name="android:textColorPrimary">@color/text_light</item>
+        <item name="android:textColorSecondary">@color/text_secondary_light</item>
+
+        <!-- Custom reader attributes -->
+        <item name="redLetterColor">@color/red_letter_light</item>
+        <item name="verseNumColor">@color/verse_num_light</item>
+        <item name="verseTextColor">@color/text_light</item>
+        <item name="verseSecondaryColor">@color/text_secondary_light</item>
+        <item name="selectedVerseColor">@color/selected_light</item>
+        <item name="readerDividerColor">@color/divider_light</item>
+
+        <item name="android:statusBarColor">@color/toolbar_light</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+    </style>
+
+    <style name="Theme.KJVBible.Toolbar" parent="ThemeOverlay.Material3.Toolbar.Surface" />
+
+    <style name="VerseText">
+        <item name="android:lineSpacingMultiplier">1.18</item>
+        <item name="android:textColorHighlight">@color/selected_light</item>
+    </style>
+
+</resources>
