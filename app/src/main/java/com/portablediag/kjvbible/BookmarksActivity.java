@@ -39,6 +39,7 @@ public class BookmarksActivity extends AppCompatActivity {
     private Prefs prefs;
     private int sortMode;
 
+    private Toolbar toolbar;
     private TextView emptyView;
     private RecyclerView list;
     private Adapter adapter;
@@ -62,9 +63,12 @@ public class BookmarksActivity extends AppCompatActivity {
                 new ActivityResultContracts.OpenDocument(),
                 uri -> { if (uri != null) doImport(uri); });
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.title_bookmarks);
         toolbar.setNavigationOnClickListener(v -> finish());
+        toolbar.inflateMenu(R.menu.menu_bookmarks);
+        toolbar.setOnMenuItemClickListener(this::onMenuItemClick);
+        updateSortTitle();
 
         emptyView = findViewById(R.id.emptyView);
         list = findViewById(R.id.list);
@@ -106,27 +110,20 @@ public class BookmarksActivity extends AppCompatActivity {
         list.setVisibility(empty ? View.GONE : View.VISIBLE);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_bookmarks, menu);
-        return true;
+    private void updateSortTitle() {
+        MenuItem sort = toolbar.getMenu().findItem(R.id.action_sort);
+        if (sort != null) {
+            sort.setTitle(sortMode == Prefs.SORT_BIBLE
+                    ? R.string.sort_bible : R.string.sort_saved);
+        }
     }
 
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        MenuItem sort = menu.findItem(R.id.action_sort);
-        sort.setTitle(sortMode == Prefs.SORT_BIBLE
-                ? R.string.sort_bible : R.string.sort_saved);
-        return super.onPrepareOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    private boolean onMenuItemClick(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_sort) {
             sortMode = (sortMode == Prefs.SORT_BIBLE) ? Prefs.SORT_SAVED : Prefs.SORT_BIBLE;
             prefs.setBookmarkSort(sortMode);
-            invalidateOptionsMenu();
+            updateSortTitle();
             rebuild();
             list.scrollToPosition(0);
             String name = getString(sortMode == Prefs.SORT_BIBLE
@@ -155,7 +152,7 @@ public class BookmarksActivity extends AppCompatActivity {
                     .show();
             return true;
         }
-        return super.onOptionsItemSelected(item);
+        return false;
     }
 
     private void doExport(Uri uri) {
