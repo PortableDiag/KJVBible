@@ -4,6 +4,23 @@ All notable changes to this project are documented here. The format is based on
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] — 2026-06-21
+
+### Added
+- **Study mode** (overflow menu, off by default). When enabled, certain words and phrases
+  are subtly highlighted; tapping one opens a bottom sheet with a neutral, sourced
+  explanation. Verse selection is disabled while study mode is on, to keep the two
+  interactions separate.
+- Initial study-notes dataset (`assets/study/notes.json`), hand-curated and citation-backed:
+  - Archaic words that have shifted meaning (e.g. *prevent* = precede, *conversation* =
+    conduct, *suffer* = allow, *let* = hinder, *wot/wist*, *quick*, *meat*, *holpen*).
+  - Contested or transliterated terms with their underlying Hebrew/Greek and history
+    (e.g. *Easter* / Passover, *Lucifer*, *unicorn*, *hell*, *charity*, *baptize*, *church*,
+    *Godhead*), and notable textual-variant passages (Comma Johanneum at 1 John 5:7,
+    Mark 16:9–20, John 7:53–8:11).
+  - Notes are plain JSON, easy to extend by hand; anchors are either a global whole-word
+    match or a phrase within a specific verse.
+
 ## [1.1.0] — 2026-06-21
 
 ### Added

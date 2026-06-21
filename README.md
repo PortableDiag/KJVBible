@@ -22,6 +22,10 @@ network access — the entire KJV text is bundled in the app.
   whole chapter, as clean plain text. You can also copy to the clipboard.
 - **Full-text search** — search the entire Bible quickly, with matches highlighted.
 - **Adjustable font size** — a comfortable default with a simple slider (80–200%).
+- **Study mode** (off by default) — subtly highlights archaic words that have shifted
+  meaning and contested/altered terms; tap a highlight for a neutral, sourced explanation
+  (underlying Hebrew/Greek, history, manuscript notes). Notes live in
+  `app/src/main/assets/study/notes.json` and are easy to extend by hand.
 
 No ads. No tracking. No account. No network permission.
 

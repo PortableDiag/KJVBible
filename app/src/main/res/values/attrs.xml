@@ -6,4 +6,5 @@
     <attr name="verseSecondaryColor" format="color" />
     <attr name="selectedVerseColor" format="color" />
     <attr name="readerDividerColor" format="color" />
+    <attr name="studyHighlightColor" format="color" />
 </resources>

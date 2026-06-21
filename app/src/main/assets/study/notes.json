@@ -1,0 +1,162 @@
+{
+  "version": 1,
+  "_comment": "Study notes. 'words' apply to every whole-word occurrence app-wide (case-insensitive). 'passages' apply to a specific verse and highlight a phrase within it. Keep notes neutral and evidentiary; cite sources. category: archaic | contested.",
+
+  "words": [
+    {
+      "id": "w-wot-wist",
+      "match": ["wot", "wist", "wotteth"],
+      "category": "archaic",
+      "title": "wot / wist",
+      "body": "Archaic English from Old English witan, 'to know'. 'wot' = know (present); 'wist' = knew (past). E.g. “I wot not” = “I do not know.”",
+      "sources": ["Webster's 1828 Dictionary", "Oxford English Dictionary, 'wit (v.)'"]
+    },
+    {
+      "id": "w-holpen",
+      "match": ["holpen"],
+      "category": "archaic",
+      "title": "holpen",
+      "body": "Archaic past participle of 'help' = helped (e.g. Psalm 86:17; Luke 1:54).",
+      "sources": ["Webster's 1828 Dictionary"]
+    },
+    {
+      "id": "w-prevent",
+      "match": ["prevent", "preventest", "preventeth", "prevented"],
+      "category": "archaic",
+      "title": "prevent (archaic: to precede)",
+      "body": "In the KJV 'prevent' keeps its older sense from Latin praevenire, 'to come before, go ahead of, anticipate' — not the modern 'hinder/stop'. E.g. 1 Thessalonians 4:15, “shall not prevent them which are asleep” = shall not precede them.",
+      "sources": ["Webster's 1828 Dictionary", "Latin praevenire"]
+    },
+    {
+      "id": "w-conversation",
+      "match": ["conversation"],
+      "category": "archaic",
+      "title": "conversation (archaic: conduct)",
+      "body": "In the KJV 'conversation' means manner of life / conduct, not speech. It renders Greek anastrophe (G391) and politeuma (G4175). E.g. Philippians 1:27; 1 Peter 1:15.",
+      "sources": ["Strong's G391", "Webster's 1828 Dictionary"]
+    },
+    {
+      "id": "w-suffer",
+      "match": ["suffer", "suffered", "suffereth", "sufferest"],
+      "category": "archaic",
+      "title": "suffer (often: allow/permit)",
+      "body": "In the KJV 'suffer' frequently means 'allow, permit' (e.g. “Suffer the little children to come unto me,” Matthew 19:14), in addition to the modern sense of undergoing pain. Context decides which.",
+      "sources": ["Webster's 1828 Dictionary", "Strong's G863, G1439"]
+    },
+    {
+      "id": "w-quick",
+      "match": ["quick"],
+      "category": "archaic",
+      "title": "quick (archaic: living)",
+      "body": "Archaic 'quick' = alive, living. E.g. “the quick and the dead” (Acts 10:42); “the word of God is quick, and powerful” (Hebrews 4:12).",
+      "sources": ["Webster's 1828 Dictionary"]
+    },
+    {
+      "id": "w-meat",
+      "match": ["meat", "meats"],
+      "category": "archaic",
+      "title": "meat (archaic: food)",
+      "body": "In the KJV 'meat' means food of any kind, not specifically flesh. E.g. Genesis 1:29, herbs and fruit given “for meat.”",
+      "sources": ["Webster's 1828 Dictionary"]
+    },
+    {
+      "id": "w-charity",
+      "match": ["charity"],
+      "category": "contested",
+      "title": "charity = love (agape)",
+      "body": "'Charity' renders Greek agape (G26) — the very same word translated 'love' elsewhere (e.g. John 3:16). The KJV uses 'charity' mainly in 1 Corinthians 13; the underlying word is identical to 'love'.",
+      "sources": ["Strong's G26"]
+    },
+    {
+      "id": "w-unicorn",
+      "match": ["unicorn", "unicorns"],
+      "category": "contested",
+      "title": "unicorn = wild ox (re'em)",
+      "body": "Translates Hebrew re'em (H7214), a wild, untamable horned animal widely identified as the aurochs (wild ox). The mythical single-horned sense came later via the Greek Septuagint's 'monokeros' and the Latin 'unicornis'. E.g. Numbers 23:22; Job 39:9-10.",
+      "sources": ["Strong's H7214", "Brown-Driver-Briggs Lexicon"]
+    },
+    {
+      "id": "w-hell",
+      "match": ["hell"],
+      "category": "contested",
+      "title": "hell (several distinct words)",
+      "body": "The KJV uses one word, 'hell', for several different originals: Hebrew Sheol (H7585, the grave/underworld), Greek Hades (G86), Gehenna (G1067, the valley of Hinnom), and once the verb tartaroo (G5020, 2 Peter 2:4). These are distinct concepts in the source texts.",
+      "sources": ["Strong's H7585, G86, G1067, G5020"]
+    },
+    {
+      "id": "w-baptize",
+      "match": ["baptize", "baptized", "baptizing", "baptism"],
+      "category": "contested",
+      "title": "baptize (transliteration)",
+      "body": "'Baptize' transliterates rather than translates Greek baptizo (G907), 'to immerse, dip, submerge.' The English word carries the Greek sound rather than its plain meaning.",
+      "sources": ["Strong's G907"]
+    },
+    {
+      "id": "w-church",
+      "match": ["church", "churches"],
+      "category": "contested",
+      "title": "church = assembly (ekklesia)",
+      "body": "Translates Greek ekklesia (G1577), 'assembly, congregation, the called-out'. The same word is used of an ordinary civic assembly in Acts 19:39, 41.",
+      "sources": ["Strong's G1577"]
+    }
+  ],
+
+  "passages": [
+    {
+      "id": "p-easter-acts12-4",
+      "book": 44, "chapter": 12, "verse": 4, "phrase": "Easter",
+      "category": "contested",
+      "title": "Easter / Passover",
+      "body": "The underlying Greek is pascha (G3957), the ordinary word for 'Passover', which the KJV translates 'Passover' in its 28 other occurrences. Only here is it rendered 'Easter'. Tyndale's 1526 New Testament had 'ester' here.",
+      "sources": ["Strong's G3957", "Tyndale New Testament, 1526"]
+    },
+    {
+      "id": "p-lucifer-isa14-12",
+      "book": 23, "chapter": 14, "verse": 12, "phrase": "Lucifer",
+      "category": "contested",
+      "title": "Lucifer",
+      "body": "Hebrew helel (H1966), 'shining one / morning star'. 'Lucifer' is the Latin Vulgate's word for the morning star (light-bearer); it is a description, not a proper name. The passage is an oracle against the king of Babylon (Isaiah 14:4).",
+      "sources": ["Strong's H1966", "Latin Vulgate"]
+    },
+    {
+      "id": "p-comma-1jn5-7",
+      "book": 62, "chapter": 5, "verse": 7, "phrase": "the Father, the Word, and the Holy Ghost",
+      "category": "contested",
+      "title": "Comma Johanneum",
+      "body": "This Trinitarian wording is absent from every known Greek manuscript before the 14th century and from the earliest translations; it entered later printed Greek editions and from there the KJV. Its authenticity is widely disputed by textual scholars.",
+      "sources": ["Metzger, A Textual Commentary on the Greek NT", "NA28 critical apparatus"]
+    },
+    {
+      "id": "p-mark16-9",
+      "book": 41, "chapter": 16, "verse": 9, "phrase": "he appeared first to Mary Magdalene",
+      "category": "contested",
+      "title": "Mark's longer ending (16:9-20)",
+      "body": "The 'longer ending' of Mark is absent from the earliest Greek manuscripts (Codex Sinaiticus and Codex Vaticanus) and is marked as doubtful or omitted in many witnesses. Its originality is disputed.",
+      "sources": ["Metzger, A Textual Commentary", "NA28 critical apparatus"]
+    },
+    {
+      "id": "p-pericope-john7-53",
+      "book": 43, "chapter": 7, "verse": 53, "phrase": "every man went unto his own house",
+      "category": "contested",
+      "title": "Pericope Adulterae (John 7:53-8:11)",
+      "body": "The account of the woman taken in adultery is absent from the earliest manuscripts and appears at varying locations in others. Many scholars regard it as a later addition, though an old and widely loved one.",
+      "sources": ["Metzger, A Textual Commentary", "NA28 critical apparatus"]
+    },
+    {
+      "id": "p-godhead-col2-9",
+      "book": 51, "chapter": 2, "verse": 9, "phrase": "Godhead",
+      "category": "contested",
+      "title": "Godhead (Colossians 2:9)",
+      "body": "Here 'Godhead' renders Greek theotes (G2320), 'deity, divine nature'. The KJV also prints 'Godhead' for two different Greek words: theios (G2304) in Acts 17:29 and theiotes (G2305) in Romans 1:20.",
+      "sources": ["Strong's G2320, G2304, G2305"]
+    },
+    {
+      "id": "p-let-2thess2-7",
+      "book": 53, "chapter": 2, "verse": 7, "phrase": "letteth",
+      "category": "archaic",
+      "title": "let (archaic: to hinder)",
+      "body": "Archaic 'let' means to hinder, restrain, or hold back — the opposite of its modern sense. “He who now letteth will let” = he who now restrains will restrain. Compare Romans 1:13, “was let hitherto.”",
+      "sources": ["Webster's 1828 Dictionary", "Old English lettan"]
+    }
+  ]
+}

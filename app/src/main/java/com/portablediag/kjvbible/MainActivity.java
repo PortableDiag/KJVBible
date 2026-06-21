@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
 
     private Bible bible;
     private Bookmarks bookmarks;
+    private StudyNotes studyNotes;
     private Prefs prefs;
 
     private Toolbar toolbar;
@@ -60,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
 
         bible = Bible.get(this);
         bookmarks = new Bookmarks(this);
+        studyNotes = StudyNotes.get(this);
         prefs = new Prefs(this);
 
         toolbar = findViewById(R.id.toolbar);
@@ -70,11 +72,13 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
         list = findViewById(R.id.verseList);
         layout = new LinearLayoutManager(this);
         list.setLayoutManager(layout);
-        adapter = new VerseAdapter(bible, bookmarks, this);
+        adapter = new VerseAdapter(bible, bookmarks, studyNotes, this);
         adapter.setColors(
                 ThemeUtil.color(this, R.attr.redLetterColor),
-                ThemeUtil.color(this, R.attr.verseNumColor));
+                ThemeUtil.color(this, R.attr.verseNumColor),
+                ThemeUtil.color(this, R.attr.studyHighlightColor));
         adapter.setTextSizeSp(prefs.textSizeSp());
+        adapter.setStudyMode(prefs.studyMode());
         list.setAdapter(adapter);
 
         fabPrev = findViewById(R.id.fabPrev);
@@ -229,6 +233,8 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
             bar.setTitle(marked ? R.string.action_unbookmark_chapter
                     : R.string.action_bookmark_chapter);
         }
+        MenuItem study = menu.findItem(R.id.action_study_mode);
+        if (study != null) study.setChecked(adapter.isStudyMode());
         return super.onPrepareOptionsMenu(menu);
     }
 
@@ -256,6 +262,15 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
             return true;
         } else if (id == R.id.action_font_size) {
             showFontDialog();
+            return true;
+        } else if (id == R.id.action_study_mode) {
+            boolean on = !adapter.isStudyMode();
+            prefs.setStudyMode(on);
+            adapter.setStudyMode(on);
+            if (on && actionMode != null) actionMode.finish();
+            invalidateOptionsMenu();
+            Toast.makeText(this, on ? R.string.study_on : R.string.study_off,
+                    Toast.LENGTH_SHORT).show();
             return true;
         } else if (id == R.id.action_theme) {
             showThemeDialog();
@@ -333,6 +348,40 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
     }
 
     // ---- Selection / contextual action mode ----
+
+    @Override
+    public void onNoteClicked(String noteId) {
+        StudyNotes.Note note = studyNotes.byId(noteId);
+        if (note == null) return;
+
+        View content = getLayoutInflater().inflate(R.layout.study_sheet, null);
+        TextView category = content.findViewById(R.id.noteCategory);
+        TextView title = content.findViewById(R.id.noteTitle);
+        TextView body = content.findViewById(R.id.noteBody);
+        TextView sourcesLabel = content.findViewById(R.id.noteSourcesLabel);
+        TextView sources = content.findViewById(R.id.noteSources);
+
+        category.setText("contested".equals(note.category)
+                ? R.string.study_contested : R.string.study_archaic);
+        title.setText(note.title);
+        body.setText(note.body);
+        if (note.sources.isEmpty()) {
+            sourcesLabel.setVisibility(View.GONE);
+            sources.setVisibility(View.GONE);
+        } else {
+            StringBuilder sb = new StringBuilder();
+            for (String s : note.sources) {
+                if (sb.length() > 0) sb.append('\n');
+                sb.append("• ").append(s);
+            }
+            sources.setText(sb.toString());
+        }
+
+        com.google.android.material.bottomsheet.BottomSheetDialog dialog =
+                new com.google.android.material.bottomsheet.BottomSheetDialog(this);
+        dialog.setContentView(content);
+        dialog.show();
+    }
 
     @Override
     public void onSelectionChanged(int count) {

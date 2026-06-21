@@ -1,6 +1,7 @@
 package com.portablediag.kjvbible;
 
 import android.graphics.drawable.Drawable;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,17 +12,20 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
-/** Renders the verses of one chapter, with tap-to-select and red-letter styling. */
+/** Renders the verses of one chapter, with tap-to-select, red-letter styling, study notes. */
 public class VerseAdapter extends RecyclerView.Adapter<VerseAdapter.VH> {
 
     public interface Listener {
         void onSelectionChanged(int count);
+        void onNoteClicked(String noteId);
     }
 
     private final Bible bible;
     private final Bookmarks bookmarks;
+    private final StudyNotes studyNotes;
     private final Listener listener;
 
     private int book = 1;
@@ -34,17 +38,38 @@ public class VerseAdapter extends RecyclerView.Adapter<VerseAdapter.VH> {
     private float textSizeSp = Prefs.BASE_TEXT_SP;
     private int redColor;
     private int verseNumColor;
+    private int studyHighlightColor;
+    private boolean studyMode = false;
 
-    public VerseAdapter(Bible bible, Bookmarks bookmarks, Listener listener) {
+    private final VerseFormatter.OnNoteClick onNote = new VerseFormatter.OnNoteClick() {
+        @Override public void onNote(String noteId) {
+            listener.onNoteClicked(noteId);
+        }
+    };
+
+    public VerseAdapter(Bible bible, Bookmarks bookmarks, StudyNotes studyNotes, Listener listener) {
         this.bible = bible;
         this.bookmarks = bookmarks;
+        this.studyNotes = studyNotes;
         this.listener = listener;
         setHasStableIds(true);
     }
 
-    public void setColors(int redColor, int verseNumColor) {
+    public void setColors(int redColor, int verseNumColor, int studyHighlightColor) {
         this.redColor = redColor;
         this.verseNumColor = verseNumColor;
+        this.studyHighlightColor = studyHighlightColor;
+    }
+
+    public void setStudyMode(boolean on) {
+        if (studyMode == on) return;
+        studyMode = on;
+        selected.clear();         // study mode and selection are mutually exclusive
+        notifyDataSetChanged();
+    }
+
+    public boolean isStudyMode() {
+        return studyMode;
     }
 
     public void setTextSizeSp(float sp) {
@@ -116,14 +141,27 @@ public class VerseAdapter extends RecyclerView.Adapter<VerseAdapter.VH> {
                 bmIcon = d;
             }
         }
+        List<StudyNotes.Span> studySpans = studyMode
+                ? studyNotes.find(book, chapter, verseNum, Bible.plain(verses[position]))
+                : null;
+
         h.text.setText(VerseFormatter.verseLine(verseNum, verses[position],
-                redColor, numColor, bmIcon));
+                redColor, numColor, bmIcon, studySpans, studyHighlightColor, onNote));
 
-        boolean isSelected = selected.contains(verseNum);
-        h.text.setActivated(isSelected);
-        h.text.setSelected(verseNum == highlightVerse && !isSelected);
-
-        h.text.setOnClickListener(view -> toggle(verseNum));
+        if (studyMode) {
+            // Tap highlighted words for notes; verse selection is disabled in study mode.
+            h.text.setMovementMethod(LinkMovementMethod.getInstance());
+            h.text.setOnClickListener(null);
+            h.text.setClickable(false);
+            h.text.setActivated(false);
+            h.text.setSelected(false);
+        } else {
+            h.text.setMovementMethod(null);
+            boolean isSelected = selected.contains(verseNum);
+            h.text.setActivated(isSelected);
+            h.text.setSelected(verseNum == highlightVerse && !isSelected);
+            h.text.setOnClickListener(view -> toggle(verseNum));
+        }
     }
 
     private void toggle(int verseNum) {

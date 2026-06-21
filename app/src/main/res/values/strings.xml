@@ -25,6 +25,12 @@
     <string name="action_font_size">Font size</string>
     <string name="action_theme">Theme</string>
     <string name="action_select_passage">Go to&#8230;</string>
+    <string name="action_study_mode">Study mode</string>
+    <string name="study_on">Study mode on — tap highlighted words</string>
+    <string name="study_off">Study mode off</string>
+    <string name="study_sources">Sources</string>
+    <string name="study_archaic">Archaic word</string>
+    <string name="study_contested">Contested / altered term</string>
 
     <string name="prev_chapter">Previous</string>
     <string name="next_chapter">Next</string>

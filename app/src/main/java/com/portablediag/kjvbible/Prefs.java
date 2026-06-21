@@ -70,6 +70,14 @@ public final class Prefs {
         sp.edit().putInt(K_LAST_BOOK, book).putInt(K_LAST_CHAPTER, chapter).apply();
     }
 
+    public boolean studyMode() {
+        return sp.getBoolean("study_mode", false);
+    }
+
+    public void setStudyMode(boolean on) {
+        sp.edit().putBoolean("study_mode", on).apply();
+    }
+
     public int bookmarkSort() {
         return sp.getInt(K_BOOKMARK_SORT, SORT_BIBLE);
     }
