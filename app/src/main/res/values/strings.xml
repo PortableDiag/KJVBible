@@ -29,7 +29,7 @@
     <string name="action_gold_ot">God\'s words in gold (OT)</string>
     <string name="gold_on">God\'s words shown in gold</string>
     <string name="gold_off">Gold highlighting off</string>
-    <string name="action_about">About &amp; credits</string>
+    <string name="action_about">About</string>
     <string name="about_title">KJV Bible</string>
     <string name="about_body">A fast, ad-free King James Version Bible.\n\nThe King James Version text is in the public domain.\n\nRed-letter (words of Christ) and small-caps markup derived from the jburson/bible-data dataset.\n\nOld Testament “words of God” gold highlighting is derived from the verse ranges in the MACULA Quotation and Speaker Data, © 2023 Clear Bible, Inc, licensed CC BY 4.0 (github.com/Clear-Bible/speaker-quotations), with the narrative introductions trimmed. Boundaries are approximate.\n\nStudy notes are hand-curated with cited sources.</string>
     <string name="study_on">Study mode on — tap highlighted words</string>

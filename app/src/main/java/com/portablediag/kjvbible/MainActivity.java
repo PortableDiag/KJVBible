@@ -85,7 +85,6 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
                 ThemeUtil.color(this, R.attr.goldLetterColor));
         adapter.setTextSizeSp(prefs.textSizeSp());
         adapter.setStudyMode(prefs.studyMode());
-        adapter.setGoldEnabled(prefs.goldOt());
         list.setAdapter(adapter);
 
         fabPrev = findViewById(R.id.fabPrev);
@@ -244,8 +243,6 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
         }
         MenuItem study = menu.findItem(R.id.action_study_mode);
         if (study != null) study.setChecked(adapter.isStudyMode());
-        MenuItem gold = menu.findItem(R.id.action_gold_ot);
-        if (gold != null) gold.setChecked(adapter.isGoldEnabled());
         return super.onPrepareOptionsMenu(menu);
     }
 
@@ -281,14 +278,6 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
             if (on && actionMode != null) actionMode.finish();
             invalidateOptionsMenu();
             Toast.makeText(this, on ? R.string.study_on : R.string.study_off,
-                    Toast.LENGTH_SHORT).show();
-            return true;
-        } else if (id == R.id.action_gold_ot) {
-            boolean on = !adapter.isGoldEnabled();
-            prefs.setGoldOt(on);
-            adapter.setGoldEnabled(on);
-            invalidateOptionsMenu();
-            Toast.makeText(this, on ? R.string.gold_on : R.string.gold_off,
                     Toast.LENGTH_SHORT).show();
             return true;
         } else if (id == R.id.action_about) {

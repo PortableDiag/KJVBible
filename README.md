@@ -10,8 +10,8 @@ network access — the entire KJV text is bundled in the app.
   the text is black in light mode and white in dark mode. The divine name is rendered in
   small caps (**LORD**).
 - **God's words in gold (Old Testament)** — direct divine speech in the OT is shown in gold,
-  distinguishing what God says from narrative and others' responses. Toggle in the menu
-  (default on). Boundaries are approximate; see attribution below.
+  distinguishing what God says from narrative and others' responses (always on, like the
+  red-letter words of Christ). End-boundaries are approximate; see attribution below.
 - **Light & dark modes** — follows the system theme by default, or force Light / Dark.
 - **Distraction-free reading** — the reader runs in immersive mode and hides the system
   navigation bar; swipe up from the bottom edge to reveal it.

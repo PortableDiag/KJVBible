@@ -8,12 +8,13 @@ All notable changes to this project are documented here. The format is based on
 
 ### Added
 - **God's words in gold (Old Testament).** Direct divine speech in the OT is shown in gold,
-  to distinguish what God says from narrative and others' responses — a companion to the
-  red-letter words of Christ in the NT. Toggle in the overflow menu (default on).
+  to distinguish what God says from narrative and others' responses — always on, a companion
+  to the red-letter words of Christ in the NT.
   - Speaker/verse-range data derived from the MACULA Quotation and Speaker Data
-    (© 2023 Clear Bible, Inc, CC BY 4.0), with the narrative introduction trimmed off the
-    opening verse. Boundaries are approximate and will be refined.
-- **About & credits** entry in the overflow menu (text licensing and data attribution).
+    (© 2023 Clear Bible, Inc, CC BY 4.0), including continuation/implicit speech (covenants,
+    the Torah's instructions, etc.), with the narrative introduction trimmed off the opening
+    verse. Speech end-boundaries are approximate and will be refined.
+- **About** entry in the overflow menu (text licensing and data attribution).
 
 ## [1.3.0] — 2026-06-21
 

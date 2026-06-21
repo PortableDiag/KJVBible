@@ -23,12 +23,6 @@
 
     <!-- Overflow (3-dot) menu -->
     <item
-        android:id="@+id/action_gold_ot"
-        android:title="@string/action_gold_ot"
-        android:checkable="true"
-        app:showAsAction="never" />
-
-    <item
         android:id="@+id/action_study_mode"
         android:title="@string/action_study_mode"
         android:checkable="true"
