@@ -86,5 +86,10 @@
 
     <string name="selected_count">%d selected</string>
     <string name="share_via">Share via</string>
+    <string name="share_as_text">Share as text</string>
+    <string name="share_as_image">Share as image</string>
+    <string name="share_image">Share image</string>
+    <string name="share_how">Share</string>
+    <string name="image_failed">Couldn\'t create image</string>
     <string name="kjv_suffix">(KJV)</string>
 </resources>

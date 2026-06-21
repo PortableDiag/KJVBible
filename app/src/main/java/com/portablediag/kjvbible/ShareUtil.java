@@ -49,6 +49,13 @@ public final class ShareUtil {
         return sb.toString().trim();
     }
 
+    /** Human reference for a selection within one chapter, e.g. "John 3:16-18". */
+    public static String reference(Bible bible, List<Ref> refs) {
+        if (refs.isEmpty()) return "";
+        Ref first = refs.get(0);
+        return bible.book(first.book).name + " " + first.chapter + ":" + verseRange(refs);
+    }
+
     /** Compact verse list within one chapter, e.g. "16-18" or "16, 18, 20-21". */
     private static String verseRange(List<Ref> refs) {
         StringBuilder out = new StringBuilder();

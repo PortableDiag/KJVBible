@@ -1,9 +1,17 @@
 package com.portablediag.kjvbible;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.widget.ImageView;
+
+import androidx.core.content.FileProvider;
+
+import java.io.File;
+import java.io.FileOutputStream;
 import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -430,6 +438,62 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
         dialog.show();
     }
 
+    private void showShareChoice(List<Ref> refs) {
+        String[] options = { getString(R.string.share_as_text), getString(R.string.share_as_image) };
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.share_how)
+                .setItems(options, (d, which) -> {
+                    if (which == 0) {
+                        ShareUtil.share(this, ShareUtil.buildPassage(bible, refs));
+                    } else {
+                        showImageShare(refs);
+                    }
+                })
+                .show();
+    }
+
+    private void showImageShare(List<Ref> refs) {
+        Bitmap bmp;
+        try {
+            bmp = VerseImage.render(this, bible, divineSpeech, refs);
+        } catch (Throwable t) {
+            Toast.makeText(this, R.string.image_failed, Toast.LENGTH_SHORT).show();
+            return;
+        }
+        View content = getLayoutInflater().inflate(R.layout.share_image_sheet, null);
+        ImageView preview = content.findViewById(R.id.preview);
+        preview.setImageBitmap(bmp);
+
+        com.google.android.material.bottomsheet.BottomSheetDialog dialog =
+                new com.google.android.material.bottomsheet.BottomSheetDialog(this);
+        dialog.setContentView(content);
+        content.findViewById(R.id.shareImageBtn).setOnClickListener(v -> {
+            dialog.dismiss();
+            shareImage(bmp, ShareUtil.buildPassage(bible, refs));
+        });
+        dialog.show();
+    }
+
+    private void shareImage(Bitmap bmp, String caption) {
+        try {
+            File dir = new File(getCacheDir(), "shared");
+            dir.mkdirs();
+            File file = new File(dir, "verse.png");
+            try (FileOutputStream out = new FileOutputStream(file)) {
+                bmp.compress(Bitmap.CompressFormat.PNG, 100, out);
+            }
+            Uri uri = FileProvider.getUriForFile(this, getPackageName() + ".fileprovider", file);
+            Intent send = new Intent(Intent.ACTION_SEND);
+            send.setType("image/png");
+            send.putExtra(Intent.EXTRA_STREAM, uri);
+            send.putExtra(Intent.EXTRA_TEXT, caption);
+            send.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            startActivity(Intent.createChooser(send, getString(R.string.share_via)));
+        } catch (Exception e) {
+            Toast.makeText(this, R.string.image_failed, Toast.LENGTH_SHORT).show();
+        }
+    }
+
     @Override
     public void onSelectionChanged(int count) {
         if (count == 0) {
@@ -467,7 +531,7 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
             if (refs.isEmpty()) return false;
             int id = item.getItemId();
             if (id == R.id.sel_share) {
-                ShareUtil.share(MainActivity.this, ShareUtil.buildPassage(bible, refs));
+                showShareChoice(refs);
                 mode.finish();
                 return true;
             } else if (id == R.id.sel_copy) {

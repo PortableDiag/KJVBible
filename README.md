@@ -23,7 +23,9 @@ network access — the entire KJV text is bundled in the app.
   individually, or clear all. The bookmark action toggles (add / remove). Bookmarks can be
   **exported and imported as JSON** from the Bookmarks menu (system file picker).
 - **Sharing** — share a single verse (as a tidy quote), multiple selected verses, or a
-  whole chapter, as clean plain text. You can also copy to the clipboard.
+  whole chapter, as clean plain text. You can also copy to the clipboard, or **share as an
+  image** — a themed card with the verse(s), inline verse numbers, the full reference, and
+  the red/gold colors preserved.
 - **Full-text search** — search the entire Bible quickly, with matches highlighted.
 - **Adjustable font size** — a comfortable default with a simple slider (80–200%).
 - **Study mode** (off by default) — subtly highlights archaic words that have shifted

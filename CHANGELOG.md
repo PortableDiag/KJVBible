@@ -4,6 +4,15 @@ All notable changes to this project are documented here. The format is based on
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.0] — 2026-06-21
+
+### Added
+- **Share as image.** Tapping Share on a selection now offers "Share as text" (existing) or
+  "Share as image", which renders the verse(s) to a square image and shares it with a text
+  caption. The image respects the current light/dark theme and keeps the red-letter words of
+  Christ and gold OT words of God, with inline verse numbers and the full reference
+  (Book Chapter:Verse). A preview sheet confirms before sharing. Long passages shrink to fit.
+
 ## [1.4.0] — 2026-06-21
 
 ### Changed
