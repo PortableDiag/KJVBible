@@ -65,6 +65,18 @@
     <string name="sort_bible">Bible order</string>
     <string name="sort_saved">Order saved</string>
     <string name="sorted_by">Sorted: %1$s</string>
+    <string name="action_import">Import bookmarks</string>
+    <string name="action_export">Export bookmarks</string>
+    <string name="export_filename">kjv-bookmarks.json</string>
+    <string name="export_done">Bookmarks exported</string>
+    <string name="export_failed">Export failed</string>
+    <string name="nothing_to_export">No bookmarks to export</string>
+    <string name="import_failed">Couldn\'t read that file</string>
+    <plurals name="import_done">
+        <item quantity="one">%d bookmark imported</item>
+        <item quantity="other">%d bookmarks imported</item>
+    </plurals>
+    <string name="import_none">No new bookmarks to import</string>
 
     <string name="selected_count">%d selected</string>
     <string name="share_via">Share via</string>

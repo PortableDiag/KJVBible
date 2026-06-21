@@ -1,6 +1,7 @@
 package com.portablediag.kjvbible;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -11,6 +12,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +21,11 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +43,9 @@ public class BookmarksActivity extends AppCompatActivity {
     private RecyclerView list;
     private Adapter adapter;
 
+    private ActivityResultLauncher<String> exportLauncher;
+    private ActivityResultLauncher<String[]> importLauncher;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +54,13 @@ public class BookmarksActivity extends AppCompatActivity {
         bookmarks = new Bookmarks(this);
         prefs = new Prefs(this);
         sortMode = prefs.bookmarkSort();
+
+        exportLauncher = registerForActivityResult(
+                new ActivityResultContracts.CreateDocument("application/json"),
+                uri -> { if (uri != null) doExport(uri); });
+        importLauncher = registerForActivityResult(
+                new ActivityResultContracts.OpenDocument(),
+                uri -> { if (uri != null) doImport(uri); });
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.title_bookmarks);
@@ -115,6 +133,16 @@ public class BookmarksActivity extends AppCompatActivity {
                     ? R.string.sort_bible : R.string.sort_saved);
             Toast.makeText(this, getString(R.string.sorted_by, name), Toast.LENGTH_SHORT).show();
             return true;
+        } else if (id == R.id.action_export) {
+            if (bookmarks.size() == 0) {
+                Toast.makeText(this, R.string.nothing_to_export, Toast.LENGTH_SHORT).show();
+            } else {
+                exportLauncher.launch(getString(R.string.export_filename));
+            }
+            return true;
+        } else if (id == R.id.action_import) {
+            importLauncher.launch(new String[]{"application/json", "text/*", "application/octet-stream"});
+            return true;
         } else if (id == R.id.action_clear_all) {
             if (bookmarks.size() == 0) return true;
             new AlertDialog.Builder(this)
@@ -128,6 +156,41 @@ public class BookmarksActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void doExport(Uri uri) {
+        try (OutputStream os = getContentResolver().openOutputStream(uri, "wt")) {
+            if (os == null) throw new Exception("no stream");
+            os.write(bookmarks.exportJson(bible).getBytes(StandardCharsets.UTF_8));
+            os.flush();
+            Toast.makeText(this, R.string.export_done, Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Toast.makeText(this, R.string.export_failed, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void doImport(Uri uri) {
+        try (InputStream is = getContentResolver().openInputStream(uri)) {
+            if (is == null) throw new Exception("no stream");
+            StringBuilder sb = new StringBuilder();
+            try (BufferedReader r = new BufferedReader(
+                    new InputStreamReader(is, StandardCharsets.UTF_8))) {
+                char[] buf = new char[8192];
+                int n;
+                while ((n = r.read(buf)) != -1) sb.append(buf, 0, n);
+            }
+            int added = bookmarks.importJson(sb.toString(), bible);
+            rebuild();
+            if (added > 0) {
+                Toast.makeText(this,
+                        getResources().getQuantityString(R.plurals.import_done, added, added),
+                        Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, R.string.import_none, Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
+            Toast.makeText(this, R.string.import_failed, Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void open(Ref r) {

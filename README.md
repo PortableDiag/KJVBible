@@ -17,7 +17,8 @@ network access — the entire KJV text is bundled in the app.
   Next buttons move between chapters and across books.
 - **Bookmarks** — select one or more verses and bookmark them; bookmarked verses show a
   red bookmark marker in the reader. Manage and navigate bookmarks from one screen, remove
-  individually, or clear all. The bookmark action toggles (add / remove).
+  individually, or clear all. The bookmark action toggles (add / remove). Bookmarks can be
+  **exported and imported as JSON** from the Bookmarks menu (system file picker).
 - **Sharing** — share a single verse (as a tidy quote), multiple selected verses, or a
   whole chapter, as clean plain text. You can also copy to the clipboard.
 - **Full-text search** — search the entire Bible quickly, with matches highlighted.

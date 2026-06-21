@@ -3,7 +3,9 @@ package com.portablediag.kjvbible;
 import android.content.Context;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -123,5 +125,63 @@ public final class Bookmarks {
 
     public int size() {
         return entries.size();
+    }
+
+    /** Human-readable, re-importable JSON of all bookmarks (in canonical order). */
+    public String exportJson(Bible bible) {
+        JSONObject root = new JSONObject();
+        try {
+            root.put("app", "KJV Bible");
+            root.put("type", "bookmarks");
+            root.put("version", 1);
+            JSONArray arr = new JSONArray();
+            for (Entry e : all()) {
+                JSONObject o = new JSONObject();
+                o.put("book", e.ref.book);
+                o.put("chapter", e.ref.chapter);
+                o.put("verse", e.ref.verse);          // verse 0 == whole-chapter bookmark
+                o.put("ref", e.ref.label(bible));     // for readability; ignored on import
+                o.put("addedAt", e.addedAt);
+                if (e.snippet != null && !e.snippet.isEmpty()) o.put("snippet", e.snippet);
+                arr.put(o);
+            }
+            root.put("bookmarks", arr);
+        } catch (JSONException ignored) {
+        }
+        return root.toString();
+    }
+
+    /**
+     * Merge bookmarks from exported JSON. Accepts the wrapper format above or a bare array,
+     * and either long ("book"/"chapter"/"verse") or short ("b"/"c"/"v") keys. Invalid or
+     * out-of-range entries are skipped. Returns the number of new bookmarks added.
+     */
+    public int importJson(String json, Bible bible) throws JSONException {
+        Object parsed = new JSONTokener(json).nextValue();
+        JSONArray arr;
+        if (parsed instanceof JSONArray) {
+            arr = (JSONArray) parsed;
+        } else if (parsed instanceof JSONObject) {
+            arr = ((JSONObject) parsed).optJSONArray("bookmarks");
+        } else {
+            arr = null;
+        }
+        if (arr == null) return 0;
+
+        int added = 0;
+        for (int i = 0; i < arr.length(); i++) {
+            JSONObject o = arr.optJSONObject(i);
+            if (o == null) continue;
+            int b = o.has("book") ? o.optInt("book", -1) : o.optInt("b", -1);
+            int c = o.has("chapter") ? o.optInt("chapter", -1) : o.optInt("c", -1);
+            int v = o.has("verse") ? o.optInt("verse", -1) : o.optInt("v", -1);
+            if (b < 1 || b > bible.bookCount()) continue;
+            if (c < 1 || c > bible.chapterCount(b)) continue;
+            if (v < 0 || v > bible.verseCount(b, c)) continue; // v == 0 allowed (chapter bookmark)
+            long t = o.has("addedAt") ? o.optLong("addedAt", 0) : o.optLong("t", 0);
+            String s = o.has("snippet") ? o.optString("snippet", "") : o.optString("s", "");
+            if (add(new Ref(b, c, v), t, s)) added++;
+        }
+        return added;
     }
 }
