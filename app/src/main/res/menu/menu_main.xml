@@ -9,12 +9,6 @@
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/action_bookmarks"
-        android:icon="@drawable/ic_bookmark_border"
-        android:title="@string/action_bookmarks"
-        app:showAsAction="ifRoom" />
-
-    <item
         android:id="@+id/action_font_size"
         android:icon="@drawable/ic_text_size"
         android:title="@string/action_font_size"
@@ -24,6 +18,12 @@
         android:id="@+id/action_theme"
         android:icon="@drawable/ic_theme"
         android:title="@string/action_theme"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_bookmarks"
+        android:icon="@drawable/ic_bookmark_border"
+        android:title="@string/action_bookmarks"
         app:showAsAction="never" />
 
     <item
