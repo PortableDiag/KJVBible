@@ -107,6 +107,7 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
     protected void onResume() {
         super.onResume();
         adapter.refreshBookmarks();
+        invalidateOptionsMenu();
     }
 
     /**
@@ -185,6 +186,7 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
         fabNext.setAlpha(isLast ? 0.3f : 1f);
 
         if (actionMode != null) actionMode.finish();
+        invalidateOptionsMenu(); // reflect this chapter's bookmark state on the toolbar icon
     }
 
     private void scrollToVerse(int verse) {
@@ -219,12 +221,37 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
     }
 
     @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem bar = menu.findItem(R.id.action_bookmarks_bar);
+        if (bar != null) {
+            boolean marked = bookmarks.contains(new Ref(curBook, curChapter, 0));
+            bar.setIcon(marked ? R.drawable.ic_bookmark : R.drawable.ic_bookmark_border);
+            bar.setTitle(marked ? R.string.action_unbookmark_chapter
+                    : R.string.action_bookmark_chapter);
+        }
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    private void toggleChapterBookmark() {
+        Ref chapterRef = new Ref(curBook, curChapter, 0);
+        String snippet = Bible.plain(bible.verse(curBook, curChapter, 1)); // first verse, for context
+        boolean nowMarked = bookmarks.toggle(chapterRef, System.currentTimeMillis(), snippet);
+        invalidateOptionsMenu();
+        Toast.makeText(this,
+                nowMarked ? R.string.chapter_bookmarked : R.string.chapter_bookmark_removed,
+                Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_search) {
             navLauncher.launch(new Intent(this, SearchActivity.class));
             return true;
-        } else if (id == R.id.action_bookmarks || id == R.id.action_bookmarks_bar) {
+        } else if (id == R.id.action_bookmarks_bar) {
+            toggleChapterBookmark();
+            return true;
+        } else if (id == R.id.action_bookmarks) {
             navLauncher.launch(new Intent(this, BookmarksActivity.class));
             return true;
         } else if (id == R.id.action_font_size) {

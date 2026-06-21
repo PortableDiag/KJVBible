@@ -14,6 +14,10 @@
     <string name="action_bookmarks">Bookmarks</string>
     <string name="action_bookmark_add">Bookmark</string>
     <string name="action_unbookmark">Remove bookmark</string>
+    <string name="action_bookmark_chapter">Bookmark chapter</string>
+    <string name="action_unbookmark_chapter">Remove chapter bookmark</string>
+    <string name="chapter_bookmarked">Chapter bookmarked</string>
+    <string name="chapter_bookmark_removed">Chapter bookmark removed</string>
     <string name="title_select_verse">%1$s %2$d — verse</string>
     <string name="action_share">Share</string>
     <string name="action_share_chapter">Share chapter</string>

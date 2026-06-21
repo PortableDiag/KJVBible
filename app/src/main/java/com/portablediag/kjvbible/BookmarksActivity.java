@@ -175,7 +175,7 @@ public class BookmarksActivity extends AppCompatActivity {
             vh.ref.setText(e.ref.label(bible));
             String snippet = e.snippet != null && !e.snippet.isEmpty()
                     ? e.snippet
-                    : Bible.plain(bible.verse(e.ref.book, e.ref.chapter, e.ref.verse));
+                    : Bible.plain(bible.verse(e.ref.book, e.ref.chapter, Math.max(1, e.ref.verse)));
             vh.text.setText(snippet);
             vh.itemView.setOnClickListener(v -> open(e.ref));
             vh.delete.setOnClickListener(v -> {

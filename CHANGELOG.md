@@ -7,6 +7,8 @@ All notable changes to this project are documented here. The format is based on
 ## [1.1.0] — 2026-06-21
 
 ### Added
+- Bookmark a whole chapter from the reader's toolbar bookmark icon (toggles; shows filled
+  when the current chapter is bookmarked). Verse-level bookmarking via selection still works.
 - Bookmarks screen sort toggle: **Bible order** (default, with Old/New Testament separators)
   or **order saved**; the choice is remembered.
 - Bookmarks are reachable from the reader's overflow menu (Theme → Bookmarks → Share chapter).

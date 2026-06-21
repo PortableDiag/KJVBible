@@ -12,8 +12,14 @@ public final class Ref implements Comparable<Ref> {
         this.verse = verse;
     }
 
+    /** True for a whole-chapter bookmark (verse == 0). */
+    public boolean isChapter() {
+        return verse == 0;
+    }
+
     public String label(Bible bible) {
-        return bible.book(book).name + " " + chapter + ":" + verse;
+        String name = bible.book(book).name;
+        return verse > 0 ? name + " " + chapter + ":" + verse : name + " " + chapter;
     }
 
     public long key() {
