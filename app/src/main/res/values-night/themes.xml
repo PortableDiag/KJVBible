@@ -23,6 +23,9 @@
 
         <item name="android:statusBarColor">@color/toolbar_dark</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+
+        <!-- Overlay the contextual selection bar so it doesn't shove the list up/down -->
+        <item name="windowActionModeOverlay">true</item>
     </style>
 
 </resources>
