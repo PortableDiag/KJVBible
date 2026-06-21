@@ -2,8 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/action_sort"
+        android:icon="@drawable/ic_sort"
+        android:title="@string/sort_order"
+        app:showAsAction="ifRoom" />
+    <item
         android:id="@+id/action_clear_all"
         android:icon="@drawable/ic_delete"
         android:title="@string/clear_all"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never" />
 </menu>

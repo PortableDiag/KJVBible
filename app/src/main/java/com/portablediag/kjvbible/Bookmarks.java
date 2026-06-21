@@ -116,6 +116,11 @@ public final class Bookmarks {
         return copy;
     }
 
+    /** Bookmarks in the order they were saved (oldest first). */
+    public List<Entry> allInSavedOrder() {
+        return new ArrayList<>(entries);
+    }
+
     public int size() {
         return entries.size();
     }

@@ -15,6 +15,10 @@ public final class Prefs {
     private static final String K_LAST_BOOK = "last_book";
     private static final String K_LAST_CHAPTER = "last_chapter";
     private static final String K_BOOKMARKS = "bookmarks_json";
+    private static final String K_BOOKMARK_SORT = "bookmark_sort";
+
+    public static final int SORT_BIBLE = 0;   // canonical order, with OT/NT separators
+    public static final int SORT_SAVED = 1;   // order in which they were saved
 
     public static final float DEFAULT_FONT_SCALE = 1.0f;  // base text size = 18sp
     public static final float MIN_FONT_SCALE = 0.8f;
@@ -64,6 +68,14 @@ public final class Prefs {
 
     public void setLastPosition(int book, int chapter) {
         sp.edit().putInt(K_LAST_BOOK, book).putInt(K_LAST_CHAPTER, chapter).apply();
+    }
+
+    public int bookmarkSort() {
+        return sp.getInt(K_BOOKMARK_SORT, SORT_BIBLE);
+    }
+
+    public void setBookmarkSort(int sort) {
+        sp.edit().putInt(K_BOOKMARK_SORT, sort).apply();
     }
 
     public String bookmarksJson() {

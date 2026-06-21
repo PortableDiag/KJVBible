@@ -51,6 +51,10 @@
     <string name="bookmark_removed">Bookmark removed</string>
     <string name="copied">Copied to clipboard</string>
     <string name="clear_bookmarks_q">Remove all bookmarks?</string>
+    <string name="sort_order">Sort order</string>
+    <string name="sort_bible">Bible order</string>
+    <string name="sort_saved">Order saved</string>
+    <string name="sorted_by">Sorted: %1$s</string>
 
     <string name="selected_count">%d selected</string>
     <string name="share_via">Share via</string>

@@ -7,6 +7,9 @@ All notable changes to this project are documented here. The format is based on
 ## [1.1.0] — 2026-06-21
 
 ### Added
+- Bookmarks screen sort toggle: **Bible order** (default, with Old/New Testament separators)
+  or **order saved**; the choice is remembered.
+- Bookmarks are reachable from the reader's overflow menu (Theme → Bookmarks → Share chapter).
 - Verse-level selection in the passage picker (**Book → Chapter → Verse**).
 - **All / Old Testament / New Testament** tabs in book selection, with
   "Old Testament" and "New Testament" section dividers in the All list.

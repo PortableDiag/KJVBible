@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -17,13 +18,19 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
-/** Lists saved bookmarks; tap to navigate, delete individually or clear all. */
+/** Lists saved bookmarks (Bible order with OT/NT separators, or order saved); tap to navigate. */
 public class BookmarksActivity extends AppCompatActivity {
+
+    private static final int LAST_OT_BOOK = 39;
 
     private Bible bible;
     private Bookmarks bookmarks;
+    private Prefs prefs;
+    private int sortMode;
+
     private TextView emptyView;
     private RecyclerView list;
     private Adapter adapter;
@@ -34,6 +41,8 @@ public class BookmarksActivity extends AppCompatActivity {
         setContentView(R.layout.activity_bookmarks);
         bible = Bible.get(this);
         bookmarks = new Bookmarks(this);
+        prefs = new Prefs(this);
+        sortMode = prefs.bookmarkSort();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.title_bookmarks);
@@ -42,13 +51,39 @@ public class BookmarksActivity extends AppCompatActivity {
         emptyView = findViewById(R.id.emptyView);
         list = findViewById(R.id.list);
         list.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new Adapter(bookmarks.all());
+        adapter = new Adapter(buildItems());
         list.setAdapter(adapter);
         updateEmpty();
     }
 
+    /** Header strings (in Bible mode) interleaved with bookmark entries. */
+    private List<Object> buildItems() {
+        List<Object> items = new ArrayList<>();
+        if (sortMode == Prefs.SORT_SAVED) {
+            items.addAll(bookmarks.allInSavedOrder());
+        } else {
+            boolean otHeader = false, ntHeader = false;
+            for (Bookmarks.Entry e : bookmarks.all()) {
+                if (e.ref.book <= LAST_OT_BOOK && !otHeader) {
+                    items.add(getString(R.string.section_ot));
+                    otHeader = true;
+                } else if (e.ref.book > LAST_OT_BOOK && !ntHeader) {
+                    items.add(getString(R.string.section_nt));
+                    ntHeader = true;
+                }
+                items.add(e);
+            }
+        }
+        return items;
+    }
+
+    private void rebuild() {
+        adapter.setItems(buildItems());
+        updateEmpty();
+    }
+
     private void updateEmpty() {
-        boolean empty = adapter.getItemCount() == 0;
+        boolean empty = bookmarks.size() == 0;
         emptyView.setVisibility(empty ? View.VISIBLE : View.GONE);
         list.setVisibility(empty ? View.GONE : View.VISIBLE);
     }
@@ -60,15 +95,33 @@ public class BookmarksActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem sort = menu.findItem(R.id.action_sort);
+        sort.setTitle(sortMode == Prefs.SORT_BIBLE
+                ? R.string.sort_bible : R.string.sort_saved);
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_clear_all) {
+        int id = item.getItemId();
+        if (id == R.id.action_sort) {
+            sortMode = (sortMode == Prefs.SORT_BIBLE) ? Prefs.SORT_SAVED : Prefs.SORT_BIBLE;
+            prefs.setBookmarkSort(sortMode);
+            invalidateOptionsMenu();
+            rebuild();
+            list.scrollToPosition(0);
+            String name = getString(sortMode == Prefs.SORT_BIBLE
+                    ? R.string.sort_bible : R.string.sort_saved);
+            Toast.makeText(this, getString(R.string.sorted_by, name), Toast.LENGTH_SHORT).show();
+            return true;
+        } else if (id == R.id.action_clear_all) {
             if (bookmarks.size() == 0) return true;
             new AlertDialog.Builder(this)
                     .setMessage(R.string.clear_bookmarks_q)
                     .setPositiveButton(R.string.clear_all, (d, w) -> {
                         bookmarks.clear();
-                        adapter.setItems(bookmarks.all());
-                        updateEmpty();
+                        rebuild();
                     })
                     .setNegativeButton(R.string.cancel, null)
                     .show();
@@ -86,48 +139,67 @@ public class BookmarksActivity extends AppCompatActivity {
         finish();
     }
 
-    private final class Adapter extends RecyclerView.Adapter<Adapter.VH> {
-        private List<Bookmarks.Entry> items;
-        Adapter(List<Bookmarks.Entry> items) { this.items = items; }
+    private static final int TYPE_HEADER = 0;
+    private static final int TYPE_BOOKMARK = 1;
 
-        void setItems(List<Bookmarks.Entry> items) {
+    private final class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+        private List<Object> items;
+        Adapter(List<Object> items) { this.items = items; }
+
+        void setItems(List<Object> items) {
             this.items = items;
             notifyDataSetChanged();
         }
 
-        @NonNull @Override
-        public VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View v = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.item_bookmark, parent, false);
-            return new VH(v);
+        @Override public int getItemViewType(int position) {
+            return (items.get(position) instanceof Bookmarks.Entry) ? TYPE_BOOKMARK : TYPE_HEADER;
         }
 
-        @Override public void onBindViewHolder(@NonNull VH h, int position) {
-            Bookmarks.Entry e = items.get(position);
-            h.ref.setText(e.ref.label(bible));
+        @NonNull @Override
+        public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            LayoutInflater inf = LayoutInflater.from(parent.getContext());
+            if (viewType == TYPE_HEADER) {
+                return new HeaderVH((TextView) inf.inflate(R.layout.item_section_header, parent, false));
+            }
+            return new VH(inf.inflate(R.layout.item_bookmark, parent, false));
+        }
+
+        @Override public void onBindViewHolder(@NonNull RecyclerView.ViewHolder h, int position) {
+            Object item = items.get(position);
+            if (h instanceof HeaderVH) {
+                ((HeaderVH) h).title.setText((String) item);
+                return;
+            }
+            VH vh = (VH) h;
+            Bookmarks.Entry e = (Bookmarks.Entry) item;
+            vh.ref.setText(e.ref.label(bible));
             String snippet = e.snippet != null && !e.snippet.isEmpty()
                     ? e.snippet
                     : Bible.plain(bible.verse(e.ref.book, e.ref.chapter, e.ref.verse));
-            h.text.setText(snippet);
-            h.itemView.setOnClickListener(v -> open(e.ref));
-            h.delete.setOnClickListener(v -> {
+            vh.text.setText(snippet);
+            vh.itemView.setOnClickListener(v -> open(e.ref));
+            vh.delete.setOnClickListener(v -> {
                 bookmarks.remove(e.ref);
-                setItems(bookmarks.all());
-                updateEmpty();
+                rebuild();
             });
         }
 
         @Override public int getItemCount() { return items.size(); }
+    }
 
-        class VH extends RecyclerView.ViewHolder {
-            final TextView ref, text;
-            final ImageButton delete;
-            VH(View v) {
-                super(v);
-                ref = v.findViewById(R.id.bmRef);
-                text = v.findViewById(R.id.bmText);
-                delete = v.findViewById(R.id.bmDelete);
-            }
+    static class HeaderVH extends RecyclerView.ViewHolder {
+        final TextView title;
+        HeaderVH(TextView v) { super(v); title = v; }
+    }
+
+    static class VH extends RecyclerView.ViewHolder {
+        final TextView ref, text;
+        final ImageButton delete;
+        VH(View v) {
+            super(v);
+            ref = v.findViewById(R.id.bmRef);
+            text = v.findViewById(R.id.bmText);
+            delete = v.findViewById(R.id.bmDelete);
         }
     }
 }
