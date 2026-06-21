@@ -20,6 +20,7 @@
         <item name="selectedVerseColor">@color/selected_dark</item>
         <item name="readerDividerColor">@color/divider_dark</item>
         <item name="studyHighlightColor">@color/study_highlight_dark</item>
+        <item name="goldLetterColor">@color/gold_letter_dark</item>
 
         <item name="android:statusBarColor">@color/toolbar_dark</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>

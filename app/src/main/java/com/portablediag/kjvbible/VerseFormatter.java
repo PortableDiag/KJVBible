@@ -34,7 +34,8 @@ public final class VerseFormatter {
                                          Drawable bookmarkIcon,
                                          List<StudyNotes.Span> studySpans,
                                          int studyHighlightColor,
-                                         OnNoteClick onNote) {
+                                         OnNoteClick onNote,
+                                         int[][] goldSpans, int goldColor) {
         SpannableStringBuilder sb = new SpannableStringBuilder();
 
         if (bookmarkIcon != null) {
@@ -54,6 +55,18 @@ public final class VerseFormatter {
 
         int bodyStart = sb.length();
         appendStyledBody(sb, raw, redColor);
+        int bodyLen0 = sb.length() - bodyStart;
+
+        // Words of God (OT) in gold.
+        if (goldSpans != null) {
+            for (int[] g : goldSpans) {
+                int a = bodyStart + g[0];
+                int b = bodyStart + g[1];
+                if (g[0] < 0 || g[1] > bodyLen0 || a >= b) continue;
+                sb.setSpan(new ForegroundColorSpan(goldColor), a, b,
+                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
+        }
 
         if (studySpans != null && !studySpans.isEmpty()) {
             int bodyLen = sb.length() - bodyStart;

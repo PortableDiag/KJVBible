@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
     private Bible bible;
     private Bookmarks bookmarks;
     private StudyNotes studyNotes;
+    private DivineSpeech divineSpeech;
     private Prefs prefs;
 
     private Toolbar toolbar;
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
         bible = Bible.get(this);
         bookmarks = new Bookmarks(this);
         studyNotes = StudyNotes.get(this);
+        divineSpeech = DivineSpeech.get(this);
         prefs = new Prefs(this);
 
         toolbar = findViewById(R.id.toolbar);
@@ -75,13 +77,15 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
         list = findViewById(R.id.verseList);
         layout = new LinearLayoutManager(this);
         list.setLayoutManager(layout);
-        adapter = new VerseAdapter(bible, bookmarks, studyNotes, this);
+        adapter = new VerseAdapter(bible, bookmarks, studyNotes, divineSpeech, this);
         adapter.setColors(
                 ThemeUtil.color(this, R.attr.redLetterColor),
                 ThemeUtil.color(this, R.attr.verseNumColor),
-                ThemeUtil.color(this, R.attr.studyHighlightColor));
+                ThemeUtil.color(this, R.attr.studyHighlightColor),
+                ThemeUtil.color(this, R.attr.goldLetterColor));
         adapter.setTextSizeSp(prefs.textSizeSp());
         adapter.setStudyMode(prefs.studyMode());
+        adapter.setGoldEnabled(prefs.goldOt());
         list.setAdapter(adapter);
 
         fabPrev = findViewById(R.id.fabPrev);
@@ -240,6 +244,8 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
         }
         MenuItem study = menu.findItem(R.id.action_study_mode);
         if (study != null) study.setChecked(adapter.isStudyMode());
+        MenuItem gold = menu.findItem(R.id.action_gold_ot);
+        if (gold != null) gold.setChecked(adapter.isGoldEnabled());
         return super.onPrepareOptionsMenu(menu);
     }
 
@@ -276,6 +282,21 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
             invalidateOptionsMenu();
             Toast.makeText(this, on ? R.string.study_on : R.string.study_off,
                     Toast.LENGTH_SHORT).show();
+            return true;
+        } else if (id == R.id.action_gold_ot) {
+            boolean on = !adapter.isGoldEnabled();
+            prefs.setGoldOt(on);
+            adapter.setGoldEnabled(on);
+            invalidateOptionsMenu();
+            Toast.makeText(this, on ? R.string.gold_on : R.string.gold_off,
+                    Toast.LENGTH_SHORT).show();
+            return true;
+        } else if (id == R.id.action_about) {
+            new AlertDialog.Builder(this)
+                    .setTitle(R.string.about_title)
+                    .setMessage(R.string.about_body)
+                    .setPositiveButton(android.R.string.ok, null)
+                    .show();
             return true;
         } else if (id == R.id.action_theme) {
             showThemeDialog();

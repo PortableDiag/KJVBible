@@ -21,6 +21,7 @@
         <item name="selectedVerseColor">@color/selected_light</item>
         <item name="readerDividerColor">@color/divider_light</item>
         <item name="studyHighlightColor">@color/study_highlight_light</item>
+        <item name="goldLetterColor">@color/gold_letter_light</item>
 
         <item name="android:statusBarColor">@color/toolbar_light</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>

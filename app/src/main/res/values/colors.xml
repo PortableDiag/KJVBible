@@ -15,6 +15,7 @@
     <color name="divider_light">#ECE4D8</color>
     <color name="toolbar_light">#FFFFFF</color>
     <color name="study_highlight_light">#332E9C8E</color>
+    <color name="gold_letter_light">#9A6B00</color>
 
     <!-- Dark theme -->
     <color name="bg_dark">#101012</color>
@@ -27,6 +28,7 @@
     <color name="divider_dark">#26262A</color>
     <color name="toolbar_dark">#17171A</color>
     <color name="study_highlight_dark">#4D2E9C8E</color>
+    <color name="gold_letter_dark">#E6B53C</color>
 
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>

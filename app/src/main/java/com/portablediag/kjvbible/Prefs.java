@@ -70,6 +70,14 @@ public final class Prefs {
         sp.edit().putInt(K_LAST_BOOK, book).putInt(K_LAST_CHAPTER, chapter).apply();
     }
 
+    public boolean goldOt() {
+        return sp.getBoolean("gold_ot", true);
+    }
+
+    public void setGoldOt(boolean on) {
+        sp.edit().putBoolean("gold_ot", on).apply();
+    }
+
     public boolean studyMode() {
         return sp.getBoolean("study_mode", false);
     }

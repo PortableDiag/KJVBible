@@ -9,6 +9,9 @@ network access — the entire KJV text is bundled in the app.
 - **Red-letter text** — the words of the Lord Jesus Christ are shown in red; the rest of
   the text is black in light mode and white in dark mode. The divine name is rendered in
   small caps (**LORD**).
+- **God's words in gold (Old Testament)** — direct divine speech in the OT is shown in gold,
+  distinguishing what God says from narrative and others' responses. Toggle in the menu
+  (default on). Boundaries are approximate; see attribution below.
 - **Light & dark modes** — follows the system theme by default, or force Light / Dark.
 - **Distraction-free reading** — the reader runs in immersive mode and hides the system
   navigation bar; swipe up from the bottom edge to reveal it.
@@ -71,6 +74,13 @@ control characters and rendered red at runtime.
 Source markup derived from the
 [jburson/bible-data](https://github.com/jburson/bible-data) dataset
 (31,102 verses, 1,189 chapters, 66 books).
+
+Old Testament "words of God" gold highlighting is derived from the verse ranges in the
+**MACULA Quotation and Speaker Data**, © 2023 Clear Bible, Inc, licensed
+[CC BY 4.0](http://creativecommons.org/licenses/by/4.0/)
+([Clear-Bible/speaker-quotations](https://github.com/Clear-Bible/speaker-quotations)),
+with the narrative introductions trimmed off the opening verse of each speech. Speech
+boundaries are approximate.
 
 ## License
 

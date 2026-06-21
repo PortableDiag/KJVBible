@@ -23,9 +23,12 @@ public class VerseAdapter extends RecyclerView.Adapter<VerseAdapter.VH> {
         void onNoteClicked(String noteId);
     }
 
+    private static final int LAST_OT_BOOK = 39;
+
     private final Bible bible;
     private final Bookmarks bookmarks;
     private final StudyNotes studyNotes;
+    private final DivineSpeech divineSpeech;
     private final Listener listener;
 
     private int book = 1;
@@ -39,7 +42,9 @@ public class VerseAdapter extends RecyclerView.Adapter<VerseAdapter.VH> {
     private int redColor;
     private int verseNumColor;
     private int studyHighlightColor;
+    private int goldColor;
     private boolean studyMode = false;
+    private boolean goldEnabled = true;
 
     private final VerseFormatter.OnNoteClick onNote = new VerseFormatter.OnNoteClick() {
         @Override public void onNote(String noteId) {
@@ -47,18 +52,31 @@ public class VerseAdapter extends RecyclerView.Adapter<VerseAdapter.VH> {
         }
     };
 
-    public VerseAdapter(Bible bible, Bookmarks bookmarks, StudyNotes studyNotes, Listener listener) {
+    public VerseAdapter(Bible bible, Bookmarks bookmarks, StudyNotes studyNotes,
+                        DivineSpeech divineSpeech, Listener listener) {
         this.bible = bible;
         this.bookmarks = bookmarks;
         this.studyNotes = studyNotes;
+        this.divineSpeech = divineSpeech;
         this.listener = listener;
         setHasStableIds(true);
     }
 
-    public void setColors(int redColor, int verseNumColor, int studyHighlightColor) {
+    public void setColors(int redColor, int verseNumColor, int studyHighlightColor, int goldColor) {
         this.redColor = redColor;
         this.verseNumColor = verseNumColor;
         this.studyHighlightColor = studyHighlightColor;
+        this.goldColor = goldColor;
+    }
+
+    public void setGoldEnabled(boolean on) {
+        if (goldEnabled == on) return;
+        goldEnabled = on;
+        notifyDataSetChanged();
+    }
+
+    public boolean isGoldEnabled() {
+        return goldEnabled;
     }
 
     public void setStudyMode(boolean on) {
@@ -145,8 +163,13 @@ public class VerseAdapter extends RecyclerView.Adapter<VerseAdapter.VH> {
                 ? studyNotes.find(book, chapter, verseNum, Bible.plain(verses[position]))
                 : null;
 
+        int[][] goldSpans = (goldEnabled && book <= LAST_OT_BOOK)
+                ? divineSpeech.find(book, chapter, verseNum)
+                : null;
+
         h.text.setText(VerseFormatter.verseLine(verseNum, verses[position],
-                redColor, numColor, bmIcon, studySpans, studyHighlightColor, onNote));
+                redColor, numColor, bmIcon, studySpans, studyHighlightColor, onNote,
+                goldSpans, goldColor));
 
         if (studyMode) {
             // Tap highlighted words for notes; verse selection is disabled in study mode.

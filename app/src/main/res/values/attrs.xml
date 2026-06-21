@@ -7,4 +7,5 @@
     <attr name="selectedVerseColor" format="color" />
     <attr name="readerDividerColor" format="color" />
     <attr name="studyHighlightColor" format="color" />
+    <attr name="goldLetterColor" format="color" />
 </resources>
