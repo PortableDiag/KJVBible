@@ -2,10 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!-- Toolbar quick actions -->
     <item
         android:id="@+id/action_search"
         android:icon="@drawable/ic_search"
         android:title="@string/action_search"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_bookmarks_bar"
+        android:icon="@drawable/ic_bookmark_border"
+        android:title="@string/action_bookmarks"
         app:showAsAction="ifRoom" />
 
     <item
@@ -14,6 +21,7 @@
         android:title="@string/action_font_size"
         app:showAsAction="ifRoom" />
 
+    <!-- Overflow (3-dot) menu -->
     <item
         android:id="@+id/action_theme"
         android:icon="@drawable/ic_theme"

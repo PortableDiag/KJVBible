@@ -224,7 +224,7 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
         if (id == R.id.action_search) {
             navLauncher.launch(new Intent(this, SearchActivity.class));
             return true;
-        } else if (id == R.id.action_bookmarks) {
+        } else if (id == R.id.action_bookmarks || id == R.id.action_bookmarks_bar) {
             navLauncher.launch(new Intent(this, BookmarksActivity.class));
             return true;
         } else if (id == R.id.action_font_size) {
