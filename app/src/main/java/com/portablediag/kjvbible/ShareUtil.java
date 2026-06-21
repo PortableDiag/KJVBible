@@ -78,6 +78,6 @@ public final class ShareUtil {
 
     public static void copy(Context ctx, String text) {
         ClipboardManager cm = (ClipboardManager) ctx.getSystemService(Context.CLIPBOARD_SERVICE);
-        cm.setPrimaryClip(ClipData.newPlainText("verse", text));
+        if (cm != null) cm.setPrimaryClip(ClipData.newPlainText("verse", text));
     }
 }

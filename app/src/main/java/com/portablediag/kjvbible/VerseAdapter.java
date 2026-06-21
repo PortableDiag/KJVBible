@@ -1,6 +1,5 @@
 package com.portablediag.kjvbible;
 
-import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -104,7 +103,6 @@ public class VerseAdapter extends RecyclerView.Adapter<VerseAdapter.VH> {
 
         h.text.setTextSize(android.util.TypedValue.COMPLEX_UNIT_SP, textSizeSp);
         h.text.setText(VerseFormatter.verseLine(verseNum, verses[position], redColor, numColor));
-        h.text.setTypeface(null, bookmarked ? Typeface.NORMAL : Typeface.NORMAL);
 
         boolean isSelected = selected.contains(verseNum);
         h.text.setActivated(isSelected);

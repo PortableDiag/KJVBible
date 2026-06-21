@@ -133,6 +133,8 @@ public class SearchActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        searchToken++;                      // invalidate any in-flight results
+        main.removeCallbacksAndMessages(null);
         executor.shutdownNow();
     }
 
