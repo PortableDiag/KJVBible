@@ -13,7 +13,8 @@ All notable changes to this project are documented here. The format is based on
   - Speaker/verse-range data derived from the MACULA Quotation and Speaker Data
     (© 2023 Clear Bible, Inc, CC BY 4.0), including continuation/implicit speech (covenants,
     the Torah's instructions, etc.), with the narrative introduction trimmed off the opening
-    verse. Speech end-boundaries are approximate and will be refined.
+    verse, plus a high-precision tail-trim that stops the gold before trailing narrative on a
+    speech's final verse (e.g. "Let there be light:" — not "and there was light").
 - **About** entry in the overflow menu (text licensing and data attribution).
 
 ## [1.3.0] — 2026-06-21
