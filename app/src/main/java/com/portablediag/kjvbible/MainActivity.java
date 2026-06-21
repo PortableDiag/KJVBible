@@ -469,7 +469,7 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
      * scrolls normally.
      */
     private final class LongPressSelector implements RecyclerView.OnItemTouchListener {
-        private static final long HOLD_MS = 1000L;
+        private static final long HOLD_MS = 500L;
 
         private final RecyclerView rv;
         private final GestureDetector detector;
