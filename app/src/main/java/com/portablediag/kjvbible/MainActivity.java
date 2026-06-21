@@ -110,9 +110,41 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
                     }
                 });
 
-        curBook = prefs.lastBook();
-        curChapter = prefs.lastChapter();
+        int restorePos = -1, restoreOff = 0;
+        if (savedInstanceState != null) {
+            curBook = savedInstanceState.getInt(S_BOOK, prefs.lastBook());
+            curChapter = savedInstanceState.getInt(S_CHAP, prefs.lastChapter());
+            restorePos = savedInstanceState.getInt(S_POS, -1);
+            restoreOff = savedInstanceState.getInt(S_OFF, 0);
+        } else {
+            curBook = prefs.lastBook();
+            curChapter = prefs.lastChapter();
+        }
         showChapter(curBook, curChapter);
+        if (restorePos >= 0) {
+            // Restore scroll after a recreate (e.g. theme change) so the reader stays in place.
+            layout.scrollToPositionWithOffset(restorePos, restoreOff);
+        }
+    }
+
+    private static final String S_BOOK = "s_book";
+    private static final String S_CHAP = "s_chap";
+    private static final String S_POS = "s_pos";
+    private static final String S_OFF = "s_off";
+
+    @Override
+    protected void onSaveInstanceState(Bundle out) {
+        super.onSaveInstanceState(out);
+        out.putInt(S_BOOK, curBook);
+        out.putInt(S_CHAP, curChapter);
+        int pos = layout.findFirstVisibleItemPosition();
+        int off = 0;
+        if (pos != RecyclerView.NO_POSITION) {
+            View v = layout.findViewByPosition(pos);
+            if (v != null) off = v.getTop() - list.getPaddingTop();
+        }
+        out.putInt(S_POS, pos);
+        out.putInt(S_OFF, off);
     }
 
     @Override

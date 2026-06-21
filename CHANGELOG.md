@@ -6,6 +6,10 @@ All notable changes to this project are documented here. The format is based on
 
 ## [1.4.0] — 2026-06-21
 
+### Changed
+- Changing the theme (or any recreate) now keeps your scroll position in the chapter instead
+  of jumping to the top.
+
 ### Added
 - **God's words in gold (Old Testament).** Direct divine speech in the OT is shown in gold,
   to distinguish what God says from narrative and others' responses — always on, a companion
