@@ -11,3 +11,6 @@
 keystore.properties
 *.keystore
 *.jks
+
+# local dev notes / session reports (not tracked)
+docs/
