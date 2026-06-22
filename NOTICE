@@ -1,0 +1,16 @@
+KJV Bible — third-party data notices
+
+The application code is licensed under the MIT License (see LICENSE). Bundled data
+assets carry their own terms:
+
+- King James Version text — public domain.
+- Red-letter (words of Christ) and small-caps (divine name) designations — factual,
+  convention-driven designations about the public-domain text, sourced from
+  jburson/bible-data (which carries no license) and re-encoded here; none of that
+  repository's files are redistributed.
+- Old Testament "words of God" gold spans — derived from the MACULA Quotation and
+  Speaker Data, (c) 2023 Clear Bible, Inc, licensed CC BY 4.0
+  (https://github.com/Clear-Bible/speaker-quotations).
+- Study notes — hand-curated with cited sources.
+
+See the "Licensing" section of README.md for details.
