@@ -75,6 +75,7 @@ public final class StudyNotes {
 
     private final Map<String, Note> byId = new HashMap<>();
     private final Map<String, String> wordToNote = new HashMap<>();        // lowercased word -> note id
+    private final List<String[]> globalPhrases = new ArrayList<>();        // {phraseLower, noteId}
     private final Map<Long, List<Passage>> passagesByRef = new HashMap<>();
 
     private StudyNotes(Context ctx) {
@@ -98,7 +99,12 @@ public final class StudyNotes {
                     byId.put(note.id, note);
                     JSONArray match = o.getJSONArray("match");
                     for (int j = 0; j < match.length(); j++) {
-                        wordToNote.put(match.getString(j).toLowerCase(Locale.US), note.id);
+                        String m = match.getString(j).toLowerCase(Locale.US);
+                        if (m.indexOf(' ') >= 0) {
+                            globalPhrases.add(new String[]{m, note.id});  // multi-word phrase
+                        } else {
+                            wordToNote.put(m, note.id);                   // single whole word
+                        }
                     }
                 }
             }
@@ -153,14 +159,24 @@ public final class StudyNotes {
      */
     public List<Span> find(int book, int chapter, int verse, String plain) {
         List<Span> spans = new ArrayList<>();
+        String lower = plain.toLowerCase(Locale.US);
 
         // Verse-specific phrases first (they take precedence on overlap).
         List<Passage> passages = passagesByRef.get(refKey(book, chapter, verse));
         if (passages != null) {
-            String lower = plain.toLowerCase(Locale.US);
             for (Passage p : passages) {
                 int idx = lower.indexOf(p.phrase.toLowerCase(Locale.US));
                 if (idx >= 0) spans.add(new Span(idx, idx + p.phrase.length(), p.noteId));
+            }
+        }
+
+        // Global multi-word phrases (e.g. "angel of the LORD"), every occurrence.
+        for (String[] gp : globalPhrases) {
+            String phrase = gp[0];
+            int idx = lower.indexOf(phrase);
+            while (idx >= 0) {
+                spans.add(new Span(idx, idx + phrase.length(), gp[1]));
+                idx = lower.indexOf(phrase, idx + phrase.length());
             }
         }
 

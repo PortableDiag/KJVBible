@@ -496,6 +496,966 @@
           "url": "https://biblehub.com/greek/3003.htm"
         }
       ]
+    },
+    {
+      "id": "w-angel-of-lord",
+      "match": [
+        "angel of the LORD",
+        "angel of God"
+      ],
+      "category": "being",
+      "title": "the angel of the LORD",
+      "body": "Hebrew mal'ak YHWH, 'the messenger of the LORD'. He appears to Hagar, Abraham, Moses (the burning bush), Gideon, and others; he often speaks as God in the first person and receives worship - so many read these as a theophany (an appearance of God), some as the pre-incarnate Christ, and others as an ordinary created messenger sent in God's name. Genesis 16:7-13; 22:11-18; Exodus 3:2-6; Judges 6:11-23.",
+      "sources": [
+        {
+          "label": "Strong's H4397 (mal'ak)",
+          "url": "https://biblehub.com/hebrew/4397.htm"
+        },
+        {
+          "label": "Strong's H3068 (YHWH)",
+          "url": "https://biblehub.com/hebrew/3068.htm"
+        }
+      ]
+    },
+    {
+      "id": "w-host-heaven",
+      "match": [
+        "host of heaven"
+      ],
+      "category": "being",
+      "title": "the host of heaven",
+      "body": "Hebrew tsaba ha-shamayim, 'the army of heaven'. It can mean the angelic armies around God's throne (1 Kings 22:19) or the sun, moon, and stars - which Israel was forbidden to worship (Deuteronomy 4:19; 2 Kings 17:16). Context decides which.",
+      "sources": [
+        {
+          "label": "Strong's H6635 (tsaba)",
+          "url": "https://biblehub.com/hebrew/6635.htm"
+        }
+      ]
+    },
+    {
+      "id": "w-lord-of-hosts",
+      "match": [
+        "lord of hosts"
+      ],
+      "category": "term",
+      "title": "the LORD of hosts",
+      "body": "Hebrew YHWH Tseba'oth, 'the LORD of armies' - God as commander of the heavenly host. A frequent title in the Prophets (Isaiah 6:3; 1 Samuel 17:45).",
+      "sources": [
+        {
+          "label": "Strong's H6635 (tsaba)",
+          "url": "https://biblehub.com/hebrew/6635.htm"
+        },
+        {
+          "label": "Strong's H3068 (YHWH)",
+          "url": "https://biblehub.com/hebrew/3068.htm"
+        }
+      ]
+    },
+    {
+      "id": "w-principalities",
+      "match": [
+        "principalities",
+        "principality"
+      ],
+      "category": "being",
+      "title": "principalities & powers",
+      "body": "In the New Testament 'principalities' (Greek arche, G746) heads a list of spiritual ranks - principalities, powers, thrones, dominions, mights - created through Christ (Colossians 1:16) and, fallen, the powers the believer wrestles against (Ephesians 6:12; Romans 8:38).",
+      "sources": [
+        {
+          "label": "Strong's G746 (arche)",
+          "url": "https://biblehub.com/greek/746.htm"
+        },
+        {
+          "label": "Strong's G1849 (exousia)",
+          "url": "https://biblehub.com/greek/1849.htm"
+        }
+      ]
+    },
+    {
+      "id": "w-sons-of-god",
+      "match": [
+        "sons of God"
+      ],
+      "category": "being",
+      "title": "the sons of God",
+      "body": "Hebrew bene ha-elohim. In Genesis 6:2,4 and Job 1:6; 2:1; 38:7 it denotes heavenly beings (read by some as angels, by others as the godly line of Seth). In the New Testament it also names those who belong to God by faith (John 1:12; Romans 8:14).",
+      "sources": [
+        {
+          "label": "Strong's H1121 (ben)",
+          "url": "https://biblehub.com/hebrew/1121.htm"
+        },
+        {
+          "label": "Strong's H430 (elohim)",
+          "url": "https://biblehub.com/hebrew/430.htm"
+        }
+      ]
+    },
+    {
+      "id": "w-morning-star",
+      "match": [
+        "morning star",
+        "morning stars",
+        "day star"
+      ],
+      "category": "term",
+      "title": "morning star / day star",
+      "body": "Applied to more than one figure: the 'morning stars' that sing at creation (Job 38:7, heavenly beings); the 'day star/morning star' (helel) the KJV renders 'Lucifer', of the king of Babylon (Isaiah 14:12); and Jesus, 'the bright and morning star' (Revelation 22:16; cf. 2 Peter 1:19).",
+      "sources": [
+        {
+          "label": "Strong's H1966 (helel)",
+          "url": "https://biblehub.com/hebrew/1966.htm"
+        },
+        {
+          "label": "Strong's G792 (aster)",
+          "url": "https://biblehub.com/greek/792.htm"
+        }
+      ]
+    },
+    {
+      "id": "w-living-creatures",
+      "match": [
+        "living creatures",
+        "four beasts"
+      ],
+      "category": "being",
+      "title": "the living creatures (four beasts)",
+      "body": "The four 'living creatures' (Hebrew chayyoth) of Ezekiel 1 and 10 - identified there as cherubim - and the 'four beasts' (Greek zoa) around God's throne in Revelation 4:6-9, each with four faces or many eyes, who ceaselessly worship.",
+      "sources": [
+        {
+          "label": "Strong's H2416 (chay)",
+          "url": "https://biblehub.com/hebrew/2416.htm"
+        },
+        {
+          "label": "Strong's G2226 (zoon)",
+          "url": "https://biblehub.com/greek/2226.htm"
+        }
+      ]
+    },
+    {
+      "id": "w-scapegoat",
+      "match": [
+        "scapegoat"
+      ],
+      "category": "term",
+      "title": "scapegoat (Azazel)",
+      "body": "Hebrew azazel (H5799): the goat sent into the wilderness on the Day of Atonement bearing the people's sins (Leviticus 16:8-10,26). 'Scapegoat' is Tyndale's coinage ('escape goat'); whether azazel is a place, the act of removal, or a name is debated.",
+      "sources": [
+        {
+          "label": "Strong's H5799 (azazel)",
+          "url": "https://biblehub.com/hebrew/5799.htm"
+        }
+      ]
+    },
+    {
+      "id": "w-gog-magog",
+      "match": [
+        "gog",
+        "magog"
+      ],
+      "category": "being",
+      "title": "Gog and Magog",
+      "body": "Gog, of the land of Magog, leads a great hostile coalition that God judges in Ezekiel 38-39; 'Gog and Magog' reappear in Revelation 20:8 as the nations gathered against God's people at the end.",
+      "sources": [
+        {
+          "label": "Strong's H1463 (Gog)",
+          "url": "https://biblehub.com/hebrew/1463.htm"
+        },
+        {
+          "label": "Strong's H4031 (Magog)",
+          "url": "https://biblehub.com/hebrew/4031.htm"
+        }
+      ]
+    },
+    {
+      "id": "w-watchers",
+      "match": [
+        "watcher",
+        "watchers"
+      ],
+      "category": "being",
+      "title": "the watchers",
+      "body": "Aramaic iyr (H5894), 'watcher' - a holy heavenly being in Nebuchadnezzar's vision, by whose decree ('the watchers... the holy ones') judgement is pronounced (Daniel 4:13,17,23).",
+      "sources": [
+        {
+          "label": "Strong's H5894 (iyr)",
+          "url": "https://biblehub.com/hebrew/5894.htm"
+        }
+      ]
+    },
+    {
+      "id": "p-adam",
+      "match": [
+        "adam"
+      ],
+      "category": "person",
+      "title": "Adam",
+      "body": "Hebrew adam (H121), 'man' (also the word for mankind, H120). The first man, formed from the ground and set in Eden; through his disobedience sin and death entered the world (Genesis 2-5; Romans 5:12-19).",
+      "sources": [
+        {
+          "label": "Strong's H121",
+          "url": "https://biblehub.com/hebrew/121.htm"
+        }
+      ]
+    },
+    {
+      "id": "p-eve",
+      "match": [
+        "eve"
+      ],
+      "category": "person",
+      "title": "Eve",
+      "body": "Hebrew Chavvah (H2332), 'living'. The first woman, made from Adam's side, 'the mother of all living' (Genesis 2:22; 3:20).",
+      "sources": [
+        {
+          "label": "Strong's H2332",
+          "url": "https://biblehub.com/hebrew/2332.htm"
+        }
+      ]
+    },
+    {
+      "id": "p-noah",
+      "match": [
+        "noah"
+      ],
+      "category": "person",
+      "title": "Noah",
+      "body": "Hebrew Noach (H5146). A righteous man preserved with his family through the Flood in the ark; God's covenant with him is sealed by the rainbow (Genesis 6-9).",
+      "sources": [
+        {
+          "label": "Strong's H5146",
+          "url": "https://biblehub.com/hebrew/5146.htm"
+        }
+      ]
+    },
+    {
+      "id": "p-abraham",
+      "match": [
+        "abraham",
+        "abram"
+      ],
+      "category": "person",
+      "title": "Abraham (Abram)",
+      "body": "Hebrew Avraham (H85), 'father of a multitude' (formerly Abram). The patriarch called from Ur; father of Isaac through Sarah and Ishmael through Hagar; through him God covenants to bless all nations (Genesis 12-25; Romans 4).",
+      "sources": [
+        {
+          "label": "Strong's H85",
+          "url": "https://biblehub.com/hebrew/85.htm"
+        }
+      ]
+    },
+    {
+      "id": "p-sarah",
+      "match": [
+        "sarah",
+        "sarai"
+      ],
+      "category": "person",
+      "title": "Sarah (Sarai)",
+      "body": "Hebrew Sarah (H8283), 'princess' (formerly Sarai). Wife of Abraham; bore Isaac in old age by promise (Genesis 17-21).",
+      "sources": [
+        {
+          "label": "Strong's H8283",
+          "url": "https://biblehub.com/hebrew/8283.htm"
+        }
+      ]
+    },
+    {
+      "id": "p-isaac",
+      "match": [
+        "isaac"
+      ],
+      "category": "person",
+      "title": "Isaac",
+      "body": "Hebrew Yitschaq (H3327), 'he laughs'. Son of Abraham and Sarah, the child of promise; father of Esau and Jacob (Genesis 21-27).",
+      "sources": [
+        {
+          "label": "Strong's H3327",
+          "url": "https://biblehub.com/hebrew/3327.htm"
+        }
+      ]
+    },
+    {
+      "id": "p-rebekah",
+      "match": [
+        "rebekah"
+      ],
+      "category": "person",
+      "title": "Rebekah",
+      "body": "Wife of Isaac and mother of the twins Esau and Jacob (Genesis 24-27).",
+      "sources": [
+        "Genesis 24-27"
+      ]
+    },
+    {
+      "id": "p-jacob",
+      "match": [
+        "jacob"
+      ],
+      "category": "person",
+      "title": "Jacob (Israel)",
+      "body": "Hebrew Yaaqob (H3290), renamed Israel ('he struggles with God'). Son of Isaac; father of the twelve tribal patriarchs (Genesis 25-50). ('Jacob' is also the name of Joseph's father in Matthew 1:16.)",
+      "sources": [
+        {
+          "label": "Strong's H3290",
+          "url": "https://biblehub.com/hebrew/3290.htm"
+        }
+      ]
+    },
+    {
+      "id": "p-esau",
+      "match": [
+        "esau"
+      ],
+      "category": "person",
+      "title": "Esau (Edom)",
+      "body": "Hebrew Esav (H6215), also called Edom. Elder twin of Jacob who sold his birthright; ancestor of the Edomites (Genesis 25; 36).",
+      "sources": [
+        {
+          "label": "Strong's H6215",
+          "url": "https://biblehub.com/hebrew/6215.htm"
+        }
+      ]
+    },
+    {
+      "id": "p-joseph",
+      "match": [
+        "joseph"
+      ],
+      "category": "person",
+      "title": "Joseph",
+      "body": "Several men share the name: Joseph son of Jacob, sold into Egypt and raised to power there (Genesis 37-50); Joseph the husband of Mary (Matthew 1); Joseph of Arimathaea, who buried Jesus (Matthew 27:57-60); and Joseph called Barsabbas (Acts 1:23).",
+      "sources": [
+        "Genesis 37-50",
+        "Matthew 1",
+        "Matthew 27:57-60"
+      ]
+    },
+    {
+      "id": "p-moses",
+      "match": [
+        "moses"
+      ],
+      "category": "person",
+      "title": "Moses",
+      "body": "Hebrew Mosheh (H4872). The prophet who led Israel out of Egypt, received the Law at Sinai, and wrote the Torah (Exodus - Deuteronomy).",
+      "sources": [
+        {
+          "label": "Strong's H4872",
+          "url": "https://biblehub.com/hebrew/4872.htm"
+        }
+      ]
+    },
+    {
+      "id": "p-aaron",
+      "match": [
+        "aaron"
+      ],
+      "category": "person",
+      "title": "Aaron",
+      "body": "Hebrew Aharon (H175). Brother of Moses and Israel's first high priest (Exodus 28; Leviticus 8-9).",
+      "sources": [
+        {
+          "label": "Strong's H175",
+          "url": "https://biblehub.com/hebrew/175.htm"
+        }
+      ]
+    },
+    {
+      "id": "p-miriam",
+      "match": [
+        "miriam"
+      ],
+      "category": "person",
+      "title": "Miriam",
+      "body": "Sister of Moses and Aaron; a prophetess who led Israel in song at the Red Sea (Exodus 15:20-21; Numbers 12).",
+      "sources": [
+        "Exodus 15:20-21",
+        "Numbers 12"
+      ]
+    },
+    {
+      "id": "p-joshua",
+      "match": [
+        "joshua"
+      ],
+      "category": "person",
+      "title": "Joshua",
+      "body": "Hebrew Yehoshua (H3091), 'the LORD saves' - the same name rendered 'Jesus' in Greek. Moses' successor, who led Israel into Canaan (Joshua). (Also Joshua the high priest, Zechariah 3.)",
+      "sources": [
+        {
+          "label": "Strong's H3091",
+          "url": "https://biblehub.com/hebrew/3091.htm"
+        }
+      ]
+    },
+    {
+      "id": "p-caleb",
+      "match": [
+        "caleb"
+      ],
+      "category": "person",
+      "title": "Caleb",
+      "body": "With Joshua, one of the two faithful spies who urged Israel to take the land; he later inherited Hebron (Numbers 13-14; Joshua 14).",
+      "sources": [
+        "Numbers 13-14",
+        "Joshua 14"
+      ]
+    },
+    {
+      "id": "p-gideon",
+      "match": [
+        "gideon"
+      ],
+      "category": "person",
+      "title": "Gideon",
+      "body": "A judge who, with only 300 men, routed the Midianites (Judges 6-8).",
+      "sources": [
+        "Judges 6-8"
+      ]
+    },
+    {
+      "id": "p-samson",
+      "match": [
+        "samson"
+      ],
+      "category": "person",
+      "title": "Samson",
+      "body": "Hebrew Shimshon (H8123). A Nazirite judge of great strength who fought the Philistines (Judges 13-16).",
+      "sources": [
+        {
+          "label": "Strong's H8123",
+          "url": "https://biblehub.com/hebrew/8123.htm"
+        }
+      ]
+    },
+    {
+      "id": "p-ruth",
+      "match": [
+        "ruth"
+      ],
+      "category": "person",
+      "title": "Ruth",
+      "body": "A Moabite widow who clung to Naomi and married Boaz; great-grandmother of David and an ancestress of Christ (Ruth; Matthew 1:5).",
+      "sources": [
+        "Ruth",
+        "Matthew 1:5"
+      ]
+    },
+    {
+      "id": "p-boaz",
+      "match": [
+        "boaz"
+      ],
+      "category": "person",
+      "title": "Boaz",
+      "body": "A kinsman-redeemer of Bethlehem who married Ruth (Ruth 2-4).",
+      "sources": [
+        "Ruth 2-4"
+      ]
+    },
+    {
+      "id": "p-samuel",
+      "match": [
+        "samuel"
+      ],
+      "category": "person",
+      "title": "Samuel",
+      "body": "Hebrew Shemuel (H8050). The last judge and a prophet, who anointed both Saul and David (1 Samuel).",
+      "sources": [
+        {
+          "label": "Strong's H8050",
+          "url": "https://biblehub.com/hebrew/8050.htm"
+        }
+      ]
+    },
+    {
+      "id": "p-saul",
+      "match": [
+        "saul"
+      ],
+      "category": "person",
+      "title": "Saul",
+      "body": "Two men share the name: Saul son of Kish, Israel's first king, who fell from God's favour (1 Samuel 9-31); and Saul of Tarsus, the persecutor who became the apostle Paul (Acts 7:58; 13:9).",
+      "sources": [
+        "1 Samuel 9-31",
+        "Acts 9",
+        "Acts 13:9"
+      ]
+    },
+    {
+      "id": "p-david",
+      "match": [
+        "david"
+      ],
+      "category": "person",
+      "title": "David",
+      "body": "Hebrew David (H1732). Shepherd, psalmist, and Israel's greatest king; God promised his throne an everlasting heir (1-2 Samuel; Psalms; 2 Samuel 7). Jesus is called 'son of David'.",
+      "sources": [
+        {
+          "label": "Strong's H1732",
+          "url": "https://biblehub.com/hebrew/1732.htm"
+        }
+      ]
+    },
+    {
+      "id": "p-solomon",
+      "match": [
+        "solomon"
+      ],
+      "category": "person",
+      "title": "Solomon",
+      "body": "Hebrew Shelomoh (H8010). Son of David; builder of the Temple, renowned for wisdom; wrote Proverbs, Ecclesiastes, and the Song of Solomon (1 Kings 1-11).",
+      "sources": [
+        {
+          "label": "Strong's H8010",
+          "url": "https://biblehub.com/hebrew/8010.htm"
+        }
+      ]
+    },
+    {
+      "id": "p-goliath",
+      "match": [
+        "goliath"
+      ],
+      "category": "person",
+      "title": "Goliath",
+      "body": "The Philistine giant of Gath whom the young David killed with a sling and stone (1 Samuel 17).",
+      "sources": [
+        "1 Samuel 17"
+      ]
+    },
+    {
+      "id": "p-elijah",
+      "match": [
+        "elijah",
+        "elias"
+      ],
+      "category": "person",
+      "title": "Elijah (Elias)",
+      "body": "Hebrew Eliyyah (H452); Greek 'Elias'. A prophet who confronted Baal worship and was taken up in a whirlwind (1 Kings 17 - 2 Kings 2).",
+      "sources": [
+        {
+          "label": "Strong's H452",
+          "url": "https://biblehub.com/hebrew/452.htm"
+        }
+      ]
+    },
+    {
+      "id": "p-elisha",
+      "match": [
+        "elisha",
+        "eliseus"
+      ],
+      "category": "person",
+      "title": "Elisha",
+      "body": "Successor of Elijah, a prophet of many miracles (2 Kings 2-13).",
+      "sources": [
+        "2 Kings 2-13"
+      ]
+    },
+    {
+      "id": "p-job",
+      "match": [
+        "job"
+      ],
+      "category": "person",
+      "title": "Job",
+      "body": "A blameless man of Uz, tested by great loss, who questions and finally trusts God (the book of Job).",
+      "sources": [
+        "Job 1-2",
+        "Job 42"
+      ]
+    },
+    {
+      "id": "p-isaiah",
+      "match": [
+        "isaiah",
+        "esaias"
+      ],
+      "category": "person",
+      "title": "Isaiah (Esaias)",
+      "body": "Hebrew Yeshayah (H3470); Greek 'Esaias'. A major prophet of Judah who foretold the Messiah (Isaiah).",
+      "sources": [
+        {
+          "label": "Strong's H3470",
+          "url": "https://biblehub.com/hebrew/3470.htm"
+        }
+      ]
+    },
+    {
+      "id": "p-jeremiah",
+      "match": [
+        "jeremiah",
+        "jeremy",
+        "jeremias"
+      ],
+      "category": "person",
+      "title": "Jeremiah",
+      "body": "The 'weeping prophet' who warned Judah before its fall to Babylon (Jeremiah; Lamentations).",
+      "sources": [
+        "Jeremiah 1",
+        "Lamentations"
+      ]
+    },
+    {
+      "id": "p-ezekiel",
+      "match": [
+        "ezekiel"
+      ],
+      "category": "person",
+      "title": "Ezekiel",
+      "body": "A priest-prophet among the Babylonian exiles, given visions of God's glory and of restoration (Ezekiel).",
+      "sources": [
+        "Ezekiel 1"
+      ]
+    },
+    {
+      "id": "p-daniel",
+      "match": [
+        "daniel"
+      ],
+      "category": "person",
+      "title": "Daniel",
+      "body": "A Judean exile in Babylon, famed for wisdom, faithfulness in the lions' den, and apocalyptic visions (Daniel).",
+      "sources": [
+        "Daniel 1",
+        "Daniel 6"
+      ]
+    },
+    {
+      "id": "p-ezra",
+      "match": [
+        "ezra"
+      ],
+      "category": "person",
+      "title": "Ezra",
+      "body": "A priest and scribe who taught the Law to the returned exiles (Ezra; Nehemiah 8).",
+      "sources": [
+        "Ezra 7",
+        "Nehemiah 8"
+      ]
+    },
+    {
+      "id": "p-nehemiah",
+      "match": [
+        "nehemiah"
+      ],
+      "category": "person",
+      "title": "Nehemiah",
+      "body": "Cupbearer to the Persian king who returned to rebuild Jerusalem's walls (Nehemiah).",
+      "sources": [
+        "Nehemiah 1-6"
+      ]
+    },
+    {
+      "id": "p-esther",
+      "match": [
+        "esther",
+        "hadassah"
+      ],
+      "category": "person",
+      "title": "Esther (Hadassah)",
+      "body": "A Jewish queen of Persia who risked her life to save her people from destruction (Esther).",
+      "sources": [
+        "Esther 4",
+        "Esther 7"
+      ]
+    },
+    {
+      "id": "p-mordecai",
+      "match": [
+        "mordecai"
+      ],
+      "category": "person",
+      "title": "Mordecai",
+      "body": "Esther's cousin and guardian, who exposed a plot against the king and was honoured (Esther).",
+      "sources": [
+        "Esther 2",
+        "Esther 10"
+      ]
+    },
+    {
+      "id": "p-jonah",
+      "match": [
+        "jonah",
+        "jonas"
+      ],
+      "category": "person",
+      "title": "Jonah (Jonas)",
+      "body": "A reluctant prophet swallowed by a great fish, then sent to preach to Nineveh (Jonah; cf. Matthew 12:40).",
+      "sources": [
+        "Jonah",
+        "Matthew 12:40"
+      ]
+    },
+    {
+      "id": "p-nebuchadnezzar",
+      "match": [
+        "nebuchadnezzar",
+        "nebuchadrezzar"
+      ],
+      "category": "person",
+      "title": "Nebuchadnezzar",
+      "body": "King of Babylon who destroyed Jerusalem and was humbled by God until he acknowledged Him (Daniel 1-4).",
+      "sources": [
+        "Daniel 1-4",
+        "2 Kings 24-25"
+      ]
+    },
+    {
+      "id": "p-melchizedek",
+      "match": [
+        "melchizedek",
+        "melchisedec"
+      ],
+      "category": "person",
+      "title": "Melchizedek",
+      "body": "Hebrew Malki-tsedeq (H4442), 'king of righteousness'. King of Salem and 'priest of the most high God' who blessed Abram (Genesis 14:18-20); a type of Christ's priesthood (Psalm 110:4; Hebrews 7).",
+      "sources": [
+        {
+          "label": "Strong's H4442",
+          "url": "https://biblehub.com/hebrew/4442.htm"
+        },
+        "Genesis 14:18-20",
+        "Hebrews 7"
+      ]
+    },
+    {
+      "id": "p-mary",
+      "match": [
+        "mary"
+      ],
+      "category": "person",
+      "title": "Mary",
+      "body": "Several women share the name: Mary the mother of Jesus (Luke 1-2); Mary Magdalene (Luke 8:2; John 20); Mary of Bethany, sister of Martha and Lazarus (John 11-12); Mary the mother of James (Mark 16:1); and Mary the wife of Cleophas (John 19:25).",
+      "sources": [
+        "Luke 1-2",
+        "John 20",
+        "John 11-12"
+      ]
+    },
+    {
+      "id": "p-john",
+      "match": [
+        "john"
+      ],
+      "category": "person",
+      "title": "John",
+      "body": "Several men share the name: John the Baptist, the forerunner of Christ (Luke 1; 3); John the apostle, son of Zebedee, 'the beloved disciple' (Matthew 4:21; John 21); and John Mark (Acts 12:12).",
+      "sources": [
+        "Luke 1",
+        "John 21",
+        "Acts 12:12"
+      ]
+    },
+    {
+      "id": "p-peter",
+      "match": [
+        "peter",
+        "cephas"
+      ],
+      "category": "person",
+      "title": "Peter (Cephas)",
+      "body": "Simon, surnamed Peter / Cephas ('a stone'), a Galilean fisherman and a leading apostle (Matthew 16:16-18; the Gospels; Acts; 1-2 Peter).",
+      "sources": [
+        "Matthew 16:16-18",
+        "1 Peter 1"
+      ]
+    },
+    {
+      "id": "p-simon",
+      "match": [
+        "simon"
+      ],
+      "category": "person",
+      "title": "Simon",
+      "body": "Several men: Simon Peter the apostle; Simon the Zealot (Canaanite), another apostle; Simon of Cyrene, who carried Jesus' cross (Mark 15:21); Simon the leper (Mark 14:3); and Simon Magus the sorcerer (Acts 8).",
+      "sources": [
+        "Mark 15:21",
+        "Acts 8"
+      ]
+    },
+    {
+      "id": "p-james",
+      "match": [
+        "james"
+      ],
+      "category": "person",
+      "title": "James",
+      "body": "Several men: James son of Zebedee, brother of John and an apostle (martyred, Acts 12:2); James son of Alphaeus, an apostle; and James the Lord's brother, leader of the Jerusalem church and writer of the epistle (Acts 15; James 1:1).",
+      "sources": [
+        "Acts 12:2",
+        "Acts 15",
+        "James 1:1"
+      ]
+    },
+    {
+      "id": "p-paul",
+      "match": [
+        "paul"
+      ],
+      "category": "person",
+      "title": "Paul",
+      "body": "Formerly Saul of Tarsus; a Pharisee who persecuted the church until the risen Christ met him on the Damascus road, then the apostle to the Gentiles and writer of much of the New Testament (Acts 9; the Epistles).",
+      "sources": [
+        "Acts 9",
+        "Romans 1"
+      ]
+    },
+    {
+      "id": "p-judas",
+      "match": [
+        "judas"
+      ],
+      "category": "person",
+      "title": "Judas",
+      "body": "Several men: Judas Iscariot, who betrayed Jesus (Matthew 26:14-16); Judas (Thaddaeus), an apostle (Luke 6:16); and Judas the Lord's brother, writer of the epistle of Jude (Matthew 13:55; Jude 1).",
+      "sources": [
+        "Matthew 26:14-16",
+        "Jude 1"
+      ]
+    },
+    {
+      "id": "p-herod",
+      "match": [
+        "herod"
+      ],
+      "category": "person",
+      "title": "Herod",
+      "body": "A ruling dynasty, not one man: Herod the Great, who sought to kill the infant Jesus (Matthew 2); Herod Antipas, who beheaded John the Baptist and tried Jesus (Mark 6; Luke 23); and Herod Agrippa I, who killed James (Acts 12).",
+      "sources": [
+        "Matthew 2",
+        "Luke 23",
+        "Acts 12"
+      ]
+    },
+    {
+      "id": "p-pilate",
+      "match": [
+        "pilate"
+      ],
+      "category": "person",
+      "title": "Pontius Pilate",
+      "body": "Pontius Pilate, the Roman governor of Judea who, against his own verdict, sentenced Jesus to crucifixion (Matthew 27; John 18-19).",
+      "sources": [
+        "Matthew 27",
+        "John 18-19"
+      ]
+    },
+    {
+      "id": "p-thomas",
+      "match": [
+        "thomas"
+      ],
+      "category": "person",
+      "title": "Thomas",
+      "body": "An apostle, called Didymus ('twin'), remembered for doubting then confessing the risen Christ: 'My Lord and my God' (John 20:24-29).",
+      "sources": [
+        "John 20:24-29"
+      ]
+    },
+    {
+      "id": "p-matthew",
+      "match": [
+        "matthew"
+      ],
+      "category": "person",
+      "title": "Matthew (Levi)",
+      "body": "A tax collector (also called Levi) called to be an apostle; by tradition the writer of the first Gospel (Matthew 9:9).",
+      "sources": [
+        "Matthew 9:9"
+      ]
+    },
+    {
+      "id": "p-philip",
+      "match": [
+        "philip"
+      ],
+      "category": "person",
+      "title": "Philip",
+      "body": "Two men: Philip the apostle (John 1:43-46); and Philip the evangelist, one of the seven, who preached in Samaria and to the Ethiopian official (Acts 6:5; 8).",
+      "sources": [
+        "John 1:43-46",
+        "Acts 8"
+      ]
+    },
+    {
+      "id": "p-stephen",
+      "match": [
+        "stephen"
+      ],
+      "category": "person",
+      "title": "Stephen",
+      "body": "One of the seven, and the first Christian martyr, stoned after his testimony before the council (Acts 6-7).",
+      "sources": [
+        "Acts 6-7"
+      ]
+    },
+    {
+      "id": "p-barnabas",
+      "match": [
+        "barnabas"
+      ],
+      "category": "person",
+      "title": "Barnabas",
+      "body": "A Levite surnamed 'son of consolation', companion of Paul on the first missionary journey (Acts 4:36; 13-15).",
+      "sources": [
+        "Acts 4:36",
+        "Acts 13-15"
+      ]
+    },
+    {
+      "id": "p-timothy",
+      "match": [
+        "timothy",
+        "timotheus"
+      ],
+      "category": "person",
+      "title": "Timothy",
+      "body": "Paul's young coworker and 'son in the faith', recipient of two epistles (Acts 16:1; 1-2 Timothy).",
+      "sources": [
+        "Acts 16:1",
+        "1 Timothy 1"
+      ]
+    },
+    {
+      "id": "p-lazarus",
+      "match": [
+        "lazarus"
+      ],
+      "category": "person",
+      "title": "Lazarus",
+      "body": "Two figures: Lazarus of Bethany, whom Jesus raised from the dead (John 11); and Lazarus the beggar in Jesus' parable (Luke 16:19-31).",
+      "sources": [
+        "John 11",
+        "Luke 16:19-31"
+      ]
+    },
+    {
+      "id": "p-martha",
+      "match": [
+        "martha"
+      ],
+      "category": "person",
+      "title": "Martha",
+      "body": "Sister of Mary and Lazarus of Bethany, who served while Mary listened (Luke 10:38-42; John 11).",
+      "sources": [
+        "Luke 10:38-42",
+        "John 11"
+      ]
+    },
+    {
+      "id": "p-nicodemus",
+      "match": [
+        "nicodemus"
+      ],
+      "category": "person",
+      "title": "Nicodemus",
+      "body": "A Pharisee and ruler of the Jews who came to Jesus by night and later helped bury Him (John 3; 19:39).",
+      "sources": [
+        "John 3",
+        "John 19:39"
+      ]
     }
   ],
   "passages": [
