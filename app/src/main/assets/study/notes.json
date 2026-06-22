@@ -104,12 +104,36 @@
       "match": ["jew", "jews", "jew's", "jewry", "jewess", "jewish"],
       "category": "contested",
       "title": "Jew / Judah / Judea",
-      "body": "Translates Hebrew Yehudi (H3064), from Yehudah (Judah), and Greek Ioudaios (G2453): a member of the tribe or kingdom of Judah, or an inhabitant of Judea. In the 1611 KJV the word was printed 'Iewes / Iew' — English did not yet treat 'J' as a letter distinct from 'I'; the modern spelling 'Jew' came later, as the J/I distinction was standardised through the 1600s-1700s. So the English word is recent in form even though the underlying Hebrew and Greek terms are ancient. Depending on context the same Greek word is rendered 'Jew' or 'Judean'. First KJV occurrence: 2 Kings 16:6.",
-      "sources": ["Strong's H3064 (Yehudi), G2453 (Ioudaios)", "Oxford English Dictionary, 'Jew'", "1611 King James Version (original spelling)"]
+      "body": "Translates Hebrew Yehudi (H3064, from Yehudah/Judah) and Greek Ioudaios (G2453): one of the tribe or kingdom of Judah, or an inhabitant of Judea. The rendering is genuinely debated. Because Ioudaios is an ethno-geographic term, many scholars argue 'Judean' (or 'Judahite') fits the ancient sense better than the later, mainly religious category 'Jew' (e.g. Steve Mason, 2007). By the first century the term was broad: the Idumeans (Edom, the line of Esau) had been conquered and brought into Judaism under John Hyrcanus c. 125 BC, and the Herods were of Idumean descent (Josephus) — so 'Judean' could include people of mixed ancestry; the word itself, however, denotes Judah/Judea, not Edom. Scripture also distinguishes an outward and an inward 'Jew' (Romans 2:28-29). The 1611 KJV printed 'Iewes / Iew'; the modern spelling 'Jew' is later (the J/I distinction was standardised in the 1600s-1700s). First KJV occurrence: 2 Kings 16:6. See Revelation 2:9; 3:9; John 8:44.",
+      "sources": ["Strong's H3064 (Yehudi), G2453 (Ioudaios)", "Romans 2:28-29", "Josephus, Antiquities 13.257-258 (conversion of Idumea)", "S. Mason, 'Jews, Judaeans, Judaizing, Judaism' (Journal for the Study of Judaism, 2007)", "Oxford English Dictionary, 'Jew'"]
     }
   ],
 
   "passages": [
+    {
+      "id": "p-jews-rev2-9",
+      "book": 66, "chapter": 2, "verse": 9, "phrase": "say they are Jews, and are not",
+      "category": "contested",
+      "title": "“say they are Jews, and are not”",
+      "body": "'Jews' here renders Ioudaios (G2453). Paul draws the same line: 'he is not a Jew, which is one outwardly... but he is a Jew, which is one inwardly' (Romans 2:28-29). Readings differ — some see the gap between claiming covenant standing and truly holding it (an outward vs inward 'Jew'); others, a specific group falsely claiming the name. The rebuke and the phrase 'synagogue of Satan' are aimed at this group at Smyrna, not at a people as a whole.",
+      "sources": ["Strong's G2453", "Romans 2:28-29"]
+    },
+    {
+      "id": "p-jews-rev3-9",
+      "book": 66, "chapter": 3, "verse": 9, "phrase": "say they are Jews, and are not",
+      "category": "contested",
+      "title": "“say they are Jews, and are not”",
+      "body": "As in Revelation 2:9, 'Jews' renders Ioudaios (G2453); compare the inward/outward 'Jew' of Romans 2:28-29. The words address a particular group opposing the church at Philadelphia. Interpreters divide over whether this marks covenant claim versus reality, or a specific group misusing the title — not a verdict on a whole people.",
+      "sources": ["Strong's G2453", "Romans 2:28-29", "Revelation 2:9"]
+    },
+    {
+      "id": "p-john8-44",
+      "book": 43, "chapter": 8, "verse": 44, "phrase": "Ye are of your father the devil",
+      "category": "contested",
+      "title": "“your father the devil”",
+      "body": "Jesus says this in a heated temple dispute with opponents among the Ioudaioi (John 8). Most read 'your father the devil' as spiritual or moral paternity — they do the devil's works and reject the truth — paralleling 8:39-47, where being Abraham's children 'after the flesh' is set against doing Abraham's works; a minority read it as literal descent. The same chapter mentions 'the Jews which believed on him' (8:31), so the dispute is with particular opponents, not a blanket judgment.",
+      "sources": ["John 8:31-47", "Strong's G2453"]
+    },
     {
       "id": "p-easter-acts12-4",
       "book": 44, "chapter": 12, "verse": 4, "phrase": "Easter",
