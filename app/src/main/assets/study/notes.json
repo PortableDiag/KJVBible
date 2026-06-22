@@ -98,6 +98,14 @@
       "title": "church = assembly (ekklesia)",
       "body": "Translates Greek ekklesia (G1577), 'assembly, congregation, the called-out'. The same word is used of an ordinary civic assembly in Acts 19:39, 41.",
       "sources": ["Strong's G1577"]
+    },
+    {
+      "id": "w-jew",
+      "match": ["jew", "jews", "jew's", "jewry", "jewess", "jewish"],
+      "category": "contested",
+      "title": "Jew / Judah / Judea",
+      "body": "Translates Hebrew Yehudi (H3064), from Yehudah (Judah), and Greek Ioudaios (G2453): a member of the tribe or kingdom of Judah, or an inhabitant of Judea. In the 1611 KJV the word was printed 'Iewes / Iew' — English did not yet treat 'J' as a letter distinct from 'I'; the modern spelling 'Jew' came later, as the J/I distinction was standardised through the 1600s-1700s. So the English word is recent in form even though the underlying Hebrew and Greek terms are ancient. Depending on context the same Greek word is rendered 'Jew' or 'Judean'. First KJV occurrence: 2 Kings 16:6.",
+      "sources": ["Strong's H3064 (Yehudi), G2453 (Ioudaios)", "Oxford English Dictionary, 'Jew'", "1611 King James Version (original spelling)"]
     }
   ],
 
