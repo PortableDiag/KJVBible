@@ -84,7 +84,16 @@ Old Testament "words of God" gold highlighting is derived from the verse ranges 
 with the narrative introductions trimmed off the opening verse of each speech. Speech
 boundaries are approximate.
 
-## License
+## Licensing
 
-The King James Version text is in the public domain. Application code in this repository is
-private.
+- **Application code** — MIT License (see [LICENSE](LICENSE)).
+- **King James Version text** — public domain.
+- **Red-letter / small-caps markup** — derived from
+  [jburson/bible-data](https://github.com/jburson/bible-data).
+- **Old Testament "words of God" gold spans** — derived from the MACULA Quotation and Speaker
+  Data, © 2023 Clear Bible, Inc, licensed
+  [CC BY 4.0](http://creativecommons.org/licenses/by/4.0/)
+  ([Clear-Bible/speaker-quotations](https://github.com/Clear-Bible/speaker-quotations)).
+- **Study notes** — hand-curated with cited sources.
+
+The scripts that regenerate the derived assets live in [`tools/`](tools/).
