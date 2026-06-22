@@ -4,6 +4,24 @@ All notable changes to this project are documented here. The format is based on
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.0] — 2026-06-21
+
+### Added
+- **Study notes greatly expanded** (now 100+ entries):
+  - Named beings — angels (Gabriel, Michael, archangel), cherubim, seraphim; Satan, the
+    devil and demons (with the *diabolos*/*daimonion* distinction), Beelzebub, Belial,
+    Abaddon/Apollyon, the dragon; leviathan, behemoth, giants; the angel of the LORD, host
+    of heaven, principalities & powers, sons of God, the watchers, the living creatures,
+    Gog and Magog, the scapegoat (Azazel), and the morning star.
+  - ~50 human figures — patriarchs, prophets, kings, and apostles — with disambiguation
+    notes for shared names (Mary, John, James, Judas, Simon, Herod, Joseph, Saul, Philip,
+    Lazarus).
+  - The word "Jew": etymology (Judah/Judea), the Judean/Judahite translation debate, the
+    Idumea/Hyrcanus background, and the outward/inward distinction (Romans 2:28-29), plus
+    verse notes for Revelation 2:9, 3:9, and John 8:44.
+- **Multi-word phrase matching** for study notes (e.g. "angel of the LORD").
+- **Clickable sources** — Strong's references link to their BibleHub lexicon page.
+
 ## [1.5.0] — 2026-06-21
 
 ### Added
