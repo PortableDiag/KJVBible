@@ -4,6 +4,13 @@ All notable changes to this project are documented here. The format is based on
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.1] — 2026-06-21
+
+### Changed
+- Reworded the study notes for Revelation 2:9, 3:9, and John 8:44 to give the underlying
+  word and the range of interpretations without asserting the scope of the passage — keeping
+  the notes strictly neutral.
+
 ## [1.6.0] — 2026-06-21
 
 ### Added
