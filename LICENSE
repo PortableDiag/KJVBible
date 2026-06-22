@@ -26,6 +26,9 @@ NOTE: This license covers the application's source code only. Bundled data
 assets carry their own licenses — see the "Licensing" section of README.md:
 
   - The King James Version text is in the public domain.
-  - Red-letter / small-caps markup is derived from jburson/bible-data.
+  - Red-letter (words of Christ) and small-caps (divine name) designations are
+    factual/convention-driven designations about the public-domain text, sourced
+    from jburson/bible-data (which carries no license) and re-encoded here; none of
+    that repository's files are redistributed.
   - Old Testament "words of God" gold spans are derived from the MACULA
     Quotation and Speaker Data, (c) 2023 Clear Bible, Inc, licensed CC BY 4.0.

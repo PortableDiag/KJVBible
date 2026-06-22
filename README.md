@@ -88,8 +88,13 @@ boundaries are approximate.
 
 - **Application code** — MIT License (see [LICENSE](LICENSE)).
 - **King James Version text** — public domain.
-- **Red-letter / small-caps markup** — derived from
-  [jburson/bible-data](https://github.com/jburson/bible-data).
+- **Red-letter (words of Christ) and small-caps (divine name) designations** — factual,
+  convention-driven designations about the public-domain KJV text (which words Christ spoke;
+  where the divine name appears). They were sourced from
+  [jburson/bible-data](https://github.com/jburson/bible-data) and re-encoded into this
+  project's own format. That repository carries no license; we redistribute none of its
+  files, only the underlying public-domain text together with these standard editorial
+  designations. Attribution is given as a courtesy.
 - **Old Testament "words of God" gold spans** — derived from the MACULA Quotation and Speaker
   Data, © 2023 Clear Bible, Inc, licensed
   [CC BY 4.0](http://creativecommons.org/licenses/by/4.0/)
