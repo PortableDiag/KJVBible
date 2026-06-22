@@ -416,6 +416,9 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
         TextView sourcesLabel = content.findViewById(R.id.noteSourcesLabel);
         TextView sources = content.findViewById(R.id.noteSources);
 
+        final com.google.android.material.bottomsheet.BottomSheetDialog dialog =
+                new com.google.android.material.bottomsheet.BottomSheetDialog(this);
+
         category.setText(categoryLabel(note.category));
         title.setText(note.title);
         body.setText(note.body);
@@ -430,7 +433,7 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
                 int start = sb.length();
                 sb.append(s.label);
                 if (s.url != null && !s.url.isEmpty()) {
-                    final String url = s.url;
+                    final String url = s.url;                 // external link (e.g. Strong's)
                     sb.setSpan(new android.text.style.ClickableSpan() {
                         @Override public void onClick(@NonNull View widget) {
                             try {
@@ -438,14 +441,23 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
                             } catch (Exception ignored) {}
                         }
                     }, start, sb.length(), android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                } else {
+                    final Ref ref = bible.parseReference(s.label);   // in-app scripture link
+                    if (ref != null) {
+                        sb.setSpan(new android.text.style.ClickableSpan() {
+                            @Override public void onClick(@NonNull View widget) {
+                                dialog.dismiss();
+                                showChapter(ref.book, ref.chapter);
+                                if (ref.verse > 0) scrollToVerse(ref.verse);
+                            }
+                        }, start, sb.length(), android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    }
                 }
             }
             sources.setText(sb);
             sources.setMovementMethod(android.text.method.LinkMovementMethod.getInstance());
         }
 
-        com.google.android.material.bottomsheet.BottomSheetDialog dialog =
-                new com.google.android.material.bottomsheet.BottomSheetDialog(this);
         dialog.setContentView(content);
         dialog.show();
     }

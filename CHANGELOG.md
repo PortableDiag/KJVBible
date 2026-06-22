@@ -6,10 +6,15 @@ All notable changes to this project are documented here. The format is based on
 
 ## [1.6.1] — 2026-06-21
 
+### Added
+- Scripture references listed in a study note's sources are now tappable and open that
+  passage in the reader.
+
 ### Changed
-- Reworded the study notes for Revelation 2:9, 3:9, and John 8:44 to give the underlying
-  word and the range of interpretations without asserting the scope of the passage — keeping
-  the notes strictly neutral.
+- Study notes rewritten in a plainer, definition-style voice (closer to a classic Bible
+  dictionary): the word, its etymology, the history, and the sources stated directly, without
+  hedging or interpretive verdicts. Facts stay linked (Strong's → BibleHub, scripture → the
+  reader) so any claim can be checked.
 
 ## [1.6.0] — 2026-06-21
 

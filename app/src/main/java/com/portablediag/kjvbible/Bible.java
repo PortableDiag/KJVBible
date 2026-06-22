@@ -10,9 +10,14 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Loads the King James Bible from bundled JSON assets.
@@ -155,6 +160,53 @@ public final class Bible {
             while ((n = r.read(buf)) != -1) sb.append(buf, 0, n);
         }
         return sb.toString();
+    }
+
+    // ---- Reference parsing (for tappable verse sources in study notes) ----
+
+    private Map<String, Integer> refIndex;          // lowercased book name/alias -> book index
+    private List<String> refNamesByLen;             // names sorted longest-first
+    private static final Pattern REF_CV = Pattern.compile("^(\\d+)(?::(\\d+))?");
+
+    private void buildRefIndex() {
+        refIndex = new HashMap<>();
+        for (BookMeta b : books) refIndex.put(b.name.toLowerCase(Locale.US), b.index);
+        // common alternate spellings
+        alias("psalms", "Psalm");
+        alias("song of songs", "Song of Solomon");
+        alias("canticles", "Song of Solomon");
+        alias("revelations", "Revelation");
+        refNamesByLen = new ArrayList<>(refIndex.keySet());
+        Collections.sort(refNamesByLen, (a, b) -> b.length() - a.length());
+    }
+
+    private void alias(String alias, String bookName) {
+        Integer idx = refIndex.get(bookName.toLowerCase(Locale.US));
+        if (idx != null) refIndex.put(alias, idx);
+    }
+
+    /**
+     * Parse a scripture reference such as "Romans 2:28-29", "John 8:31-47", "Genesis 12-25",
+     * or "2 Kings 16:6" into a Ref (first verse of any range). Returns null if it is not a
+     * recognizable reference (e.g. "Josephus, Antiquities 13.257").
+     */
+    public synchronized Ref parseReference(String s) {
+        if (refIndex == null) buildRefIndex();
+        String low = s.trim().toLowerCase(Locale.US);
+        for (String name : refNamesByLen) {
+            if (!low.startsWith(name)) continue;
+            String rest = low.substring(name.length());
+            if (!rest.isEmpty() && rest.charAt(0) != ' ') continue;
+            Matcher m = REF_CV.matcher(rest.trim());
+            if (!m.find()) continue;
+            int book = refIndex.get(name);
+            int chapter = Integer.parseInt(m.group(1));
+            int verse = (m.group(2) != null) ? Integer.parseInt(m.group(2)) : 0;
+            if (chapter < 1 || chapter > chapterCount(book)) return null;
+            if (verse > verseCount(book, chapter)) verse = 0;
+            return new Ref(book, chapter, verse);
+        }
+        return null;
     }
 
     /** Strip red-letter control markers, leaving plain text (for search, share, copy). */
