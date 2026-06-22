@@ -1,194 +1,757 @@
 {
   "version": 1,
   "_comment": "Study notes. 'words' apply to every whole-word occurrence app-wide (case-insensitive). 'passages' apply to a specific verse and highlight a phrase within it. Keep notes neutral and evidentiary; cite sources. category: archaic | contested.",
-
   "words": [
     {
       "id": "w-wot-wist",
-      "match": ["wot", "wist", "wotteth"],
+      "match": [
+        "wot",
+        "wist",
+        "wotteth"
+      ],
       "category": "archaic",
       "title": "wot / wist",
       "body": "Archaic English from Old English witan, 'to know'. 'wot' = know (present); 'wist' = knew (past). E.g. “I wot not” = “I do not know.”",
-      "sources": ["Webster's 1828 Dictionary", "Oxford English Dictionary, 'wit (v.)'"]
+      "sources": [
+        "Webster's 1828 Dictionary",
+        "Oxford English Dictionary, 'wit (v.)'"
+      ]
     },
     {
       "id": "w-holpen",
-      "match": ["holpen"],
+      "match": [
+        "holpen"
+      ],
       "category": "archaic",
       "title": "holpen",
       "body": "Archaic past participle of 'help' = helped (e.g. Psalm 86:17; Luke 1:54).",
-      "sources": ["Webster's 1828 Dictionary"]
+      "sources": [
+        "Webster's 1828 Dictionary"
+      ]
     },
     {
       "id": "w-prevent",
-      "match": ["prevent", "preventest", "preventeth", "prevented"],
+      "match": [
+        "prevent",
+        "preventest",
+        "preventeth",
+        "prevented"
+      ],
       "category": "archaic",
       "title": "prevent (archaic: to precede)",
       "body": "In the KJV 'prevent' keeps its older sense from Latin praevenire, 'to come before, go ahead of, anticipate' — not the modern 'hinder/stop'. E.g. 1 Thessalonians 4:15, “shall not prevent them which are asleep” = shall not precede them.",
-      "sources": ["Webster's 1828 Dictionary", "Latin praevenire"]
+      "sources": [
+        "Webster's 1828 Dictionary",
+        "Latin praevenire"
+      ]
     },
     {
       "id": "w-conversation",
-      "match": ["conversation"],
+      "match": [
+        "conversation"
+      ],
       "category": "archaic",
       "title": "conversation (archaic: conduct)",
       "body": "In the KJV 'conversation' means manner of life / conduct, not speech. It renders Greek anastrophe (G391) and politeuma (G4175). E.g. Philippians 1:27; 1 Peter 1:15.",
-      "sources": ["Strong's G391", "Webster's 1828 Dictionary"]
+      "sources": [
+        {
+          "label": "Strong's G391",
+          "url": "https://biblehub.com/greek/391.htm"
+        },
+        "Webster's 1828 Dictionary"
+      ]
     },
     {
       "id": "w-suffer",
-      "match": ["suffer", "suffered", "suffereth", "sufferest"],
+      "match": [
+        "suffer",
+        "suffered",
+        "suffereth",
+        "sufferest"
+      ],
       "category": "archaic",
       "title": "suffer (often: allow/permit)",
       "body": "In the KJV 'suffer' frequently means 'allow, permit' (e.g. “Suffer the little children to come unto me,” Matthew 19:14), in addition to the modern sense of undergoing pain. Context decides which.",
-      "sources": ["Webster's 1828 Dictionary", "Strong's G863, G1439"]
+      "sources": [
+        "Webster's 1828 Dictionary",
+        {
+          "label": "Strong's G863",
+          "url": "https://biblehub.com/greek/863.htm"
+        },
+        {
+          "label": "Strong's G1439",
+          "url": "https://biblehub.com/greek/1439.htm"
+        }
+      ]
     },
     {
       "id": "w-quick",
-      "match": ["quick"],
+      "match": [
+        "quick"
+      ],
       "category": "archaic",
       "title": "quick (archaic: living)",
       "body": "Archaic 'quick' = alive, living. E.g. “the quick and the dead” (Acts 10:42); “the word of God is quick, and powerful” (Hebrews 4:12).",
-      "sources": ["Webster's 1828 Dictionary"]
+      "sources": [
+        "Webster's 1828 Dictionary"
+      ]
     },
     {
       "id": "w-meat",
-      "match": ["meat", "meats"],
+      "match": [
+        "meat",
+        "meats"
+      ],
       "category": "archaic",
       "title": "meat (archaic: food)",
       "body": "In the KJV 'meat' means food of any kind, not specifically flesh. E.g. Genesis 1:29, herbs and fruit given “for meat.”",
-      "sources": ["Webster's 1828 Dictionary"]
+      "sources": [
+        "Webster's 1828 Dictionary"
+      ]
     },
     {
       "id": "w-charity",
-      "match": ["charity"],
+      "match": [
+        "charity"
+      ],
       "category": "contested",
       "title": "charity = love (agape)",
       "body": "'Charity' renders Greek agape (G26) — the very same word translated 'love' elsewhere (e.g. John 3:16). The KJV uses 'charity' mainly in 1 Corinthians 13; the underlying word is identical to 'love'.",
-      "sources": ["Strong's G26"]
+      "sources": [
+        {
+          "label": "Strong's G26",
+          "url": "https://biblehub.com/greek/26.htm"
+        }
+      ]
     },
     {
       "id": "w-unicorn",
-      "match": ["unicorn", "unicorns"],
+      "match": [
+        "unicorn",
+        "unicorns"
+      ],
       "category": "contested",
       "title": "unicorn = wild ox (re'em)",
       "body": "Translates Hebrew re'em (H7214), a wild, untamable horned animal widely identified as the aurochs (wild ox). The mythical single-horned sense came later via the Greek Septuagint's 'monokeros' and the Latin 'unicornis'. E.g. Numbers 23:22; Job 39:9-10.",
-      "sources": ["Strong's H7214", "Brown-Driver-Briggs Lexicon"]
+      "sources": [
+        {
+          "label": "Strong's H7214",
+          "url": "https://biblehub.com/hebrew/7214.htm"
+        },
+        "Brown-Driver-Briggs Lexicon"
+      ]
     },
     {
       "id": "w-hell",
-      "match": ["hell"],
+      "match": [
+        "hell"
+      ],
       "category": "contested",
       "title": "hell (several distinct words)",
       "body": "The KJV uses one word, 'hell', for several different originals: Hebrew Sheol (H7585, the grave/underworld), Greek Hades (G86), Gehenna (G1067, the valley of Hinnom), and once the verb tartaroo (G5020, 2 Peter 2:4). These are distinct concepts in the source texts.",
-      "sources": ["Strong's H7585, G86, G1067, G5020"]
+      "sources": [
+        {
+          "label": "Strong's H7585",
+          "url": "https://biblehub.com/hebrew/7585.htm"
+        },
+        {
+          "label": "Strong's G86",
+          "url": "https://biblehub.com/greek/86.htm"
+        },
+        {
+          "label": "Strong's G1067",
+          "url": "https://biblehub.com/greek/1067.htm"
+        },
+        {
+          "label": "Strong's G5020",
+          "url": "https://biblehub.com/greek/5020.htm"
+        }
+      ]
     },
     {
       "id": "w-baptize",
-      "match": ["baptize", "baptized", "baptizing", "baptism"],
+      "match": [
+        "baptize",
+        "baptized",
+        "baptizing",
+        "baptism"
+      ],
       "category": "contested",
       "title": "baptize (transliteration)",
       "body": "'Baptize' transliterates rather than translates Greek baptizo (G907), 'to immerse, dip, submerge.' The English word carries the Greek sound rather than its plain meaning.",
-      "sources": ["Strong's G907"]
+      "sources": [
+        {
+          "label": "Strong's G907",
+          "url": "https://biblehub.com/greek/907.htm"
+        }
+      ]
     },
     {
       "id": "w-church",
-      "match": ["church", "churches"],
+      "match": [
+        "church",
+        "churches"
+      ],
       "category": "contested",
       "title": "church = assembly (ekklesia)",
       "body": "Translates Greek ekklesia (G1577), 'assembly, congregation, the called-out'. The same word is used of an ordinary civic assembly in Acts 19:39, 41.",
-      "sources": ["Strong's G1577"]
+      "sources": [
+        {
+          "label": "Strong's G1577",
+          "url": "https://biblehub.com/greek/1577.htm"
+        }
+      ]
     },
     {
       "id": "w-jew",
-      "match": ["jew", "jews", "jew's", "jewry", "jewess", "jewish"],
+      "match": [
+        "jew",
+        "jews",
+        "jew's",
+        "jewry",
+        "jewess",
+        "jewish"
+      ],
       "category": "contested",
       "title": "Jew / Judah / Judea",
       "body": "Translates Hebrew Yehudi (H3064, from Yehudah/Judah) and Greek Ioudaios (G2453): one of the tribe or kingdom of Judah, or an inhabitant of Judea. The rendering is genuinely debated. Because Ioudaios is an ethno-geographic term, many scholars argue 'Judean' (or 'Judahite') fits the ancient sense better than the later, mainly religious category 'Jew' (e.g. Steve Mason, 2007). By the first century the term was broad: the Idumeans (Edom, the line of Esau) had been conquered and brought into Judaism under John Hyrcanus c. 125 BC, and the Herods were of Idumean descent (Josephus) — so 'Judean' could include people of mixed ancestry; the word itself, however, denotes Judah/Judea, not Edom. Scripture also distinguishes an outward and an inward 'Jew' (Romans 2:28-29). The 1611 KJV printed 'Iewes / Iew'; the modern spelling 'Jew' is later (the J/I distinction was standardised in the 1600s-1700s). First KJV occurrence: 2 Kings 16:6. See Revelation 2:9; 3:9; John 8:44.",
-      "sources": ["Strong's H3064 (Yehudi), G2453 (Ioudaios)", "Romans 2:28-29", "Josephus, Antiquities 13.257-258 (conversion of Idumea)", "S. Mason, 'Jews, Judaeans, Judaizing, Judaism' (Journal for the Study of Judaism, 2007)", "Oxford English Dictionary, 'Jew'"]
+      "sources": [
+        {
+          "label": "Strong's H3064 (Yehudi)",
+          "url": "https://biblehub.com/hebrew/3064.htm"
+        },
+        {
+          "label": "Strong's G2453 (Ioudaios)",
+          "url": "https://biblehub.com/greek/2453.htm"
+        },
+        "Romans 2:28-29",
+        "Josephus, Antiquities 13.257-258 (conversion of Idumea)",
+        "S. Mason, 'Jews, Judaeans, Judaizing, Judaism' (Journal for the Study of Judaism, 2007)",
+        "Oxford English Dictionary, 'Jew'"
+      ]
+    },
+    {
+      "id": "w-angel",
+      "match": [
+        "angel",
+        "angels"
+      ],
+      "category": "term",
+      "title": "angel (messenger)",
+      "body": "Hebrew mal'ak (H4397) and Greek angelos (G32) both mean 'messenger' - the same word is used for human messengers and for heavenly beings; context decides which. Angels are created spirits who serve God and minister to His people (Psalm 103:20; Hebrews 1:14).",
+      "sources": [
+        {
+          "label": "Strong's H4397 (mal'ak)",
+          "url": "https://biblehub.com/hebrew/4397.htm"
+        },
+        {
+          "label": "Strong's G32 (angelos)",
+          "url": "https://biblehub.com/greek/32.htm"
+        }
+      ]
+    },
+    {
+      "id": "w-archangel",
+      "match": [
+        "archangel"
+      ],
+      "category": "angel",
+      "title": "archangel",
+      "body": "Greek archangelos (G743), 'chief/ruling angel'. The word appears only twice: the Lord descends 'with the voice of the archangel' (1 Thessalonians 4:16), and Michael is called 'the archangel' (Jude 9).",
+      "sources": [
+        {
+          "label": "Strong's G743 (archangelos)",
+          "url": "https://biblehub.com/greek/743.htm"
+        }
+      ]
+    },
+    {
+      "id": "w-gabriel",
+      "match": [
+        "gabriel"
+      ],
+      "category": "angel",
+      "title": "Gabriel",
+      "body": "Hebrew Gavri'el (H1403), 'man/strength of God'. An angel who stands in God's presence; he explains visions to Daniel (Daniel 8:16; 9:21) and announces the births of John the Baptist and Jesus (Luke 1:19, 26).",
+      "sources": [
+        {
+          "label": "Strong's H1403 (Gavriel)",
+          "url": "https://biblehub.com/hebrew/1403.htm"
+        }
+      ]
+    },
+    {
+      "id": "w-cherub",
+      "match": [
+        "cherub",
+        "cherubs",
+        "cherubim",
+        "cherubims"
+      ],
+      "category": "being",
+      "title": "cherub / cherubims",
+      "body": "Hebrew kerub (H3742); KJV plural 'cherubims'. Winged heavenly beings associated with God's throne and presence: set to guard Eden (Genesis 3:24), figured in gold over the mercy seat (Exodus 25:18-22), and seen in Ezekiel's visions (Ezekiel 10).",
+      "sources": [
+        {
+          "label": "Strong's H3742 (kerub)",
+          "url": "https://biblehub.com/hebrew/3742.htm"
+        }
+      ]
+    },
+    {
+      "id": "w-seraphim",
+      "match": [
+        "seraph",
+        "seraphim",
+        "seraphims"
+      ],
+      "category": "being",
+      "title": "seraphim",
+      "body": "Hebrew saraph (H8314), 'burning ones'; KJV 'seraphims'. Six-winged beings seen above the LORD's throne, calling 'Holy, holy, holy' - only in Isaiah 6:2-6.",
+      "sources": [
+        {
+          "label": "Strong's H8314 (saraph)",
+          "url": "https://biblehub.com/hebrew/8314.htm"
+        }
+      ]
+    },
+    {
+      "id": "w-satan",
+      "match": [
+        "satan"
+      ],
+      "category": "demon",
+      "title": "Satan",
+      "body": "Hebrew satan (H7854), 'adversary, accuser'; Greek Satanas (G4567). The accuser of God's people (Job 1-2; Zechariah 3:1-2) and the tempter (Matthew 4:10), identified in Revelation 12:9 with the devil and 'that old serpent'.",
+      "sources": [
+        {
+          "label": "Strong's H7854 (satan)",
+          "url": "https://biblehub.com/hebrew/7854.htm"
+        },
+        {
+          "label": "Strong's G4567 (Satanas)",
+          "url": "https://biblehub.com/greek/4567.htm"
+        }
+      ]
+    },
+    {
+      "id": "w-devil",
+      "match": [
+        "devil",
+        "devils"
+      ],
+      "category": "demon",
+      "title": "devil / devils",
+      "body": "Greek diabolos (G1228), 'slanderer, accuser' - the Devil. Note: the KJV also uses 'devils' for a different word, daimonion (G1140), 'demon'. So in the KJV 'devil' may mean the Devil himself (diabolos) or a demon (daimonion), depending on context.",
+      "sources": [
+        {
+          "label": "Strong's G1228 (diabolos)",
+          "url": "https://biblehub.com/greek/1228.htm"
+        },
+        {
+          "label": "Strong's G1140 (daimonion)",
+          "url": "https://biblehub.com/greek/1140.htm"
+        }
+      ]
+    },
+    {
+      "id": "w-beelzebub",
+      "match": [
+        "beelzebub"
+      ],
+      "category": "demon",
+      "title": "Beelzebub",
+      "body": "Greek Beelzeboul / Beelzebub (G954), called 'the prince of the devils' (Matthew 12:24). The name derives from Baal-zebub, 'lord of flies', the god of Ekron (2 Kings 1:2-3).",
+      "sources": [
+        {
+          "label": "Strong's G954 (Beelzeboul)",
+          "url": "https://biblehub.com/greek/954.htm"
+        },
+        {
+          "label": "Strong's H1176 (Baal-zebub)",
+          "url": "https://biblehub.com/hebrew/1176.htm"
+        }
+      ]
+    },
+    {
+      "id": "w-belial",
+      "match": [
+        "belial"
+      ],
+      "category": "demon",
+      "title": "Belial",
+      "body": "Hebrew beliyya'al (H1100), 'worthlessness, wickedness'. 'Sons/men of Belial' means worthless or wicked men; in 2 Corinthians 6:15 'Belial' stands opposite Christ as a name for Satan / utter wickedness.",
+      "sources": [
+        {
+          "label": "Strong's H1100 (beliyyaal)",
+          "url": "https://biblehub.com/hebrew/1100.htm"
+        },
+        {
+          "label": "Strong's G955 (Belial)",
+          "url": "https://biblehub.com/greek/955.htm"
+        }
+      ]
+    },
+    {
+      "id": "w-abaddon",
+      "match": [
+        "abaddon",
+        "apollyon"
+      ],
+      "category": "demon",
+      "title": "Abaddon / Apollyon",
+      "body": "Hebrew Abaddon (H11), 'destruction', and its Greek equivalent Apollyon (G623), 'destroyer' - the name of the angel of the bottomless pit (Revelation 9:11).",
+      "sources": [
+        {
+          "label": "Strong's H11 (Abaddon)",
+          "url": "https://biblehub.com/hebrew/11.htm"
+        },
+        {
+          "label": "Strong's G623 (Apollyon)",
+          "url": "https://biblehub.com/greek/623.htm"
+        }
+      ]
+    },
+    {
+      "id": "w-leviathan",
+      "match": [
+        "leviathan"
+      ],
+      "category": "being",
+      "title": "leviathan",
+      "body": "Hebrew livyathan (H3882). A great, untamable sea creature God describes at length to Job (Job 41); He alone masters it (Psalm 104:26; Isaiah 27:1, where it pictures a fleeing serpent).",
+      "sources": [
+        {
+          "label": "Strong's H3882 (livyathan)",
+          "url": "https://biblehub.com/hebrew/3882.htm"
+        }
+      ]
+    },
+    {
+      "id": "w-behemoth",
+      "match": [
+        "behemoth"
+      ],
+      "category": "being",
+      "title": "behemoth",
+      "body": "Hebrew behemoth (H930). A massive land creature shown to Job as 'the chief of the ways of God' (Job 40:15-24).",
+      "sources": [
+        {
+          "label": "Strong's H930 (behemoth)",
+          "url": "https://biblehub.com/hebrew/930.htm"
+        }
+      ]
+    },
+    {
+      "id": "w-giants",
+      "match": [
+        "giant",
+        "giants"
+      ],
+      "category": "being",
+      "title": "giants (Nephilim / Rephaim)",
+      "body": "In the KJV 'giants' translates two Hebrew words: nephilim (H5303) in Genesis 6:4, and rephaim (H7497). Other peoples - the Anakim, Emim, and Zamzummim - were reckoned among them (Numbers 13:33; Deuteronomy 2:10-11, 20-21); Og of Bashan 'remained of the remnant of the giants' (Deuteronomy 3:11).",
+      "sources": [
+        {
+          "label": "Strong's H5303 (nephilim)",
+          "url": "https://biblehub.com/hebrew/5303.htm"
+        },
+        {
+          "label": "Strong's H7497 (rephaim)",
+          "url": "https://biblehub.com/hebrew/7497.htm"
+        }
+      ]
+    },
+    {
+      "id": "w-saint",
+      "match": [
+        "saint",
+        "saints"
+      ],
+      "category": "term",
+      "title": "saint = holy one",
+      "body": "Hebrew qadosh (H6918) / chasid (H2623) and Greek hagios (G40), 'holy one, set-apart one'. In Scripture 'saints' are God's holy people - believers generally (Romans 1:7, 'called to be saints'; Psalm 16:3; Daniel 7:18) - not a separately canonized class.",
+      "sources": [
+        {
+          "label": "Strong's H6918 (qadosh)",
+          "url": "https://biblehub.com/hebrew/6918.htm"
+        },
+        {
+          "label": "Strong's G40 (hagios)",
+          "url": "https://biblehub.com/greek/40.htm"
+        }
+      ]
+    },
+    {
+      "id": "w-legion",
+      "match": [
+        "legion"
+      ],
+      "category": "term",
+      "title": "legion",
+      "body": "A Roman legion was an army unit of roughly 5,000-6,000 soldiers. The unclean spirits in the Gadarene man took the name to say 'we are many' (Mark 5:9, 15; Luke 8:30); Jesus likewise speaks of 'more than twelve legions of angels' (Matthew 26:53).",
+      "sources": [
+        {
+          "label": "Strong's G3003 (legion)",
+          "url": "https://biblehub.com/greek/3003.htm"
+        }
+      ]
     }
   ],
-
   "passages": [
     {
       "id": "p-jews-rev2-9",
-      "book": 66, "chapter": 2, "verse": 9, "phrase": "say they are Jews, and are not",
+      "book": 66,
+      "chapter": 2,
+      "verse": 9,
+      "phrase": "say they are Jews, and are not",
       "category": "contested",
       "title": "“say they are Jews, and are not”",
       "body": "'Jews' here renders Ioudaios (G2453). Paul draws the same line: 'he is not a Jew, which is one outwardly... but he is a Jew, which is one inwardly' (Romans 2:28-29). Readings differ — some see the gap between claiming covenant standing and truly holding it (an outward vs inward 'Jew'); others, a specific group falsely claiming the name. The rebuke and the phrase 'synagogue of Satan' are aimed at this group at Smyrna, not at a people as a whole.",
-      "sources": ["Strong's G2453", "Romans 2:28-29"]
+      "sources": [
+        {
+          "label": "Strong's G2453",
+          "url": "https://biblehub.com/greek/2453.htm"
+        },
+        "Romans 2:28-29"
+      ]
     },
     {
       "id": "p-jews-rev3-9",
-      "book": 66, "chapter": 3, "verse": 9, "phrase": "say they are Jews, and are not",
+      "book": 66,
+      "chapter": 3,
+      "verse": 9,
+      "phrase": "say they are Jews, and are not",
       "category": "contested",
       "title": "“say they are Jews, and are not”",
       "body": "As in Revelation 2:9, 'Jews' renders Ioudaios (G2453); compare the inward/outward 'Jew' of Romans 2:28-29. The words address a particular group opposing the church at Philadelphia. Interpreters divide over whether this marks covenant claim versus reality, or a specific group misusing the title — not a verdict on a whole people.",
-      "sources": ["Strong's G2453", "Romans 2:28-29", "Revelation 2:9"]
+      "sources": [
+        {
+          "label": "Strong's G2453",
+          "url": "https://biblehub.com/greek/2453.htm"
+        },
+        "Romans 2:28-29",
+        "Revelation 2:9"
+      ]
     },
     {
       "id": "p-john8-44",
-      "book": 43, "chapter": 8, "verse": 44, "phrase": "Ye are of your father the devil",
+      "book": 43,
+      "chapter": 8,
+      "verse": 44,
+      "phrase": "Ye are of your father the devil",
       "category": "contested",
       "title": "“your father the devil”",
       "body": "Jesus says this in a heated temple dispute with opponents among the Ioudaioi (John 8). Most read 'your father the devil' as spiritual or moral paternity — they do the devil's works and reject the truth — paralleling 8:39-47, where being Abraham's children 'after the flesh' is set against doing Abraham's works; a minority read it as literal descent. The same chapter mentions 'the Jews which believed on him' (8:31), so the dispute is with particular opponents, not a blanket judgment.",
-      "sources": ["John 8:31-47", "Strong's G2453"]
+      "sources": [
+        "John 8:31-47",
+        {
+          "label": "Strong's G2453",
+          "url": "https://biblehub.com/greek/2453.htm"
+        }
+      ]
     },
     {
       "id": "p-easter-acts12-4",
-      "book": 44, "chapter": 12, "verse": 4, "phrase": "Easter",
+      "book": 44,
+      "chapter": 12,
+      "verse": 4,
+      "phrase": "Easter",
       "category": "contested",
       "title": "Easter / Passover",
       "body": "The underlying Greek is pascha (G3957), the ordinary word for 'Passover', which the KJV translates 'Passover' in its 28 other occurrences. Only here is it rendered 'Easter'. Tyndale's 1526 New Testament had 'ester' here.",
-      "sources": ["Strong's G3957", "Tyndale New Testament, 1526"]
+      "sources": [
+        {
+          "label": "Strong's G3957",
+          "url": "https://biblehub.com/greek/3957.htm"
+        },
+        "Tyndale New Testament, 1526"
+      ]
     },
     {
       "id": "p-lucifer-isa14-12",
-      "book": 23, "chapter": 14, "verse": 12, "phrase": "Lucifer",
+      "book": 23,
+      "chapter": 14,
+      "verse": 12,
+      "phrase": "Lucifer",
       "category": "contested",
       "title": "Lucifer",
       "body": "Hebrew helel (H1966), 'shining one / morning star'. 'Lucifer' is the Latin Vulgate's word for the morning star (light-bearer); it is a description, not a proper name. The passage is an oracle against the king of Babylon (Isaiah 14:4).",
-      "sources": ["Strong's H1966", "Latin Vulgate"]
+      "sources": [
+        {
+          "label": "Strong's H1966",
+          "url": "https://biblehub.com/hebrew/1966.htm"
+        },
+        "Latin Vulgate"
+      ]
     },
     {
       "id": "p-comma-1jn5-7",
-      "book": 62, "chapter": 5, "verse": 7, "phrase": "the Father, the Word, and the Holy Ghost",
+      "book": 62,
+      "chapter": 5,
+      "verse": 7,
+      "phrase": "the Father, the Word, and the Holy Ghost",
       "category": "contested",
       "title": "Comma Johanneum",
       "body": "This Trinitarian wording is absent from every known Greek manuscript before the 14th century and from the earliest translations; it entered later printed Greek editions and from there the KJV. Its authenticity is widely disputed by textual scholars.",
-      "sources": ["Metzger, A Textual Commentary on the Greek NT", "NA28 critical apparatus"]
+      "sources": [
+        "Metzger, A Textual Commentary on the Greek NT",
+        "NA28 critical apparatus"
+      ]
     },
     {
       "id": "p-mark16-9",
-      "book": 41, "chapter": 16, "verse": 9, "phrase": "he appeared first to Mary Magdalene",
+      "book": 41,
+      "chapter": 16,
+      "verse": 9,
+      "phrase": "he appeared first to Mary Magdalene",
       "category": "contested",
       "title": "Mark's longer ending (16:9-20)",
       "body": "The 'longer ending' of Mark is absent from the earliest Greek manuscripts (Codex Sinaiticus and Codex Vaticanus) and is marked as doubtful or omitted in many witnesses. Its originality is disputed.",
-      "sources": ["Metzger, A Textual Commentary", "NA28 critical apparatus"]
+      "sources": [
+        "Metzger, A Textual Commentary",
+        "NA28 critical apparatus"
+      ]
     },
     {
       "id": "p-pericope-john7-53",
-      "book": 43, "chapter": 7, "verse": 53, "phrase": "every man went unto his own house",
+      "book": 43,
+      "chapter": 7,
+      "verse": 53,
+      "phrase": "every man went unto his own house",
       "category": "contested",
       "title": "Pericope Adulterae (John 7:53-8:11)",
       "body": "The account of the woman taken in adultery is absent from the earliest manuscripts and appears at varying locations in others. Many scholars regard it as a later addition, though an old and widely loved one.",
-      "sources": ["Metzger, A Textual Commentary", "NA28 critical apparatus"]
+      "sources": [
+        "Metzger, A Textual Commentary",
+        "NA28 critical apparatus"
+      ]
     },
     {
       "id": "p-godhead-col2-9",
-      "book": 51, "chapter": 2, "verse": 9, "phrase": "Godhead",
+      "book": 51,
+      "chapter": 2,
+      "verse": 9,
+      "phrase": "Godhead",
       "category": "contested",
       "title": "Godhead (Colossians 2:9)",
       "body": "Here 'Godhead' renders Greek theotes (G2320), 'deity, divine nature'. The KJV also prints 'Godhead' for two different Greek words: theios (G2304) in Acts 17:29 and theiotes (G2305) in Romans 1:20.",
-      "sources": ["Strong's G2320, G2304, G2305"]
+      "sources": [
+        {
+          "label": "Strong's G2320",
+          "url": "https://biblehub.com/greek/2320.htm"
+        },
+        {
+          "label": "Strong's G2304",
+          "url": "https://biblehub.com/greek/2304.htm"
+        },
+        {
+          "label": "Strong's G2305",
+          "url": "https://biblehub.com/greek/2305.htm"
+        }
+      ]
     },
     {
       "id": "p-let-2thess2-7",
-      "book": 53, "chapter": 2, "verse": 7, "phrase": "letteth",
+      "book": 53,
+      "chapter": 2,
+      "verse": 7,
+      "phrase": "letteth",
       "category": "archaic",
       "title": "let (archaic: to hinder)",
       "body": "Archaic 'let' means to hinder, restrain, or hold back — the opposite of its modern sense. “He who now letteth will let” = he who now restrains will restrain. Compare Romans 1:13, “was let hitherto.”",
-      "sources": ["Webster's 1828 Dictionary", "Old English lettan"]
+      "sources": [
+        "Webster's 1828 Dictionary",
+        "Old English lettan"
+      ]
+    },
+    {
+      "id": "p-michael-dan10-13",
+      "book": 27,
+      "chapter": 10,
+      "verse": 13,
+      "phrase": "Michael",
+      "category": "angel",
+      "title": "Michael",
+      "body": "Hebrew Miyka'el (H4317), 'who is like God'. An archangel and 'great prince' who stands guard over God's people (Daniel 10:13, 21; 12:1); he disputes with the devil over the body of Moses (Jude 9) and leads heaven's armies against the dragon (Revelation 12:7). ('Michael' is also an ordinary personal name elsewhere in the KJV.)",
+      "sources": [
+        {
+          "label": "Strong's H4317 (Miykael)",
+          "url": "https://biblehub.com/hebrew/4317.htm"
+        }
+      ]
+    },
+    {
+      "id": "p-michael-dan12-1",
+      "book": 27,
+      "chapter": 12,
+      "verse": 1,
+      "phrase": "Michael",
+      "category": "angel",
+      "title": "Michael",
+      "body": "Hebrew Miyka'el (H4317), 'who is like God'. An archangel and 'great prince' who stands guard over God's people (Daniel 10:13, 21; 12:1); he disputes with the devil over the body of Moses (Jude 9) and leads heaven's armies against the dragon (Revelation 12:7). ('Michael' is also an ordinary personal name elsewhere in the KJV.)",
+      "sources": [
+        {
+          "label": "Strong's H4317 (Miykael)",
+          "url": "https://biblehub.com/hebrew/4317.htm"
+        }
+      ]
+    },
+    {
+      "id": "p-michael-jude-9",
+      "book": 65,
+      "chapter": 1,
+      "verse": 9,
+      "phrase": "Michael",
+      "category": "angel",
+      "title": "Michael",
+      "body": "Hebrew Miyka'el (H4317), 'who is like God'. An archangel and 'great prince' who stands guard over God's people (Daniel 10:13, 21; 12:1); he disputes with the devil over the body of Moses (Jude 9) and leads heaven's armies against the dragon (Revelation 12:7). ('Michael' is also an ordinary personal name elsewhere in the KJV.)",
+      "sources": [
+        {
+          "label": "Strong's H4317 (Miykael)",
+          "url": "https://biblehub.com/hebrew/4317.htm"
+        }
+      ]
+    },
+    {
+      "id": "p-michael-rev12-7",
+      "book": 66,
+      "chapter": 12,
+      "verse": 7,
+      "phrase": "Michael",
+      "category": "angel",
+      "title": "Michael",
+      "body": "Hebrew Miyka'el (H4317), 'who is like God'. An archangel and 'great prince' who stands guard over God's people (Daniel 10:13, 21; 12:1); he disputes with the devil over the body of Moses (Jude 9) and leads heaven's armies against the dragon (Revelation 12:7). ('Michael' is also an ordinary personal name elsewhere in the KJV.)",
+      "sources": [
+        {
+          "label": "Strong's H4317 (Miykael)",
+          "url": "https://biblehub.com/hebrew/4317.htm"
+        }
+      ]
+    },
+    {
+      "id": "p-dragon-rev12-9",
+      "book": 66,
+      "chapter": 12,
+      "verse": 9,
+      "phrase": "that old serpent",
+      "category": "demon",
+      "title": "the dragon / that old serpent",
+      "body": "Revelation 12:9 draws the titles together: 'the great dragon... that old serpent, called the Devil, and Satan, which deceiveth the whole world' - linking the serpent of Eden (Genesis 3), the dragon, the Devil (diabolos), and Satan (the adversary). In the Old Testament 'dragon' often renders tannin, a sea-monster or serpent.",
+      "sources": [
+        {
+          "label": "Strong's G1228 (diabolos)",
+          "url": "https://biblehub.com/greek/1228.htm"
+        },
+        {
+          "label": "Strong's G4567 (Satanas)",
+          "url": "https://biblehub.com/greek/4567.htm"
+        },
+        {
+          "label": "Strong's H8577 (tannin)",
+          "url": "https://biblehub.com/hebrew/8577.htm"
+        }
+      ]
     }
   ]
 }

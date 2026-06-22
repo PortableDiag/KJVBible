@@ -26,14 +26,24 @@ import java.util.Map;
  */
 public final class StudyNotes {
 
+    public static final class Source {
+        public final String label;
+        public final String url;        // nullable
+
+        Source(String label, String url) {
+            this.label = label;
+            this.url = url;
+        }
+    }
+
     public static final class Note {
         public final String id;
-        public final String category;   // "archaic" | "contested"
+        public final String category;   // archaic | contested | angel | demon | being | term ...
         public final String title;
         public final String body;
-        public final List<String> sources;
+        public final List<Source> sources;
 
-        Note(String id, String category, String title, String body, List<String> sources) {
+        Note(String id, String category, String title, String body, List<Source> sources) {
             this.id = id;
             this.category = category;
             this.title = title;
@@ -111,9 +121,20 @@ public final class StudyNotes {
     }
 
     private Note parseNote(JSONObject o) throws org.json.JSONException {
-        List<String> sources = new ArrayList<>();
+        List<Source> sources = new ArrayList<>();
         JSONArray src = o.optJSONArray("sources");
-        if (src != null) for (int i = 0; i < src.length(); i++) sources.add(src.getString(i));
+        if (src != null) {
+            for (int i = 0; i < src.length(); i++) {
+                Object item = src.get(i);
+                if (item instanceof JSONObject) {
+                    JSONObject so = (JSONObject) item;
+                    String url = so.optString("url", null);
+                    sources.add(new Source(so.optString("label", url), url));
+                } else {
+                    sources.add(new Source(String.valueOf(item), null));
+                }
+            }
+        }
         return new Note(o.getString("id"), o.optString("category", ""),
                 o.optString("title", ""), o.optString("body", ""), sources);
     }

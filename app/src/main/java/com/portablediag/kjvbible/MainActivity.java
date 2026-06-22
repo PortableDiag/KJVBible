@@ -416,26 +416,45 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
         TextView sourcesLabel = content.findViewById(R.id.noteSourcesLabel);
         TextView sources = content.findViewById(R.id.noteSources);
 
-        category.setText("contested".equals(note.category)
-                ? R.string.study_contested : R.string.study_archaic);
+        category.setText(categoryLabel(note.category));
         title.setText(note.title);
         body.setText(note.body);
         if (note.sources.isEmpty()) {
             sourcesLabel.setVisibility(View.GONE);
             sources.setVisibility(View.GONE);
         } else {
-            StringBuilder sb = new StringBuilder();
-            for (String s : note.sources) {
+            android.text.SpannableStringBuilder sb = new android.text.SpannableStringBuilder();
+            for (StudyNotes.Source s : note.sources) {
                 if (sb.length() > 0) sb.append('\n');
-                sb.append("• ").append(s);
+                sb.append("• ");
+                int start = sb.length();
+                sb.append(s.label);
+                if (s.url != null && !s.url.isEmpty()) {
+                    final String url = s.url;
+                    sb.setSpan(new android.text.style.ClickableSpan() {
+                        @Override public void onClick(@NonNull View widget) {
+                            try {
+                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+                            } catch (Exception ignored) {}
+                        }
+                    }, start, sb.length(), android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                }
             }
-            sources.setText(sb.toString());
+            sources.setText(sb);
+            sources.setMovementMethod(android.text.method.LinkMovementMethod.getInstance());
         }
 
         com.google.android.material.bottomsheet.BottomSheetDialog dialog =
                 new com.google.android.material.bottomsheet.BottomSheetDialog(this);
         dialog.setContentView(content);
         dialog.show();
+    }
+
+    private String categoryLabel(String category) {
+        if ("contested".equals(category)) return getString(R.string.study_contested);
+        if ("archaic".equals(category)) return getString(R.string.study_archaic);
+        if (category == null || category.isEmpty()) return "";
+        return Character.toUpperCase(category.charAt(0)) + category.substring(1);
     }
 
     private void showShareChoice(List<Ref> refs) {
