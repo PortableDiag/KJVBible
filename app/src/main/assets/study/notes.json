@@ -214,7 +214,7 @@
       ],
       "category": "contested",
       "title": "Jew / Judah / Judea",
-      "body": "Properly a member of the tribe or kingdom of Judah; afterward applied to any Israelite of the return from captivity, and to one who holds the religion of Israel. Hebrew Yehudi (H3064), of Yehudah (Judah); Greek Ioudaios (G2453), a Judean. Being at root tribal and territorial, the word is in many places equally rendered 'Judean.' The Idumeans — Edom, the seed of Esau — were subdued by John Hyrcanus about 125 B.C. and brought into Judaism by circumcision, and the house of Herod sprang from them (Josephus). Paul marks two senses: a Jew 'outwardly,' in the flesh, and a Jew 'inwardly,' of the heart (Romans 2:28-29). In the 1611 edition the word stood 'Iewes,' I and J being then one letter; 'Jew' is the later spelling. First found at 2 Kings 16:6.",
+      "body": "Properly a member of the tribe or kingdom of Judah; afterward applied to any Israelite of the return from captivity, and to one who holds the religion of Israel. Hebrew Yehudi (H3064), of Yehudah (Judah); Greek Ioudaios (G2453), a Judean. Being at root tribal and territorial, the word is in many places equally rendered 'Judean.' The Greek hoi Ioudaioi covers a range — the people and their religion at large; the men of Judaea as against Samaritans or Galileans (John 4:9; 7:1); and in the Gospel of John often the ruling authorities at Jerusalem who sought to kill him (John 7:13; 9:22), distinct both from the multitude and from 'the Jews which believed on him' (John 8:31). The Idumeans — Edom, the seed of Esau — were subdued by John Hyrcanus about 125 B.C. and brought into Judaism by circumcision, and the house of Herod sprang from them (Josephus). Paul marks two senses: a Jew 'outwardly,' in the flesh, and a Jew 'inwardly,' of the heart (Romans 2:28-29). In the 1611 edition the word stood 'Iewes,' I and J being then one letter; 'Jew' is the later spelling. First found at 2 Kings 16:6.",
       "sources": [
         {
           "label": "Strong's H3064 (Yehudi)",
@@ -1456,6 +1456,183 @@
         "John 3",
         "John 19:39"
       ]
+    },
+    {
+      "id": "w-pharisee",
+      "match": [
+        "pharisee",
+        "pharisees",
+        "pharisees'"
+      ],
+      "category": "term",
+      "title": "Pharisee",
+      "body": "Greek Pharisaios (G5330), from the Aramaic for 'separated.' A sect of the Jews, holding the written law together with the tradition of the elders (Mark 7:3; Matthew 15:2), and confessing the resurrection, angels, and spirits (Acts 23:8). Strict in tithing and washings. Distinguished in the Gospels from the Sadducees, from the scribes, and from the people. Paul was brought up 'at the feet of Gamaliel' (Acts 22:3) and called himself 'a Pharisee, the son of a Pharisee' (Acts 23:6; Philippians 3:5). Josephus reckons them the most precise of the sects (Wars 2.162-163).",
+      "sources": [
+        {
+          "label": "Strong's G5330 (Pharisaios)",
+          "url": "https://biblehub.com/greek/5330.htm"
+        },
+        "Mark 7:3",
+        "Matthew 15:2",
+        "Acts 23:8",
+        "Acts 22:3",
+        "Acts 23:6",
+        "Philippians 3:5",
+        "Josephus, Wars 2.162-163"
+      ]
+    },
+    {
+      "id": "w-sadducee",
+      "match": [
+        "sadducee",
+        "sadducees",
+        "sadducees'"
+      ],
+      "category": "term",
+      "title": "Sadducee",
+      "body": "Greek Saddoukaios (G4523). A sect of the Jews, drawn from the priestly and ruling families that held the temple authority. They received the written law and denied the resurrection, angels, and spirits (Matthew 22:23; Acts 23:8). With the priests and the captain of the temple they laid hands on the apostles for preaching the resurrection (Acts 4:1-3; 5:17). Opposed to the Pharisees (Acts 23:6-8). Josephus, Antiquities 18.16-17.",
+      "sources": [
+        {
+          "label": "Strong's G4523 (Saddoukaios)",
+          "url": "https://biblehub.com/greek/4523.htm"
+        },
+        "Matthew 22:23",
+        "Acts 23:8",
+        "Acts 4:1-3",
+        "Acts 23:6",
+        "Josephus, Antiquities 18.16-17"
+      ]
+    },
+    {
+      "id": "w-samaritan",
+      "match": [
+        "samaritan",
+        "samaritans",
+        "samaritans'"
+      ],
+      "category": "term",
+      "title": "Samaritan",
+      "body": "Greek Samareites (G4541); an inhabitant of Samaria. When Assyria carried away the northern kingdom, the king of Assyria brought men from Babylon, Cuthah, and other places and settled them in the cities of Samaria (2 Kings 17:24-41), where they joined the fear of the LORD to their own gods. The Samaritans held the five books of Moses and worshipped at Mount Gerizim, not Jerusalem (John 4:20). 'The Jews have no dealings with the Samaritans' (John 4:9).",
+      "sources": [
+        {
+          "label": "Strong's G4541 (Samareites)",
+          "url": "https://biblehub.com/greek/4541.htm"
+        },
+        "2 Kings 17:24-41",
+        "John 4:20",
+        "John 4:9"
+      ]
+    },
+    {
+      "id": "w-gentile",
+      "match": [
+        "gentile",
+        "gentiles"
+      ],
+      "category": "term",
+      "title": "Gentile",
+      "body": "Hebrew goy (H1471) and Greek ethnos (G1484), both meaning 'nation' or 'people.' The KJV renders the same words 'nation(s),' 'heathen,' and 'Gentiles' according to the place; 'Gentiles' marks the nations other than Israel. 'The isles of the Gentiles' (Genesis 10:5); Paul, 'the apostle of the Gentiles' (Romans 11:13). The Greek ta ethne answers to the Hebrew goyim.",
+      "sources": [
+        {
+          "label": "Strong's H1471 (goy)",
+          "url": "https://biblehub.com/hebrew/1471.htm"
+        },
+        {
+          "label": "Strong's G1484 (ethnos)",
+          "url": "https://biblehub.com/greek/1484.htm"
+        },
+        "Genesis 10:5",
+        "Romans 11:13"
+      ]
+    },
+    {
+      "id": "w-zion",
+      "match": [
+        "zion",
+        "sion"
+      ],
+      "category": "term",
+      "title": "Zion / Sion",
+      "body": "Hebrew Tsiyyon (H6726); Greek Sion (G4622). The hill and stronghold of the Jebusites that David took — 'David took the strong hold of Zion: the same is the city of David' (2 Samuel 5:7). The name is used for that fortress, for the temple mount, for Jerusalem itself, and for her people (Psalm 137:1; Isaiah 1:27). 'Sion' is the Greek-form spelling the KJV keeps in some places.",
+      "sources": [
+        {
+          "label": "Strong's H6726 (Tsiyyon)",
+          "url": "https://biblehub.com/hebrew/6726.htm"
+        },
+        {
+          "label": "Strong's G4622 (Sion)",
+          "url": "https://biblehub.com/greek/4622.htm"
+        },
+        "2 Samuel 5:7",
+        "Psalm 137:1"
+      ]
+    },
+    {
+      "id": "w-circumcision",
+      "match": [
+        "circumcision",
+        "circumcise",
+        "circumcised"
+      ],
+      "category": "term",
+      "title": "Circumcision",
+      "body": "Hebrew mul (H4135), to cut off; Greek peritome (G4061). The token of the covenant with Abraham — 'ye shall circumcise the flesh of your foreskin; and it shall be a token of the covenant' (Genesis 17:10-11), upon every male child the eighth day. Scripture also names it inwardly: 'Circumcise therefore the foreskin of your heart' (Deuteronomy 10:16; Jeremiah 4:4), and Paul, 'circumcision is that of the heart, in the spirit, and not in the letter' (Romans 2:29).",
+      "sources": [
+        {
+          "label": "Strong's H4135 (mul)",
+          "url": "https://biblehub.com/hebrew/4135.htm"
+        },
+        {
+          "label": "Strong's G4061 (peritome)",
+          "url": "https://biblehub.com/greek/4061.htm"
+        },
+        "Genesis 17:10-11",
+        "Deuteronomy 10:16",
+        "Jeremiah 4:4",
+        "Romans 2:29"
+      ]
+    },
+    {
+      "id": "w-israel",
+      "match": [
+        "israel",
+        "israelite",
+        "israelites"
+      ],
+      "category": "term",
+      "title": "Israel",
+      "body": "Hebrew Yisra'el (H3478); Greek Israel (G2474). The name given Jacob at Peniel — 'Thy name shall be called no more Jacob, but Israel: for as a prince hast thou power with God' (Genesis 32:28). It is borne after him by his descendants, the twelve tribes sprung from his sons, and the nation they formed; after the kingdom divided, 'Israel' is also the northern tribes as against Judah (1 Kings 12:20). Paul distinguishes Israel after the flesh from a remnant — 'they are not all Israel, which are of Israel' (Romans 9:6).",
+      "sources": [
+        {
+          "label": "Strong's H3478 (Yisra'el)",
+          "url": "https://biblehub.com/hebrew/3478.htm"
+        },
+        {
+          "label": "Strong's G2474 (Israel)",
+          "url": "https://biblehub.com/greek/2474.htm"
+        },
+        "Genesis 32:28",
+        "1 Kings 12:20",
+        "Romans 9:6"
+      ]
+    },
+    {
+      "id": "w-peculiar",
+      "match": [
+        "peculiar"
+      ],
+      "category": "term",
+      "title": "Peculiar / chosen people",
+      "body": "Hebrew segullah (H5459), a treasured possession, valued property set apart as one's own. The KJV's 'peculiar' carries the older sense of 'one's own' (Latin peculium), not 'strange.' 'Ye shall be a peculiar treasure unto me above all people' (Exodus 19:5); 'the LORD thy God hath chosen thee to be a special people' (Deuteronomy 7:6; 14:2; Psalm 135:4). In the New Testament the words pass to the church — 'a peculiar people' (Titus 2:14; 1 Peter 2:9).",
+      "sources": [
+        {
+          "label": "Strong's H5459 (segullah)",
+          "url": "https://biblehub.com/hebrew/5459.htm"
+        },
+        "Exodus 19:5",
+        "Deuteronomy 7:6",
+        "1 Peter 2:9"
+      ]
     }
   ],
   "passages": [
@@ -1711,6 +1888,45 @@
           "label": "Strong's H8577 (tannin)",
           "url": "https://biblehub.com/hebrew/8577.htm"
         }
+      ]
+    },
+    {
+      "id": "p-john4-9",
+      "book": 43,
+      "chapter": 4,
+      "verse": 9,
+      "phrase": "the Jews have no dealings with the Samaritans",
+      "category": "term",
+      "title": "“the Jews have no dealings with the Samaritans”",
+      "body": "Ioudaios (G2453) here stands over against 'Samaritan' — the men of Judaea against the men of Samaria. At root the word is territorial, a Judean. The breach was of worship: the Samaritans kept Mount Gerizim, the Judeans the temple at Jerusalem (John 4:20); their people were the mixed population settled in the north after the Assyrian captivity (2 Kings 17:24-41).",
+      "sources": [
+        {
+          "label": "Strong's G2453 (Ioudaios)",
+          "url": "https://biblehub.com/greek/2453.htm"
+        },
+        "John 4:20",
+        "2 Kings 17:24-41"
+      ]
+    },
+    {
+      "id": "p-matt23-2",
+      "book": 40,
+      "chapter": 23,
+      "verse": 2,
+      "phrase": "The scribes and the Pharisees sit in Moses' seat",
+      "category": "term",
+      "title": "“scribes and Pharisees”",
+      "body": "Scribes (grammateus, G1122) and Pharisees (G5330) — the doctors of the law and the sect of the separated, named by their office and party, not 'the Jews' at large. 'Moses' seat' is the seat of teaching the law; the people are bidden to do what these teach from it, 'but not after their works' (23:3). The woes that follow (23:13-36) fall on these teachers by name.",
+      "sources": [
+        {
+          "label": "Strong's G1122 (grammateus)",
+          "url": "https://biblehub.com/greek/1122.htm"
+        },
+        {
+          "label": "Strong's G5330 (Pharisaios)",
+          "url": "https://biblehub.com/greek/5330.htm"
+        },
+        "Matthew 23:3"
       ]
     }
   ]
