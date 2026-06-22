@@ -28,9 +28,6 @@ All notable changes to this project are documented here. The format is based on
   - ~50 human figures — patriarchs, prophets, kings, and apostles — with disambiguation
     notes for shared names (Mary, John, James, Judas, Simon, Herod, Joseph, Saul, Philip,
     Lazarus).
-  - The word "Jew": etymology (Judah/Judea), the Judean/Judahite translation debate, the
-    Idumea/Hyrcanus background, and the outward/inward distinction (Romans 2:28-29), plus
-    verse notes for Revelation 2:9, 3:9, and John 8:44.
 - **Multi-word phrase matching** for study notes (e.g. "angel of the LORD").
 - **Clickable sources** — Strong's references link to their BibleHub lexicon page.
 
