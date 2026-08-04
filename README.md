@@ -29,10 +29,16 @@ network access — the entire KJV text is bundled in the app.
 - **Full-text search** — search the entire Bible quickly, with matches highlighted.
 - **Adjustable font size** — a comfortable default with a simple slider (80–200%).
 - **Study mode** (off by default) — subtly highlights archaic words that have shifted
-  meaning, contested/altered terms, named beings (angels, demons, entities), and key people;
+  meaning, contested/altered terms, named beings (angels, demons, entities), key people,
+  the first-century sects, and terms worth a definition (Gentile, Zion, circumcision);
   tap a highlight for a neutral, sourced explanation (underlying Hebrew/Greek, history,
-  manuscript notes) with **clickable sources** (Strong's → BibleHub). Notes live in
+  manuscript notes) with **clickable sources** (Strong's → BibleHub, and scripture
+  references that open the passage in the reader). Notes live in
   `app/src/main/assets/study/notes.json` and are easy to extend by hand.
+
+  Notes are written in a plain, definition-style voice — the word, its etymology, the
+  history, and the sources stated directly, without hedging and without interpretive
+  verdicts in either direction. Every claim is linked so it can be checked.
 
 No ads. No tracking. No account. No network permission.
 
