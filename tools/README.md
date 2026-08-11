@@ -36,7 +36,35 @@ in gold) from the **MACULA Quotation and Speaker Data**
 SPEAKER_TSV=Clear-Aligned-Projections.tsv python3 gen_divine_speech.py
 ```
 
+## `fix_gold_intros.py` — trim narrative introductions from the gold spans
+
+**Run this after `gen_divine_speech.py`, every time.** The generator gives up on the opening
+verse of a speech when the introducing verb falls late in the verse, and leaves the whole
+verse gold — so text like *"And the LORD said unto Moses,"* is coloured as though God spoke
+it. This pass removes the lead-in and starts the gold at the speech itself.
+
+It is deliberately conservative, and refuses any lead-in that is a subordinate or relative
+clause, is spoken in the first person, or does not pair a divine speaker with a speech verb —
+because a circumstantial clause *inside* a speech (Jeremiah 3:9, Ezekiel 16:23, 2 Chronicles
+7:22) legitimately begins at offset 0 and must not be trimmed. Re-running is safe: it is
+idempotent, and it never moves the end of a span.
+
+```bash
+python3 fix_gold_intros.py            # dry run — prints what it would trim and what it rejects
+python3 fix_gold_intros.py --apply    # write
+```
+
 ## Study notes
 
 `app/src/main/assets/study/notes.json` (archaic / contested-term annotations) is hand-curated
 with cited sources — there is no generator for it.
+
+`check_notes.py` validates it against the bundled text and the editorial rules: ids unique,
+every note has a title, a body and at least one source, every passage phrase actually occurs
+in its verse, no hedging language, no Wikipedia sources, and every note has at least one
+anchor that really matches the text. It mirrors `StudyNotes.find()`, including the
+case-sensitive matching used for the small-capital divine name.
+
+```bash
+python3 check_notes.py                # exits non-zero on failure; warns on dead synonyms
+```

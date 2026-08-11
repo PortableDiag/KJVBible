@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "_comment": "Study notes. 'words' apply to every whole-word occurrence app-wide (case-insensitive). 'passages' apply to a specific verse and highlight a phrase within it. Keep notes neutral and evidentiary; cite sources. category: archaic | contested.",
+  "_comment": "Study notes. 'words' apply to every whole-word occurrence app-wide (case-insensitive unless the note sets \"caseSensitive\": true, which is used for the small-capital divine name LORD/GOD). 'passages' apply to a specific verse and highlight a phrase within it. Keep notes neutral and evidentiary; cite sources. category: archaic | contested | term | being | angel | demon | person.",
   "words": [
     {
       "id": "w-wot-wist",
@@ -116,12 +116,13 @@
       ],
       "category": "contested",
       "title": "charity = love (agape)",
-      "body": "'Charity' renders Greek agape (G26) — the very same word translated 'love' elsewhere (e.g. John 3:16). The KJV uses 'charity' mainly in 1 Corinthians 13; the underlying word is identical to 'love'.",
+      "body": "'Charity' renders Greek agape (G26) — the very same word translated 'love' elsewhere (e.g. John 3:16). The KJV uses 'charity' mainly in 1 Corinthians 13; the underlying word is identical to 'love'. Rotherham renders agape 'love' throughout, including 1 Corinthians 13.",
       "sources": [
         {
           "label": "Strong's G26",
           "url": "https://biblehub.com/greek/26.htm"
-        }
+        },
+        "J. B. Rotherham, The Emphasised Bible (1902), Introduction"
       ]
     },
     {
@@ -132,13 +133,14 @@
       ],
       "category": "contested",
       "title": "unicorn = wild ox (re'em)",
-      "body": "Translates Hebrew re'em (H7214), a wild, untamable horned animal widely identified as the aurochs (wild ox). The mythical single-horned sense came later via the Greek Septuagint's 'monokeros' and the Latin 'unicornis'. E.g. Numbers 23:22; Job 39:9-10.",
+      "body": "Translates Hebrew re'em (H7214), a wild, untamable horned animal identified in the lexicons as the aurochs (wild ox). The mythical single-horned sense came later via the Greek Septuagint's 'monokeros' and the Latin 'unicornis'. E.g. Numbers 23:22; Job 39:9-10.",
       "sources": [
         {
           "label": "Strong's H7214",
           "url": "https://biblehub.com/hebrew/7214.htm"
         },
-        "Brown-Driver-Briggs Lexicon"
+        "Brown-Driver-Briggs Lexicon",
+        "Gesenius, Hebrew and Chaldee Lexicon, s.v. re'em"
       ]
     },
     {
@@ -148,7 +150,7 @@
       ],
       "category": "contested",
       "title": "hell (several distinct words)",
-      "body": "The KJV uses one word, 'hell', for several different originals: Hebrew Sheol (H7585, the grave/underworld), Greek Hades (G86), Gehenna (G1067, the valley of Hinnom), and once the verb tartaroo (G5020, 2 Peter 2:4). These are distinct concepts in the source texts.",
+      "body": "The KJV uses one word, 'hell', for several different originals: Hebrew Sheol (H7585, the grave/underworld), Greek Hades (G86), Gehenna (G1067, the valley of Hinnom), and once the verb tartaroo (G5020, 2 Peter 2:4). These are distinct concepts in the source texts. Rotherham does not use the word 'hell'. He carries the originals over untranslated — hades for Sheol and Hades, and Gehenna for Gehenna — so the distinctions in the source texts stay visible in the English.",
       "sources": [
         {
           "label": "Strong's H7585",
@@ -165,7 +167,8 @@
         {
           "label": "Strong's G5020",
           "url": "https://biblehub.com/greek/5020.htm"
-        }
+        },
+        "J. B. Rotherham, The Emphasised Bible (1902), Introduction"
       ]
     },
     {
@@ -178,12 +181,13 @@
       ],
       "category": "contested",
       "title": "baptize (transliteration)",
-      "body": "'Baptize' transliterates rather than translates Greek baptizo (G907), 'to immerse, dip, submerge.' The English word carries the Greek sound rather than its plain meaning.",
+      "body": "'Baptize' transliterates rather than translates Greek baptizo (G907), 'to immerse, dip, submerge.' The English word carries the Greek sound rather than its plain meaning. Rotherham renders baptizo 'immerse' and baptisma 'immersion'.",
       "sources": [
         {
           "label": "Strong's G907",
           "url": "https://biblehub.com/greek/907.htm"
-        }
+        },
+        "J. B. Rotherham, The Emphasised Bible (1902), Introduction"
       ]
     },
     {
@@ -194,12 +198,13 @@
       ],
       "category": "contested",
       "title": "church = assembly (ekklesia)",
-      "body": "Translates Greek ekklesia (G1577), 'assembly, congregation, the called-out'. The same word is used of an ordinary civic assembly in Acts 19:39, 41.",
+      "body": "Translates Greek ekklesia (G1577), 'assembly, congregation, the called-out'. The same word is used of an ordinary civic assembly in Acts 19:39, 41. Rotherham renders ekklesia 'assembly'.",
       "sources": [
         {
           "label": "Strong's G1577",
           "url": "https://biblehub.com/greek/1577.htm"
-        }
+        },
+        "J. B. Rotherham, The Emphasised Bible (1902), Introduction"
       ]
     },
     {
@@ -1633,6 +1638,149 @@
         "Deuteronomy 7:6",
         "1 Peter 2:9"
       ]
+    },
+    {
+      "id": "w-divine-name-lord",
+      "match": [
+        "LORD",
+        "LORD'S"
+      ],
+      "caseSensitive": true,
+      "category": "contested",
+      "title": "LORD — the divine name (the Tetragrammaton)",
+      "body": "Where this text prints LORD in capitals the Hebrew reads יהוה — the four consonants Yod, He, Waw, He, called the Tetragrammaton. It stands 6,828 times in the Masoretic Hebrew text. In this edition the small-capital forms appear 6,569 times as LORD and 310 times as GOD.\n\nThe consonants were not removed. They stand in the Hebrew manuscripts. What changed is the reading and the rendering. The Masoretes pointed the four letters with the vowels of Adonai, 'my Lord', directing the reader to pronounce Adonai in its place — the qere perpetuum, a standing substitution carried in the vowel points and not in the consonantal text. The Greek Old Testament and the Latin Vulgate took that substitution into translation as kyrios and Dominus. Tyndale, the Geneva Bible and the King James Version followed with 'the LORD', set in small capitals to mark where the Name stands beneath.\n\nThe Greek substitution can be dated from the manuscripts. The older copies do not read kyrios. Papyrus Fouad 266 writes יהוה in square Hebrew letters inside the Greek text; the Nahal Hever Minor Prophets scroll writes it in paleo-Hebrew characters; 4QLXXLev-a transliterates it ΙΑΩ. Jerome records that the Name was still written in ancient letters in Greek volumes of his day, and that readers who could not read those letters pronounced the four characters ΠΙΠΙ, 'pipi', taking the Hebrew for Greek.\n\nRotherham's Emphasised Bible — Joseph Bryant Rotherham, complete edition 1902, made from Ginsburg's Massoretico-critical Hebrew text and the Greek of Westcott and Hort, with accent marks to show where the original places emphasis — prints Yahweh throughout in place of LORD. The American Standard Version of 1901 prints Jehovah. The King James Version keeps LORD, and prints JEHOVAH in four verses.",
+      "sources": [
+        {
+          "label": "Strong's H3068 (YHWH)",
+          "url": "https://biblehub.com/hebrew/3068.htm"
+        },
+        {
+          "label": "Strong's H136 (Adonai)",
+          "url": "https://biblehub.com/hebrew/136.htm"
+        },
+        "Exodus 3:15",
+        "Exodus 6:3",
+        "Psalm 83:18",
+        "Jerome, Epistle 25, to Marcella",
+        "Gesenius, Hebrew and Chaldee Lexicon, s.v. יהוה",
+        "J. B. Rotherham, The Emphasised Bible (1902), Introduction"
+      ]
+    },
+    {
+      "id": "w-divine-name-god-caps",
+      "match": [
+        "GOD",
+        "Lord GOD"
+      ],
+      "caseSensitive": true,
+      "category": "contested",
+      "title": "GOD in capitals — the Name after Adonai",
+      "body": "Where this text prints GOD in capitals the Hebrew reads יהוה, not Elohim. The form is used where the Tetragrammaton follows Adonai, 'Lord': rendering both by the usual convention would give 'Lord LORD', so the second word is set as GOD instead. Genesis 15:2, 'Lord GOD, what wilt thou give me', is Adonai YHWH; so is the formula 'Thus saith the Lord GOD' that runs through Ezekiel and Amos. The capitals appear 310 times in this edition, 302 of them in the phrase 'Lord GOD'.\n\nWhere the text prints God in ordinary type the Hebrew is Elohim, a different word. Rotherham renders the pair 'My Lord Yahweh'.",
+      "sources": [
+        {
+          "label": "Strong's H3068 (YHWH)",
+          "url": "https://biblehub.com/hebrew/3068.htm"
+        },
+        {
+          "label": "Strong's H136 (Adonai)",
+          "url": "https://biblehub.com/hebrew/136.htm"
+        },
+        {
+          "label": "Strong's H430 (Elohim)",
+          "url": "https://biblehub.com/hebrew/430.htm"
+        },
+        "Genesis 15:2",
+        "Ezekiel 2:4",
+        "Amos 1:8",
+        "J. B. Rotherham, The Emphasised Bible (1902), Introduction"
+      ]
+    },
+    {
+      "id": "w-jehovah",
+      "match": [
+        "Jehovah"
+      ],
+      "category": "contested",
+      "title": "JEHOVAH — the form and where it came from",
+      "body": "Jehovah is the Tetragrammaton read with the vowel points the Masoretes attached to it. The consonants YHWH were pointed with the vowels of Adonai to direct the reader to say Adonai in its place; read as though those points belonged to the consonants, the result is Y'howah, latinised Jehovah. The form entered Latin scholarship through Petrus Galatinus in 1518 and English through Tyndale's Pentateuch of 1530.\n\nThe King James Version prints JEHOVAH in four verses — Exodus 6:3, Psalm 83:18, Isaiah 12:2 and Isaiah 26:4 — and keeps it in three compound names: Jehovah-jireh, Jehovah-nissi and Jehovah-shalom. In every other place the same four consonants are rendered LORD.\n\nRotherham prints Yahweh, on the ground that the vowels of the received form belong to Adonai and not to the Name. The American Standard Version of 1901 printed Jehovah throughout.",
+      "sources": [
+        {
+          "label": "Strong's H3068 (YHWH)",
+          "url": "https://biblehub.com/hebrew/3068.htm"
+        },
+        {
+          "label": "Strong's H136 (Adonai)",
+          "url": "https://biblehub.com/hebrew/136.htm"
+        },
+        "Exodus 6:3",
+        "Psalm 83:18",
+        "Isaiah 12:2",
+        "Isaiah 26:4",
+        "William Tyndale, The Pentateuch (1530)",
+        "Petrus Galatinus, De Arcanis Catholicae Veritatis (1518)",
+        "J. B. Rotherham, The Emphasised Bible (1902), Introduction"
+      ]
+    },
+    {
+      "id": "w-jehovah-compounds",
+      "match": [
+        "Jehovah–jireh",
+        "Jehovah–nissi",
+        "Jehovah–shalom"
+      ],
+      "category": "term",
+      "title": "Jehovah-jireh, Jehovah-nissi, Jehovah-shalom",
+      "body": "Three compound names in which the King James Version keeps the Name rather than rendering it LORD. Jehovah-jireh, 'the LORD will see' or 'will provide', named by Abraham at the mount after the ram was found. Jehovah-nissi, 'the LORD my banner', the altar Moses built after the battle with Amalek. Jehovah-shalom, 'the LORD is peace', the altar Gideon built at Ophrah. The first element in each is the Tetragrammaton. Rotherham renders them Yahweh-jireh, Yahweh-nissi and Yahweh-shalom.",
+      "sources": [
+        {
+          "label": "Strong's H3068 (YHWH)",
+          "url": "https://biblehub.com/hebrew/3068.htm"
+        },
+        {
+          "label": "Strong's H7200 (ra'ah, to see)",
+          "url": "https://biblehub.com/hebrew/7200.htm"
+        },
+        {
+          "label": "Strong's H5251 (nes, banner)",
+          "url": "https://biblehub.com/hebrew/5251.htm"
+        },
+        {
+          "label": "Strong's H7965 (shalom, peace)",
+          "url": "https://biblehub.com/hebrew/7965.htm"
+        },
+        "Genesis 22:14",
+        "Exodus 17:15",
+        "Judges 6:24"
+      ]
+    },
+    {
+      "id": "w-age-abiding",
+      "match": [
+        "everlasting",
+        "eternal"
+      ],
+      "category": "contested",
+      "title": "everlasting, eternal (olam, aion, aionios)",
+      "body": "'Everlasting' and 'eternal' render Hebrew olam and Greek aion with its adjective aionios. Olam carries the sense of long duration, of time out of sight in either direction: it is used of the ancient hills at Genesis 49:26, of a bondservant's term of service at Exodus 21:6, and of the Aaronic priesthood at Exodus 40:15. Aion is the word for an age, and aionios its adjective; the King James Version renders the same Greek adjective 'everlasting' and 'eternal' within a single passage at Matthew 25:41 and 25:46.\n\nRotherham renders the family 'age-abiding', and aionas ton aionon 'ages of ages', keeping the root sense of aion in the English.",
+      "sources": [
+        {
+          "label": "Strong's H5769 (olam)",
+          "url": "https://biblehub.com/hebrew/5769.htm"
+        },
+        {
+          "label": "Strong's G165 (aion)",
+          "url": "https://biblehub.com/greek/165.htm"
+        },
+        {
+          "label": "Strong's G166 (aionios)",
+          "url": "https://biblehub.com/greek/166.htm"
+        },
+        "Genesis 49:26",
+        "Exodus 21:6",
+        "Exodus 40:15",
+        "Matthew 25:46",
+        "J. B. Rotherham, The Emphasised Bible (1902), Introduction"
+      ]
     }
   ],
   "passages": [
@@ -1696,13 +1844,14 @@
       "phrase": "Easter",
       "category": "contested",
       "title": "Easter / Passover",
-      "body": "The underlying Greek is pascha (G3957), the ordinary word for 'Passover', which the KJV translates 'Passover' in its 28 other occurrences. Only here is it rendered 'Easter'. Tyndale's 1526 New Testament had 'ester' here.",
+      "body": "The underlying Greek is pascha (G3957), the ordinary word for 'Passover', which the KJV translates 'Passover' in its 28 other occurrences. Only here is it rendered 'Easter'. Tyndale's 1526 New Testament had 'ester' here. Rotherham reads 'the passover'.",
       "sources": [
         {
           "label": "Strong's G3957",
           "url": "https://biblehub.com/greek/3957.htm"
         },
-        "Tyndale New Testament, 1526"
+        "Tyndale New Testament, 1526",
+        "J. B. Rotherham, The Emphasised Bible (1902), Introduction"
       ]
     },
     {
@@ -1713,13 +1862,14 @@
       "phrase": "Lucifer",
       "category": "contested",
       "title": "Lucifer",
-      "body": "Hebrew helel (H1966), 'shining one / morning star'. 'Lucifer' is the Latin Vulgate's word for the morning star (light-bearer); it is a description, not a proper name. The passage is an oracle against the king of Babylon (Isaiah 14:4).",
+      "body": "Hebrew helel (H1966), 'shining one / morning star'. 'Lucifer' is the Latin Vulgate's word for the morning star (light-bearer); it is a description, not a proper name. The passage is an oracle against the king of Babylon (Isaiah 14:4). Rotherham reads 'Shining One — Son of the Dawn'.",
       "sources": [
         {
           "label": "Strong's H1966",
           "url": "https://biblehub.com/hebrew/1966.htm"
         },
-        "Latin Vulgate"
+        "Latin Vulgate",
+        "J. B. Rotherham, The Emphasised Bible (1902), Introduction"
       ]
     },
     {
@@ -1927,6 +2077,52 @@
           "url": "https://biblehub.com/greek/5330.htm"
         },
         "Matthew 23:3"
+      ]
+    },
+    {
+      "id": "p-jehovah-exod6-3",
+      "book": 2,
+      "chapter": 6,
+      "verse": 3,
+      "phrase": "by my name JEHOVAH was I not known to them",
+      "category": "contested",
+      "title": "Exodus 6:3 — 'by my name JEHOVAH was I not known'",
+      "body": "The verse sets the Name against El Shaddai, 'God Almighty', the name by which the patriarchs are addressed in Genesis. The Tetragrammaton itself appears well before this point in the text: Genesis 4:26 has men beginning to call upon the name of the LORD, and Abraham names the mount Jehovah-jireh at Genesis 22:14. The Hebrew verb here is yada, 'to know', which covers knowing by experience and acquaintance as well as knowing a name.\n\nThis is one of the four verses where the King James Version prints the Name instead of LORD. Rotherham reads: 'but by my name Yahweh was I not made known to them.'",
+      "sources": [
+        {
+          "label": "Strong's H3068 (YHWH)",
+          "url": "https://biblehub.com/hebrew/3068.htm"
+        },
+        {
+          "label": "Strong's H7706 (Shaddai)",
+          "url": "https://biblehub.com/hebrew/7706.htm"
+        },
+        {
+          "label": "Strong's H3045 (yada, to know)",
+          "url": "https://biblehub.com/hebrew/3045.htm"
+        },
+        "Genesis 4:26",
+        "Genesis 22:14",
+        "J. B. Rotherham, The Emphasised Bible (1902), Introduction"
+      ]
+    },
+    {
+      "id": "p-jehovah-ps83-18",
+      "book": 19,
+      "chapter": 83,
+      "verse": 18,
+      "phrase": "whose name alone is JEHOVAH",
+      "category": "contested",
+      "title": "Psalm 83:18 — 'whose name alone is JEHOVAH'",
+      "body": "One of the four verses in which the King James Version prints the Name rather than LORD. The Hebrew is the Tetragrammaton, the same four consonants rendered LORD in the other 6,569 places. Rotherham reads: 'That they may know that, thou, whose name alone is Yahweh, art Most High over all the earth.'",
+      "sources": [
+        {
+          "label": "Strong's H3068 (YHWH)",
+          "url": "https://biblehub.com/hebrew/3068.htm"
+        },
+        "Exodus 6:3",
+        "Isaiah 12:2",
+        "J. B. Rotherham, The Emphasised Bible (1902), Introduction"
       ]
     }
   ]

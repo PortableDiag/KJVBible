@@ -22,6 +22,11 @@ import java.util.Map;
  *  - "words"    : a whole-word match that applies everywhere (e.g. archaic words).
  *  - "passages" : a phrase highlighted only in a specific verse (e.g. contested terms).
  *
+ * Matching is case-insensitive unless a note sets "caseSensitive": true. That flag exists
+ * for the divine name: this text upper-cases the small-capital forms, so "LORD" and "GOD"
+ * stand for the Tetragrammaton while "Lord" and "God" render Adonai and Elohim. Only an
+ * exact-case match can tell them apart.
+ *
  * Notes are intended to be neutral and evidentiary, with cited sources.
  */
 public final class StudyNotes {
@@ -76,6 +81,8 @@ public final class StudyNotes {
     private final Map<String, Note> byId = new HashMap<>();
     private final Map<String, String> wordToNote = new HashMap<>();        // lowercased word -> note id
     private final List<String[]> globalPhrases = new ArrayList<>();        // {phraseLower, noteId}
+    private final Map<String, String> wordToNoteCase = new HashMap<>();    // exact-case word -> note id
+    private final List<String[]> globalPhrasesCase = new ArrayList<>();    // {phrase, noteId}, exact case
     private final Map<Long, List<Passage>> passagesByRef = new HashMap<>();
 
     private StudyNotes(Context ctx) {
@@ -97,13 +104,15 @@ public final class StudyNotes {
                     JSONObject o = words.getJSONObject(i);
                     Note note = parseNote(o);
                     byId.put(note.id, note);
+                    boolean cs = o.optBoolean("caseSensitive", false);
                     JSONArray match = o.getJSONArray("match");
                     for (int j = 0; j < match.length(); j++) {
-                        String m = match.getString(j).toLowerCase(Locale.US);
-                        if (m.indexOf(' ') >= 0) {
-                            globalPhrases.add(new String[]{m, note.id});  // multi-word phrase
-                        } else {
-                            wordToNote.put(m, note.id);                   // single whole word
+                        String raw = match.getString(j);
+                        String m = cs ? raw : raw.toLowerCase(Locale.US);
+                        if (isPhrase(m)) {                                // phrase / hyphenated
+                            (cs ? globalPhrasesCase : globalPhrases).add(new String[]{m, note.id});
+                        } else {                                          // single whole word
+                            (cs ? wordToNoteCase : wordToNote).put(m, note.id);
                         }
                     }
                 }
@@ -180,16 +189,28 @@ public final class StudyNotes {
             }
         }
 
-        // Whole-word matches.
-        if (!wordToNote.isEmpty()) {
+        // Case-sensitive phrases (e.g. "Lord GOD" — the small-capital divine name).
+        for (String[] gp : globalPhrasesCase) {
+            String phrase = gp[0];
+            int idx = plain.indexOf(phrase);
+            while (idx >= 0) {
+                spans.add(new Span(idx, idx + phrase.length(), gp[1]));
+                idx = plain.indexOf(phrase, idx + phrase.length());
+            }
+        }
+
+        // Whole-word matches. An exact-case note wins over a lowercased one for the same
+        // token, so "LORD" (the Tetragrammaton) and "Lord" (Adonai) can carry separate notes.
+        if (!wordToNote.isEmpty() || !wordToNoteCase.isEmpty()) {
             int n = plain.length(), i = 0;
             while (i < n) {
                 char c = plain.charAt(i);
                 if (isWordChar(c)) {
                     int j = i + 1;
                     while (j < n && isWordChar(plain.charAt(j))) j++;
-                    String token = plain.substring(i, j).toLowerCase(Locale.US);
-                    String noteId = wordToNote.get(token);
+                    String token = plain.substring(i, j);
+                    String noteId = wordToNoteCase.get(token);
+                    if (noteId == null) noteId = wordToNote.get(token.toLowerCase(Locale.US));
                     if (noteId != null) spans.add(new Span(i, j, noteId));
                     i = j;
                 } else {
@@ -216,6 +237,18 @@ public final class StudyNotes {
 
     private static boolean isWordChar(char c) {
         return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || c == '\'';
+    }
+
+    /**
+     * A match is a phrase when it contains anything the word tokenizer would split on —
+     * a space, or a dash such as the en dash in "Jehovah-jireh". Treating those as single
+     * words would make them unmatchable, since no token ever spans the separator.
+     */
+    private static boolean isPhrase(String s) {
+        for (int i = 0; i < s.length(); i++) {
+            if (!isWordChar(s.charAt(i))) return true;
+        }
+        return false;
     }
 
     private String readAsset(Context ctx, String path) throws Exception {

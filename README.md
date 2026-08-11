@@ -36,6 +36,17 @@ network access — the entire KJV text is bundled in the app.
   references that open the passage in the reader). Notes live in
   `app/src/main/assets/study/notes.json` and are easy to extend by hand.
 
+  **The divine name** is covered where it appears: tapping **LORD** gives the Tetragrammaton
+  beneath it, the Masoretic pointing that directed the reader to say *Adonai*, and how that
+  substitution passed into Greek, Latin and English; **GOD** in small capitals, **JEHOVAH**
+  and the compound names each have their own note. Because this text upper-cases the
+  small-capital forms, matching can be made case-sensitive (`"caseSensitive": true`), which is
+  what lets **LORD** (the Name) and **Lord** (*Adonai*) carry different notes.
+
+  Where **Rotherham's Emphasised Bible** (1902) renders a word differently from the King
+  James Version, the note says so — *Yahweh* for LORD, *assembly* for church, *immerse* for
+  baptize, *age-abiding* for everlasting, and the untranslated *hades* / *Gehenna* for "hell".
+
   Notes are written in a plain, definition-style voice — the word, its etymology, the
   history, and the sources stated directly, without hedging and without interpretive
   verdicts in either direction. Every claim is linked so it can be checked.

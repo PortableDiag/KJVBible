@@ -4,6 +4,32 @@ All notable changes to this project are documented here. The format is based on
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.0] — 2026-08-11
+
+### Added
+- **The divine name is now explained where it appears.** Tapping **LORD** in study mode opens
+  a note on the Tetragrammaton — the four Hebrew consonants that stand beneath it, the
+  Masoretic pointing that directed the reader to say *Adonai* instead, and the way that
+  substitution passed into Greek, Latin and English. The manuscript record is given: the older
+  Greek copies write the Name in Hebrew or paleo-Hebrew letters rather than *kyrios*.
+- Notes for **GOD** in small capitals (the Name after *Adonai*, 310 times, 302 of them in
+  "Lord GOD"), for **JEHOVAH** (the form's origin, and the four verses that print it), and for
+  the compound names **Jehovah-jireh**, **Jehovah-nissi** and **Jehovah-shalom**.
+- Passage notes for **Exodus 6:3** and **Psalm 83:18**.
+- A note on **everlasting / eternal** (*olam*, *aion*, *aionios*).
+- **Rotherham's Emphasised Bible (1902) readings** are now given alongside the King James
+  wording in the notes where the two differ — *Yahweh* for LORD, *assembly* for church,
+  *immerse* for baptize, *love* for charity, *age-abiding* for everlasting, *Shining One* at
+  Isaiah 14:12, and the untranslated *hades* / *Gehenna* in place of "hell".
+
+### Fixed
+- **Gold Old Testament highlighting no longer covers the narrative introduction to a speech.**
+  59 verses were showing text such as "And the LORD said unto Moses," in gold along with the
+  words actually spoken; the gold now begins at the speech itself.
+- Study-note anchors containing a hyphen or dash could never match, because they were treated
+  as single words while the text tokenizer split them at the dash. Possessive forms such as
+  **LORD'S** (108 occurrences) were missed for the same reason.
+
 ## [1.6.2] — 2026-06-21
 
 ### Added
