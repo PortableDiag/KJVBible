@@ -52,7 +52,7 @@ public class BookmarksActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bookmarks);
         bible = Bible.get(this);
-        bookmarks = new Bookmarks(this);
+        bookmarks = Bookmarks.get(this);
         prefs = new Prefs(this);
         sortMode = prefs.bookmarkSort();
 

@@ -13,7 +13,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/** Persistent bookmark store, backed by a JSON array in SharedPreferences. */
+/**
+ * Persistent bookmark store, backed by a JSON array in SharedPreferences.
+ *
+ * One shared instance: the reader, the bookmark manager and the local API (on its own threads)
+ * all write through it, so none of them can persist a stale copy over another's change.
+ */
 public final class Bookmarks {
 
     public static final class Entry {
@@ -32,9 +37,16 @@ public final class Bookmarks {
     private final List<Entry> entries = new ArrayList<>();
     private final Set<Long> keys = new HashSet<>();
 
-    public Bookmarks(Context ctx) {
+    private static Bookmarks instance;
+
+    private Bookmarks(Context ctx) {
         this.prefs = new Prefs(ctx);
         load();
+    }
+
+    public static synchronized Bookmarks get(Context ctx) {
+        if (instance == null) instance = new Bookmarks(ctx);
+        return instance;
     }
 
     private void load() {
@@ -70,12 +82,12 @@ public final class Bookmarks {
         prefs.setBookmarksJson(arr.toString());
     }
 
-    public boolean contains(Ref r) {
+    public synchronized boolean contains(Ref r) {
         return keys.contains(r.key());
     }
 
     /** Adds a bookmark; returns true if added, false if it already existed. */
-    public boolean add(Ref r, long when, String snippet) {
+    public synchronized boolean add(Ref r, long when, String snippet) {
         if (keys.contains(r.key())) return false;
         entries.add(new Entry(r, when, snippet));
         keys.add(r.key());
@@ -83,7 +95,7 @@ public final class Bookmarks {
         return true;
     }
 
-    public void remove(Ref r) {
+    public synchronized void remove(Ref r) {
         if (!keys.contains(r.key())) return;
         for (int i = 0; i < entries.size(); i++) {
             if (entries.get(i).ref.equals(r)) {
@@ -96,7 +108,7 @@ public final class Bookmarks {
     }
 
     /** Toggle; returns true if now bookmarked. */
-    public boolean toggle(Ref r, long when, String snippet) {
+    public synchronized boolean toggle(Ref r, long when, String snippet) {
         if (contains(r)) {
             remove(r);
             return false;
@@ -105,30 +117,30 @@ public final class Bookmarks {
         return true;
     }
 
-    public void clear() {
+    public synchronized void clear() {
         entries.clear();
         keys.clear();
         persist();
     }
 
     /** Bookmarks ordered by canonical scripture position. */
-    public List<Entry> all() {
+    public synchronized List<Entry> all() {
         List<Entry> copy = new ArrayList<>(entries);
         Collections.sort(copy, (a, b) -> a.ref.compareTo(b.ref));
         return copy;
     }
 
     /** Bookmarks in the order they were saved (oldest first). */
-    public List<Entry> allInSavedOrder() {
+    public synchronized List<Entry> allInSavedOrder() {
         return new ArrayList<>(entries);
     }
 
-    public int size() {
+    public synchronized int size() {
         return entries.size();
     }
 
     /** Human-readable, re-importable JSON of all bookmarks (in canonical order). */
-    public String exportJson(Bible bible) {
+    public synchronized String exportJson(Bible bible) {
         JSONObject root = new JSONObject();
         try {
             root.put("app", "KJV Bible");
@@ -156,7 +168,7 @@ public final class Bookmarks {
      * and either long ("book"/"chapter"/"verse") or short ("b"/"c"/"v") keys. Invalid or
      * out-of-range entries are skipped. Returns the number of new bookmarks added.
      */
-    public int importJson(String json, Bible bible) throws JSONException {
+    public synchronized int importJson(String json, Bible bible) throws JSONException {
         Object parsed = new JSONTokener(json).nextValue();
         JSONArray arr;
         if (parsed instanceof JSONArray) {

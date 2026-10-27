@@ -2,7 +2,8 @@
 
 A fast, **ad-free** King James Version Bible app for Android. Built to open instantly
 and let you find, read, bookmark, and share Scripture without ads, tracking, or
-network access — the entire KJV text is bundled in the app.
+network access — the entire KJV text is bundled in the app. An optional **local API**
+(off by default) lets an agent or script on the phone do the same.
 
 ## Features
 
@@ -51,7 +52,51 @@ network access — the entire KJV text is bundled in the app.
   history, and the sources stated directly, without hedging and without interpretive
   verdicts in either direction. Every claim is linked so it can be checked.
 
-No ads. No tracking. No account. No network permission.
+- **Local API** (off by default) — an agent or script on the phone can read, search, get a
+  passage as text or as the share image, read study notes, manage bookmarks and open the
+  reader, over HTTP on `127.0.0.1`. See [The local API](#the-local-api).
+
+No ads. No tracking. No account. The app never connects anywhere. Since 1.8 the manifest
+holds `INTERNET`, because Android requires it to open the local API's listening socket, even
+one bound to `127.0.0.1`. That socket stays closed until you switch the API on.
+
+## The local API
+
+Turn it on under **⋮ › Local API**. It has the same shape as Lull, TextX, DialX and NotifX, so
+PhoneAPI can register it as a provider:
+
+- **Off by default.** While it is on, a quiet notification says so and has **Stop**.
+- **Bound to `127.0.0.1`** on port **8794**. **LAN access** is a separate switch, off by
+  default. From a computer, use `adb forward tcp:8794 tcp:8794`.
+- **A key per caller.** Each key is shown once and stored only as a SHA-256 hash. **Every tool
+  is off for a new key** until you switch it on. A switch takes effect on the next call.
+  Revoking a key stops it at once.
+- **Audit log.** Every call, allowed or refused, is listed under *Recent calls*.
+
+```bash
+K=kjv_...   # from New key
+curl -H "X-API-Key: $K" "http://127.0.0.1:8794/api/read?passage=John%203:16"
+curl -H "X-API-Key: $K" -X POST http://127.0.0.1:8794/api/tools/kjv.share_text -d '{"passage":"Psalm 23"}'
+curl -H "X-API-Key: $K" "http://127.0.0.1:8794/api/image?passage=John%2014:6&theme=dark" -o verse.png
+```
+
+| Tool | What it does |
+|---|---|
+| `kjv.books` | The 66 books: number, name, abbreviation, chapters, testament |
+| `kjv.read` | A chapter or verses: plain text, red-letter and gold spans as `[start,end)` offsets |
+| `kjv.search` | Full-text search, the same match as the app; `testament`, `book`, `limit` |
+| `kjv.share_text` | The passage exactly as the app shares it as text |
+| `kjv.share_image` | The 1080×1080 share image (PNG, base64) plus the caption the app sends with it; `theme` app / light / dark |
+| `kjv.notes` | Study notes anchored in a passage, or one note by `id`, with sources |
+| `kjv.bookmarks` / `kjv.bookmark_add` / `kjv.bookmark_remove` | Bookmarks; a chapter passage is a whole-chapter bookmark |
+| `kjv.position` | Where the reader is open |
+| `kjv.open` | Open the reader at a passage. Android only lets the app do this while it is on screen; otherwise it posts a notification for the user to tap, and the result says which happened |
+
+A passage is one chapter or verses in it: `John 3:16`, `John 3:16-18`, `Jhn 3:16, 18`,
+`Psalm 23`. Routes: `GET /api/health` (no key), `/api/me`, `/api/tools`, `/api/docs`,
+`POST /api/tools/{name}`, `GET /api/read|search|image`, and `POST /mcp` (MCP over JSON-RPC:
+`initialize`, `tools/list`, `tools/call`, `ping`). An image comes back from MCP as an `image`
+content block. A switched-off tool answers `403` with what this key may use.
 
 ## Build
 
@@ -79,6 +124,14 @@ app/src/main/
 │   ├── ShareUtil.java          Plain-text passage building + share/copy intents
 │   ├── Bookmarks.java          Persistent bookmark store (SharedPreferences JSON)
 │   ├── Prefs.java / ThemeUtil.java / Ref.java / KjvApp.java
+│   └── api/                    The local API, off unless switched on
+│       ├── LocalApi.java       Settings, routes, auth, MCP, docs
+│       ├── Tools.java          Every tool, checked against the caller's switches
+│       ├── ApiKeys.java        A hashed key per caller, its tool switches, the audit log
+│       ├── ApiServer.java / Http.java   Loopback HTTP/1.1, one request per connection
+│       ├── ApiService.java     Foreground service while on; BootReceiver.java restores it
+│       ├── ApiActivity.java    The Local API screen
+│       └── Opener.java         kjv.open: move the reader, or notify when not on screen
 └── assets/bible/
     ├── index.json              Book names, abbreviations, chapter/verse counts
     └── 1.json … 66.json        One file per book: chapters → verses

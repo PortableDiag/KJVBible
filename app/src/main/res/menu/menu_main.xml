@@ -50,4 +50,9 @@
         android:icon="@drawable/ic_share"
         android:title="@string/action_share_chapter"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_local_api"
+        android:title="@string/action_local_api"
+        app:showAsAction="never" />
 </menu>

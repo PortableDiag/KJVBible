@@ -47,6 +47,8 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
     public static final String EXTRA_BOOK = "book";
     public static final String EXTRA_CHAPTER = "chapter";
     public static final String EXTRA_VERSE = "verse";
+    /** Open at EXTRA_BOOK/CHAPTER/VERSE: sent by the local API's kjv.open. */
+    public static final String ACTION_OPEN = "com.portablediag.kjvbible.OPEN";
 
     private Bible bible;
     private Bookmarks bookmarks;
@@ -72,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
         setContentView(R.layout.activity_main);
 
         bible = Bible.get(this);
-        bookmarks = new Bookmarks(this);
+        bookmarks = Bookmarks.get(this);
         studyNotes = StudyNotes.get(this);
         divineSpeech = DivineSpeech.get(this);
         prefs = new Prefs(this);
@@ -133,6 +135,24 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
             // Restore scroll after a recreate (e.g. theme change) so the reader stays in place.
             layout.scrollToPositionWithOffset(restorePos, restoreOff);
         }
+        if (savedInstanceState == null) openFromIntent(getIntent());
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        openFromIntent(intent);
+    }
+
+    private void openFromIntent(Intent intent) {
+        if (intent == null || !ACTION_OPEN.equals(intent.getAction())) return;
+        int b = intent.getIntExtra(EXTRA_BOOK, 0);
+        int c = intent.getIntExtra(EXTRA_CHAPTER, 0);
+        int v = intent.getIntExtra(EXTRA_VERSE, 0);
+        if (b < 1 || b > bible.bookCount() || c < 1 || c > bible.chapterCount(b)) return;
+        if (actionMode != null) actionMode.finish();
+        showChapter(b, c);
+        if (v > 0) scrollToVerse(v);
     }
 
     private static final String S_BOOK = "s_book";
@@ -329,6 +349,9 @@ public class MainActivity extends AppCompatActivity implements VerseAdapter.List
             return true;
         } else if (id == R.id.action_theme) {
             showThemeDialog();
+            return true;
+        } else if (id == R.id.action_local_api) {
+            startActivity(new Intent(this, com.portablediag.kjvbible.api.ApiActivity.class));
             return true;
         } else if (id == R.id.action_share_chapter) {
             ShareUtil.share(this, ShareUtil.buildChapter(bible, curBook, curChapter));

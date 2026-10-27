@@ -4,6 +4,30 @@ All notable changes to this project are documented here. The format is based on
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.0] — 2026-10-27
+
+### Added
+- **Local API**, off by default (**⋮ › Local API**). An agent or script on the phone can read
+  passages (with red-letter and gold spans), search, get a passage as the app shares it, as
+  text or as the themed share image with its caption, read study notes, list, add and remove
+  bookmarks, see the reading position, and open the reader at a passage. It has the same shape
+  as Lull, TextX, DialX and NotifX:
+  - bound to `127.0.0.1:8794`, with LAN access as a separate switch (off by default);
+  - a key per caller, shown once and stored as a hash;
+  - every tool off for a key until you switch it on;
+  - an audit log of every call.
+  It speaks plain HTTP routes and MCP (`POST /mcp`).
+
+### Changed
+- The manifest now holds `INTERNET`, `FOREGROUND_SERVICE` (special use),
+  `POST_NOTIFICATIONS` and `RECEIVE_BOOT_COMPLETED`, all for the local API. Android requires
+  `INTERNET` to open even a loopback listening socket. The app itself still never connects
+  anywhere, and the socket stays closed until the API is switched on.
+- Book abbreviations (`Jhn`, `1Sa`, …) are now recognised wherever a scripture reference is
+  read, including study-note sources.
+- Bookmarks are one shared store, so a bookmark added from the API, the reader or the
+  bookmark manager can no longer be overwritten by a stale copy in another screen.
+
 ## [1.7.0] — 2026-08-11
 
 ### Added

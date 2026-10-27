@@ -170,7 +170,10 @@ public final class Bible {
 
     private void buildRefIndex() {
         refIndex = new HashMap<>();
-        for (BookMeta b : books) refIndex.put(b.name.toLowerCase(Locale.US), b.index);
+        for (BookMeta b : books) {
+            refIndex.put(b.name.toLowerCase(Locale.US), b.index);
+            refIndex.put(b.abbr.toLowerCase(Locale.US), b.index);   // "Jhn", "1Sa", ...
+        }
         // common alternate spellings
         alias("psalms", "Psalm");
         alias("song of songs", "Song of Solomon");
@@ -207,6 +210,89 @@ public final class Bible {
             return new Ref(book, chapter, verse);
         }
         return null;
+    }
+
+    /** A passage within one chapter: {@code verses} empty means the whole chapter. */
+    public static final class Passage {
+        public final int book;
+        public final int chapter;
+        public final List<Integer> verses;
+
+        Passage(int book, int chapter, List<Integer> verses) {
+            this.book = book;
+            this.chapter = chapter;
+            this.verses = verses;
+        }
+
+        public boolean wholeChapter() {
+            return verses.isEmpty();
+        }
+
+        /** The verse refs, in order; a whole chapter expands to every verse. */
+        public List<Ref> refs(Bible bible) {
+            List<Ref> out = new ArrayList<>();
+            if (verses.isEmpty()) {
+                int n = bible.verseCount(book, chapter);
+                for (int v = 1; v <= n; v++) out.add(new Ref(book, chapter, v));
+            } else {
+                for (int v : verses) out.add(new Ref(book, chapter, v));
+            }
+            return out;
+        }
+    }
+
+    private static final Pattern PASSAGE_TAIL =
+            Pattern.compile("^(\\d+)(?::\\s*([\\d\\s,\\-\\u2013]+))?$");
+
+    /**
+     * Parse a passage inside one chapter: "John 3:16", "John 3:16-18", "Jhn 3:16, 18, 20-21",
+     * "Psalm 23" (whole chapter). Book names, the app's abbreviations and the aliases above all
+     * work. Throws IllegalArgumentException saying what is wrong, so a caller can be told.
+     */
+    public synchronized Passage parsePassage(String s) {
+        if (refIndex == null) buildRefIndex();
+        String low = s == null ? "" : s.trim().toLowerCase(Locale.US).replaceAll("\\s+", " ");
+        for (String name : refNamesByLen) {
+            if (!low.startsWith(name)) continue;
+            String rest = low.substring(name.length());
+            if (!rest.isEmpty() && rest.charAt(0) != ' ') continue;
+            int book = refIndex.get(name);
+            rest = rest.trim();
+            if (rest.isEmpty()) {
+                throw new IllegalArgumentException("Give a chapter, e.g. \"" + book(book).name + " 1\"");
+            }
+            Matcher m = PASSAGE_TAIL.matcher(rest);
+            if (!m.matches()) {
+                throw new IllegalArgumentException("Can't read \"" + rest + "\"; one chapter at a time, e.g. "
+                        + book(book).name + " 1:1-5");
+            }
+            int chapter = Integer.parseInt(m.group(1));
+            if (chapter < 1 || chapter > chapterCount(book)) {
+                throw new IllegalArgumentException(book(book).name + " has " + chapterCount(book)
+                        + " chapters");
+            }
+            int max = verseCount(book, chapter);
+            java.util.TreeSet<Integer> verses = new java.util.TreeSet<>();
+            if (m.group(2) != null) {
+                for (String part : m.group(2).split(",")) {
+                    String p = part.trim().replace('\u2013', '-');
+                    if (p.isEmpty()) continue;
+                    String[] ends = p.split("-");
+                    if (ends.length > 2 || ends[0].trim().isEmpty()) {
+                        throw new IllegalArgumentException("Can't read verses \"" + p + "\"");
+                    }
+                    int a = Integer.parseInt(ends[0].trim());
+                    int b = ends.length == 2 ? Integer.parseInt(ends[1].trim()) : a;
+                    if (a < 1 || b < a || b > max) {
+                        throw new IllegalArgumentException(book(book).name + " " + chapter + " has "
+                                + max + " verses");
+                    }
+                    for (int v = a; v <= b; v++) verses.add(v);
+                }
+            }
+            return new Passage(book, chapter, new ArrayList<>(verses));
+        }
+        throw new IllegalArgumentException("No book called \"" + s + "\"");
     }
 
     /** Strip red-letter control markers, leaving plain text (for search, share, copy). */

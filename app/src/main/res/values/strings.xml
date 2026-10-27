@@ -92,4 +92,46 @@
     <string name="share_how">Share</string>
     <string name="image_failed">Couldn\'t create image</string>
     <string name="kjv_suffix">(KJV)</string>
+
+    <!-- Local API -->
+    <string name="action_local_api">Local API</string>
+    <string name="api_switch">Local API</string>
+    <string name="api_status_off">Off. Nothing is listening.</string>
+    <string name="api_status_local">On at http://127.0.0.1:%1$d — this phone only</string>
+    <string name="api_status_lan">On at port %1$d on every network this phone is on</string>
+    <string name="api_status_starting">Starting&#8230;</string>
+    <string name="api_explain">Lets an agent or script on this phone read passages, search, get a passage as text or as the share image, read study notes and manage bookmarks: what the app does, over HTTP. Each caller gets its own key, and every tool is off for a key until you switch it on. Off by default; the app makes no connection of its own either way.</string>
+    <string name="api_lan">LAN access</string>
+    <string name="api_lan_explain">Off: only apps on this phone can reach it (a computer can still use adb forward). On: any device on the same network that has a key can.</string>
+    <string name="api_port">Port %1$d</string>
+    <string name="api_port_title">Port</string>
+    <string name="api_keys">KEYS</string>
+    <string name="api_new_key">New key</string>
+    <string name="api_no_keys">No keys yet. Make one per agent or script.</string>
+    <string name="api_key_name">Who is this key for?</string>
+    <string name="api_key_name_hint">e.g. the agent\'s name</string>
+    <string name="api_key_created">Key for %1$s</string>
+    <string name="api_key_once">Copy it now: it is shown only once. Every tool is off for it until you switch it on.</string>
+    <string name="api_copy_key">Copy key</string>
+    <string name="api_choose_tools">Choose tools</string>
+    <string name="api_key_detail">%1$s… · %2$d of %3$d tools · %4$s</string>
+    <string name="api_never_used">never used</string>
+    <string name="api_used">%1$d calls, last %2$s</string>
+    <string name="api_tools_for">What %1$s may do</string>
+    <string name="api_revoke">Revoke</string>
+    <string name="api_revoke_q">Revoke the key for %1$s? It stops working at once.</string>
+    <string name="api_rename">Rename</string>
+    <string name="api_log">RECENT CALLS</string>
+    <string name="api_log_empty">No calls yet.</string>
+    <string name="api_channel">Local API</string>
+    <string name="api_running_title">KJV Bible API is on</string>
+    <string name="api_running_local">Listening on 127.0.0.1:%1$d, this phone only</string>
+    <string name="api_running_lan">Listening on port %1$d, LAN access on</string>
+    <string name="api_stop">Stop</string>
+    <string name="api_off_title">KJV Bible API is off</string>
+    <string name="api_port_in_use">Port %1$d is in use by another app</string>
+    <string name="api_listen_failed">Could not listen on port %1$d: %2$s</string>
+    <string name="api_open_channel">Passages sent by agents</string>
+    <string name="api_open_title">Open %1$s</string>
+    <string name="api_open_text">Sent by %1$s. Tap to read.</string>
 </resources>
