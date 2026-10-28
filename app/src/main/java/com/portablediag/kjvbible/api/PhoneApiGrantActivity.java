@@ -51,22 +51,37 @@ public class PhoneApiGrantActivity extends AppCompatActivity {
         MaterialButton allow = findViewById(R.id.allow);
         LinearLayout list = findViewById(R.id.tools);
         List<MaterialSwitch> switches = new ArrayList<>();
-        // Everything starts off, and a key that may do nothing isn't worth minting.
+        // Off for a first key; PhoneAPI's current tools when it already has one.
+        // A key that may do nothing isn't worth minting.
+        ApiKeys.Key current = PhoneApiAccess.key(this);
+        MaterialSwitch all = row(list, getString(R.string.phoneapi_allow_all));
+        boolean[] binding = {false};
         Runnable sync = () -> {
-            boolean any = false;
-            for (MaterialSwitch s : switches) any |= s.isChecked();
+            boolean any = false, every = true;
+            for (MaterialSwitch s : switches) {
+                any |= s.isChecked();
+                every &= s.isChecked();
+            }
             allow.setEnabled(any);
+            binding[0] = true;
+            all.setChecked(every);
+            binding[0] = false;
         };
         for (Tools.Tool t : Tools.ALL) {
-            MaterialSwitch s = new MaterialSwitch(this);
-            s.setText(t.label + "  (" + t.name + ")");
-            s.setMinHeight((int) (48 * getResources().getDisplayMetrics().density));
-            s.setChecked(false);
-            s.setOnCheckedChangeListener((b, on) -> sync.run());
+            MaterialSwitch s = row(list, t.label);
+            s.setChecked(current != null && current.allows(t.name));
+            s.setOnCheckedChangeListener((b, on) -> {
+                if (!binding[0]) sync.run();
+            });
             switches.add(s);
-            list.addView(s, new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
         }
+        all.setOnCheckedChangeListener((b, on) -> {
+            if (binding[0]) return;
+            binding[0] = true;
+            for (MaterialSwitch s : switches) s.setChecked(on);
+            binding[0] = false;
+            sync.run();
+        });
         sync.run();
 
         findViewById(R.id.deny).setOnClickListener(v -> {
@@ -85,5 +100,14 @@ public class PhoneApiGrantActivity extends AppCompatActivity {
                     .putExtra("port", LocalApi.port(this)));
             finish();
         });
+    }
+
+    private MaterialSwitch row(LinearLayout list, String text) {
+        MaterialSwitch s = new MaterialSwitch(this);
+        s.setText(text);
+        s.setMinHeight((int) (48 * getResources().getDisplayMetrics().density));
+        list.addView(s, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+        return s;
     }
 }

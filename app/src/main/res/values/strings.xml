@@ -136,6 +136,7 @@
     <string name="phoneapi_turns_on">This switches the local API on.</string>
     <string name="phoneapi_replaces">PhoneAPI\'s old key stops working.</string>
     <string name="phoneapi_may">It may:</string>
+    <string name="phoneapi_allow_all">Allow all</string>
     <string name="phoneapi_deny">Don\'t allow</string>
     <string name="phoneapi_allow">Allow</string>
     <string name="api_open_channel">Passages sent by agents</string>
