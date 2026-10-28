@@ -72,6 +72,12 @@ PhoneAPI can register it as a provider:
   is off for a new key** until you switch it on. A switch takes effect on the next call.
   Revoking a key stops it at once.
 - **Audit log.** Every call, allowed or refused, is listed under *Recent calls*.
+- **PhoneAPI.** PhoneAPI asks for its own key on KJV Bible's screen *Let PhoneAPI use KJV
+  Bible?*, with every tool switched off until you switch it on. Only PhoneAPI's release build
+  is answered. Its key then appears under *Keys* as "PhoneAPI", where you can change its tools
+  or revoke it, and it is dropped if PhoneAPI is uninstalled. Once PhoneAPI holds a key, every
+  answer to a request with `X-PhoneAPI-Challenge` carries `X-PhoneAPI-Proof`, so PhoneAPI can
+  tell KJV Bible from another app listening on the port.
 
 ```bash
 K=kjv_...   # from New key
@@ -131,6 +137,7 @@ app/src/main/
 │       ├── ApiServer.java / Http.java   Loopback HTTP/1.1, one request per connection
 │       ├── ApiService.java     Foreground service while on; BootReceiver.java restores it
 │       ├── ApiActivity.java    The Local API screen
+│       ├── PhoneApi*.java      PhoneAPI's key handshake, proof header and uninstall cleanup
 │       └── Opener.java         kjv.open: move the reader, or notify when not on screen
 └── assets/bible/
     ├── index.json              Book names, abbreviations, chapter/verse counts

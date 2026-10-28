@@ -76,7 +76,9 @@ public class ApiService extends Service {
 
         if (server == null || !server.isRunning()) {
             Context app = getApplicationContext();
-            server = new ApiServer(req -> LocalApi.handle(app, req), bind, port);
+            PhoneApiAccess.revokeIfGone(app);
+            server = new ApiServer(req -> LocalApi.handle(app, req),
+                    (req, res) -> PhoneApiAccess.seal(app, req, res), bind, port);
             try {
                 server.start();
                 LocalApi.running = true;

@@ -117,6 +117,11 @@ public final class ApiKeys {
     }
 
     public synchronized Minted create(String name) {
+        return create(name, new LinkedHashSet<>());
+    }
+
+    /** A key with {@code tools} already on: PhoneAPI's, whose tools the owner picked on the grant screen. */
+    public synchronized Minted create(String name, Set<String> tools) {
         byte[] secret = new byte[32];
         new SecureRandom().nextBytes(secret);
         String raw = PREFIX + Base64.encodeToString(secret,
@@ -125,7 +130,7 @@ public final class ApiKeys {
         for (Key k : keys) id = Math.max(id, k.id + 1);
         String label = (name == null || name.trim().isEmpty()) ? "API key" : name.trim();
         Key key = new Key(id, label, raw.substring(0, KID_LEN), sha256(raw),
-                new LinkedHashSet<>(), System.currentTimeMillis(), 0, 0);
+                new LinkedHashSet<>(tools), System.currentTimeMillis(), 0, 0);
         keys.add(key);
         persist();
         return new Minted(key, raw);

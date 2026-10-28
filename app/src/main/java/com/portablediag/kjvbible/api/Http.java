@@ -65,11 +65,18 @@ public final class Http {
         public final int status;
         public final String contentType;
         public final byte[] body;
+        /** Headers beyond the fixed ones the server writes (X-PhoneAPI-Proof). */
+        public final Map<String, String> headers = new LinkedHashMap<>();
 
         Response(int status, String contentType, byte[] body) {
             this.status = status;
             this.contentType = contentType;
             this.body = body;
+        }
+
+        public Response withHeader(String name, String value) {
+            headers.put(name, value);
+            return this;
         }
 
         public String reason() {

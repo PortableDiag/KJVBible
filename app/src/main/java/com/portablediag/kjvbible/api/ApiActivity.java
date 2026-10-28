@@ -104,6 +104,7 @@ public class ApiActivity extends AppCompatActivity implements LocalApi.Listener 
     }
 
     private void render() {
+        PhoneApiAccess.revokeIfGone(this);
         binding = true;
         boolean on = LocalApi.enabled(this);
         apiSwitch.setChecked(on);

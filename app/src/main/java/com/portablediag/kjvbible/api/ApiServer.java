@@ -25,12 +25,18 @@ public final class ApiServer {
         Http.Response handle(Http.Request req) throws Http.ApiException;
     }
 
+    /** Last touch on every response to a parsed request, errors included (PhoneAPI's proof header). */
+    public interface Sealer {
+        Http.Response seal(Http.Request req, Http.Response res);
+    }
+
     private static final String TAG = "KjvApi";
     private static final int WORKERS = 4;
     private static final int SOCKET_TIMEOUT_MS = 15_000;
     private static final int BACKLOG = 16;
 
     private final Handler handler;
+    private final Sealer sealer;
     private final String bindAddress;
     private final int port;
 
@@ -38,8 +44,9 @@ public final class ApiServer {
     private ServerSocket serverSocket;
     private ExecutorService workers;
 
-    public ApiServer(Handler handler, String bindAddress, int port) {
+    public ApiServer(Handler handler, Sealer sealer, String bindAddress, int port) {
         this.handler = handler;
+        this.sealer = sealer;
         this.bindAddress = bindAddress;
         this.port = port;
     }
@@ -100,8 +107,9 @@ public final class ApiServer {
             BufferedInputStream in = new BufferedInputStream(socket.getInputStream());
             BufferedOutputStream out = new BufferedOutputStream(socket.getOutputStream());
             Http.Response response;
+            Http.Request request = null;
             try {
-                Http.Request request = Http.parse(in);
+                request = Http.parse(in);
                 if (request == null) return;
                 response = handler.handle(request);
             } catch (Http.ApiException e) {
@@ -112,6 +120,13 @@ public final class ApiServer {
                 Log.w(TAG, "request failed", e);
                 response = Http.Response.error(500, e.getClass().getSimpleName() + ": " + e.getMessage(), null);
             }
+            if (request != null && sealer != null) {
+                try {
+                    response = sealer.seal(request, response);
+                } catch (Exception e) {
+                    Log.w(TAG, "seal failed", e);
+                }
+            }
             write(out, response);
         } catch (IOException e) {
             Log.w(TAG, "response failed", e);
@@ -119,13 +134,17 @@ public final class ApiServer {
     }
 
     private static void write(OutputStream out, Http.Response r) throws IOException {
-        String head = "HTTP/1.1 " + r.status + " " + r.reason() + "\r\n"
-                + "Content-Type: " + r.contentType + "\r\n"
-                + "Content-Length: " + r.body.length + "\r\n"
-                + "Connection: close\r\n"
-                + "Cache-Control: no-store\r\n"
-                + "\r\n";
-        out.write(head.getBytes(StandardCharsets.US_ASCII));
+        StringBuilder head = new StringBuilder()
+                .append("HTTP/1.1 ").append(r.status).append(' ').append(r.reason()).append("\r\n")
+                .append("Content-Type: ").append(r.contentType).append("\r\n")
+                .append("Content-Length: ").append(r.body.length).append("\r\n")
+                .append("Connection: close\r\n")
+                .append("Cache-Control: no-store\r\n");
+        for (java.util.Map.Entry<String, String> h : r.headers.entrySet()) {
+            head.append(h.getKey()).append(": ").append(h.getValue()).append("\r\n");
+        }
+        head.append("\r\n");
+        out.write(head.toString().getBytes(StandardCharsets.US_ASCII));
         out.write(r.body);
         out.flush();
     }

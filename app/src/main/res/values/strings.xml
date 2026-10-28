@@ -131,6 +131,13 @@
     <string name="api_off_title">KJV Bible API is off</string>
     <string name="api_port_in_use">Port %1$d is in use by another app</string>
     <string name="api_listen_failed">Could not listen on port %1$d: %2$s</string>
+    <string name="phoneapi_title">Let PhoneAPI use KJV Bible?</string>
+    <string name="phoneapi_body">PhoneAPI gets its own key, separate from yours, and passes it only to the agents you switch on there. It may use only the tools you switch on here; you can change them later in Local API › Keys.</string>
+    <string name="phoneapi_turns_on">This switches the local API on.</string>
+    <string name="phoneapi_replaces">PhoneAPI\'s old key stops working.</string>
+    <string name="phoneapi_may">It may:</string>
+    <string name="phoneapi_deny">Don\'t allow</string>
+    <string name="phoneapi_allow">Allow</string>
     <string name="api_open_channel">Passages sent by agents</string>
     <string name="api_open_title">Open %1$s</string>
     <string name="api_open_text">Sent by %1$s. Tap to read.</string>

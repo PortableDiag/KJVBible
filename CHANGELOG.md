@@ -4,6 +4,21 @@ All notable changes to this project are documented here. The format is based on
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.1] — 2026-10-27
+
+### Added
+- **PhoneAPI handshake.** PhoneAPI can ask for its own local API key. KJV Bible shows
+  *Let PhoneAPI use KJV Bible?* with a switch per tool, all off. On **Allow** it mints a key
+  named "PhoneAPI" (replacing an older one), switches the local API on and hands the key back
+  only to PhoneAPI's pinned release build. The key is listed under **Keys** like any other.
+- While PhoneAPI holds a key, every response to a request carrying `X-PhoneAPI-Challenge`,
+  errors and `/api/health` included, carries `X-PhoneAPI-Proof`
+  (HMAC-SHA256 of the challenge with the proof key from the handshake).
+
+### Changed
+- PhoneAPI's key is dropped when PhoneAPI is uninstalled or no longer carries its release
+  signature. The manifest declares a package query for `com.phoneapi.app` to check that.
+
 ## [1.8.0] — 2026-10-27
 
 ### Added
